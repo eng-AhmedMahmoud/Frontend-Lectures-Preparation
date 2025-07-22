@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- Demonstrates ARIA live regions for dynamic updates -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARIA Live Region Demo</title>
+  <meta name="description" content="Advanced example using aria-live.">
+  <meta name="author" content="Frontend Lectures">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 1.5rem; }
+    #status { margin-top: 1rem; color: #0d6efd; }
+  </style>
+</head>
+<body>
+  <!-- SECTION: Live Region
+       Benefit: Announces dynamic changes to screen readers automatically.
+       Drawback: Overuse can create noisy experiences. -->
+  <h2>Live Counter</h2>
+  <button id="start">Start Counter</button>
+  <div id="status" aria-live="polite"></div>
+
+  <script>
+    const btn = document.getElementById('start');
+    const status = document.getElementById('status');
+    let i = 0;
+    btn.addEventListener('click', () => {
+      const interval = setInterval(() => {
+        status.textContent = `Count: ${++i}`;
+        if (i === 5) clearInterval(interval);
+      }, 1000);
+    });
+  </script>
+</body>
+</html> 

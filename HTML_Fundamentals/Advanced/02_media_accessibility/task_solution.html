@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- Media accessibility solution per Advanced Task -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessible Media Showcase</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 1.5rem; }
+    video, audio { max-width: 100%; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Accessible Multimedia</h1>
+
+  <!-- VIDEO with multiple sources, poster, and captions track
+       Benefit: Works across browsers; Drawback: More bandwidth & authoring work. -->
+  <video controls poster="https://via.placeholder.com/640x360?text=Video+Poster">
+    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+    <track kind="captions" src="captions.vtt" srclang="en" label="English captions">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- YOUTUBE EMBED with title and allowfullscreen -->
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/eX2qFMC8cFo" title="Inclusive Design Talk" allowfullscreen></iframe>
+
+  <!-- AUDIO with fallback link -->
+  <audio controls>
+    <source src="https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3" type="audio/mp3">
+    Your browser does not support the audio element. <a href="t-rex-roar.mp3">Download audio</a>.
+  </audio>
+
+  <!-- SVG ICON marked up for accessibility -->
+  <svg role="img" aria-labelledby="playtitle" width="80" height="80">
+    <title id="playtitle">Play Icon</title>
+    <polygon points="0,0 80,40 0,80" fill="#0d6efd" />
+  </svg>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Demo page showing accessible video, audio, iframe, and SVG elements.">
+</body>
+</html> 

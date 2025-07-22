@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- Accessible contact form demonstrating proper labels, validation, and ARIA -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Provides a concise summary of the page’s content for search engines -->
+  <meta name="description" content="Accessible HTML form demonstration for intermediate learners.">
+  <!-- Identifies the author of the document -->
+  <meta name="author" content="Frontend Lectures">
+  <!-- Keywords help with SEO although many engines now ignore them -->
+  <meta name="keywords" content="HTML forms, accessibility, intermediate, tutorial">
+  <!-- Tells search engine robots whether to index this page -->
+  <meta name="robots" content="index, follow">
+  <title>Accessible Contact Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      line-height: 1.6;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 0.5rem 1.25rem;
+      background-color: #0d6efd;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background-color: #6c757d;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h1>Accessible Contact Form</h1>
+  <form action="#" novalidate>
+    <div class="form-group">
+      <label for="name">Name <span aria-hidden="true">*</span></label>
+      <input type="text" id="name" name="name" required aria-required="true">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email <span aria-hidden="true">*</span></label>
+      <input type="email" id="email" name="email" required aria-required="true" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" aria-describedby="msgHelp"></textarea>
+      <small id="msgHelp">Feel free to ask anything, we usually respond within 24 h.</small>
+    </div>
+
+    <button type="submit">Send</button>
+  </form>
+
+  <!-- Live validation script -->
+  <script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', e => {
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        alert('Please complete the required fields.');
+      }
+    });
+  </script>
+</body>
+</html> 

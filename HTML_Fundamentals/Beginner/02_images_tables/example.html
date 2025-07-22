@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- Demonstrates images and tables -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Images & Tables Demo</title>
+  <meta name="description" content="Beginner example of img and table elements.">
+  <meta name="author" content="Frontend Lectures">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 1.5rem; }
+    table { border-collapse: collapse; width: 60%; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; }
+  </style>
+</head>
+<body>
+  <!-- SECTION 1: Image Element
+       Benefit: Adds visual context and engagement.
+       Drawback: Large images slow load; always include alt text. -->
+  <h2>Sample Image</h2>
+  <img src="https://via.placeholder.com/300" alt="Placeholder thumbnail 300x300" width="300" height="300">
+
+  <!-- SECTION 2: Table Element
+       Benefit: Presents tabular data in rows and columns.
+       Drawback: Never use tables for layout; harms accessibility and responsiveness. -->
+  <h2>Basic Data Table</h2>
+  <table>
+    <tr><th>Planet</th><th>Moons</th></tr>
+    <tr><td>Earth</td><td>1</td></tr>
+    <tr><td>Mars</td><td>2</td></tr>
+  </table>
+</body>
+</html> 

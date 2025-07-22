@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- Demonstrates advanced media elements and basic accessibility attributes -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Provides a concise summary of the page’s content for search engines -->
+  <meta name="description" content="Advanced HTML media, accessibility and SEO demonstration.">
+  <!-- Identifies the author of the document -->
+  <meta name="author" content="Frontend Lectures">
+  <!-- Keywords help with SEO although many engines now ignore them -->
+  <meta name="keywords" content="HTML media, accessibility, SEO, advanced, tutorial">
+  <!-- Tells search engine robots whether to index this page -->
+  <meta name="robots" content="index, follow">
+  <title>Media & Accessibility</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    video, audio { display: block; margin-bottom: 1rem; max-width: 100%; }
+    svg { width: 100px; height: 100px; }
+  </style>
+</head>
+<body>
+  <h1>HTML Media Elements</h1>
+
+  <!-- Video element with controls and captions track -->
+  <video controls poster="https://via.placeholder.com/640x360?text=Video+Thumbnail">
+    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+    <!-- Text track can provide captions or subtitles -->
+    <!-- <track kind="captions" src="captions.vtt" srclang="en" label="English captions"> -->
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Audio element -->
+  <audio controls>
+    <source src="https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- SVG vector graphic -->
+  <svg role="img" aria-labelledby="title">
+    <title id="title">Red Circle</title>
+    <circle cx="50" cy="50" r="40" fill="red" />
+  </svg>
+
+  <!-- Accessible button with ARIA label -->
+  <button aria-label="Close">&times;</button>
+</body>
+</html> 

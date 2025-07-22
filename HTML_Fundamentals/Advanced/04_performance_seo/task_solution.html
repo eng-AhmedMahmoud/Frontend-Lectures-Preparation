@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fast Landing Page</title>
+  <meta name="description" content="Demo page implementing preload and preconnect for performance.">
+  <!-- Preconnect to speed up Google Fonts fetch (benefit: reduces latency; drawback: wasted DNS/time if fonts not used) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preload hero image (benefit: ensures quick first paint; drawback: wastes bandwidth if user never views hero) -->
+  <link rel="preload" href="hero.webp" as="image" type="image/webp">
+  <style>
+    body { font-family: 'Arial', sans-serif; margin: 0; }
+    .hero { width: 100%; display: block; }
+  </style>
+</head>
+<body>
+  <img class="hero" src="hero.webp" alt="Mountain sunrise" width="1200" height="600">
+</body>
+</html> 

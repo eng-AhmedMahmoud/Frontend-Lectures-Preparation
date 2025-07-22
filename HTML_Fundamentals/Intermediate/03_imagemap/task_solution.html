@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!-- Task solution for HTML imagemap -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HTML imagemap task solution.">
+  <meta name="author" content="Frontend Lectures">
+  <title>Imagemap Navigation - Task Solution</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Styling for the navigation image */
+    .nav-image {
+      border: 2px solid #333;
+      border-radius: 10px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .nav-image:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Styling for content sections */
+    .content-section {
+      background-color: #f8f9fa;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      border-left: 4px solid #007bff;
+    }
+
+    .content-section h2 {
+      color: #007bff;
+      margin-top: 0;
+    }
+
+    /* Visual feedback for imagemap areas */
+    area:hover {
+      cursor: pointer;
+    }
+
+    .highlight {
+      background-color: #fff3cd;
+      border-left-color: #ffc107;
+    }
+
+    .info {
+      background-color: #d1ecf1;
+      border: 1px solid #bee5eb;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+  </style>
+  <script defer>
+    function highlightSection(sectionId) {
+      // Remove previous highlights
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => section.classList.remove('highlight'));
+
+      // Add highlight to clicked section
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.add('highlight');
+        // Scroll to section
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Website Navigation Imagemap</h1>
+
+    <div class="info">
+      <p><strong>Instructions:</strong> Click on different areas of the navigation image below to jump to the
+        corresponding sections.</p>
+    </div>
+
+    <!-- Navigation imagemap -->
+    <img
+      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8IS0tIE5hdmlnYXRpb24gYmFja2dyb3VuZCAtLT4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iIzM0M2E0MCIgcng9IjEwIi8+CiAgCiAgPCEtLSBIb21lIGJ1dHRvbiAocmVjdGFuZ3VsYXIpIC0tPgogIDxyZWN0IHg9IjIwIiB5PSI0MCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSI3MCIgZmlsbD0iIzAwN2JmZiIgcng9IjUiLz4KICA8dGV4dCB4PSI4MCIgeT0iODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSJib2xkIj5IT01FPC90ZXh0PgogIAogIDwhLS0gQWJvdXQgYnV0dG9uIChjaXJjdWxhcikgLS0+CiAgPGNpcmNsZSBjeD0iMjMwIiBjeT0iNzUiIHI9IjQ1IiBmaWxsPSIjMjhhNzQ1Ii8+CiAgPHRleHQgeD0iMjMwIiB5PSI4MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiPkFCT1VUPC90ZXh0PgogIAogIDwhLS0gU2VydmljZXMgYnV0dG9uIChwb2x5Z29uYWwpIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMzIwLDQwIDQyMCw0MCA0NDAsNzUgNDIwLDExMCAzMjAsMTEwIDMwMCw3NSIgZmlsbD0iI2ZmOWMwMCIvPgogIDx0ZXh0IHg9IjM3MCIgeT0iODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIj5TRVJWSUNFUzwvdGV4dD4KICA8IS0tIENvbnRhY3QgYnV0dG9uIChyZWN0YW5ndWxhcikgLS0+CiAgPHJlY3QgeD0iNDgwIiB5PSI0MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSI3MCIgZmlsbD0iI2RjMzU0NSIgcng9IjUiLz4KICA8dGV4dCB4PSI1MzAiIHk9IjgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCI+Q09OVEFDVDwvdGV4dD4KPC9zdmc+"
+      alt="Website Navigation" usemap="#nav-map" class="nav-image" width="600" height="150">
+
+    <!-- Map definition with different area shapes -->
+    <map name="nav-map">
+      <!-- Home button (rectangular area) -->
+      <area shape="rect" coords="20,40,140,110" href="#home" alt="Home Section" title="Go to Home Section"
+        onclick="highlightSection('home'); return true;">
+
+      <!-- About button (circular area) -->
+      <area shape="circle" coords="230,75,45" href="#about" alt="About Section" title="Go to About Section"
+        onclick="highlightSection('about'); return true;">
+
+      <!-- Services button (polygonal area) -->
+      <area shape="poly" coords="320,40,420,40,440,75,420,110,320,110,300,75" href="#services" alt="Services Section"
+        title="Go to Services Section" onclick="highlightSection('services'); return true;">
+
+      <!-- Contact button (rectangular area) -->
+      <area shape="rect" coords="480,40,580,110" href="#contact" alt="Contact Section" title="Go to Contact Section"
+        onclick="highlightSection('contact'); return true;">
+    </map>
+
+    <!-- Content sections -->
+    <section id="home" class="content-section">
+      <h2>🏠 Home</h2>
+      <p>Welcome to our website! This is the home section where visitors first land. Here you'll find an overview of
+        what we offer and quick access to our main features.</p>
+      <p>This area was created using a <strong>rectangular</strong> imagemap area with coordinates (20,40,140,110).</p>
+    </section>
+
+    <section id="about" class="content-section">
+      <h2>👥 About Us</h2>
+      <p>Learn more about our company, our mission, and our team. We're passionate about creating amazing web
+        experiences and teaching others how to do the same.</p>
+      <p>This area was created using a <strong>circular</strong> imagemap area with center (230,75) and radius 45.</p>
+    </section>
+
+    <section id="services" class="content-section">
+      <h2>🛠️ Services</h2>
+      <p>Discover the range of services we offer, from web development to design consulting. We provide comprehensive
+        solutions for all your digital needs.</p>
+      <p>This area was created using a <strong>polygonal</strong> imagemap area with coordinates creating a hexagon
+        shape.</p>
+    </section>
+
+    <section id="contact" class="content-section">
+      <h2>📞 Contact</h2>
+      <p>Get in touch with us! Whether you have questions, want to start a project, or just want to say hello, we'd love
+        to hear from you.</p>
+      <p>This area was created using a <strong>rectangular</strong> imagemap area with coordinates (480,40,580,110).</p>
+    </section>
+
+    <!-- Technical details -->
+    <div class="info">
+      <h3>Imagemap Implementation Details:</h3>
+      <ul>
+        <li><strong>Rectangle areas:</strong> Home and Contact buttons using <code>shape="rect"</code></li>
+        <li><strong>Circle area:</strong> About button using <code>shape="circle"</code></li>
+        <li><strong>Polygon area:</strong> Services button using <code>shape="poly"</code></li>
+        <li><strong>JavaScript enhancement:</strong> Visual highlighting and smooth scrolling</li>
+        <li><strong>Accessibility:</strong> Proper alt text and title attributes for all areas</li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>

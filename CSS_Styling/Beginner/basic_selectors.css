@@ -1,0 +1,31 @@
+/*
+  basic_selectors.css
+  -------------------
+  Demonstrates fundamental CSS selectors.
+*/
+
+/* Type selector - targets all <p> elements */
+p {
+  color: #212121; /* Dark text for readability */
+  line-height: 1.5;
+}
+
+/* Class selector - targets elements with class="intro" */
+.intro {
+  font-weight: bold;
+  color: #0d6efd; /* Blue text */
+}
+
+/* ID selector - targets element with id="unique" */
+#unique {
+  background-color: #f8f9fa; /* Off-white background as preferred by the instructor */
+  padding: 0.5rem 1rem;
+  border-left: 4px solid #0d6efd;
+}
+
+/* Pseudo-class selector for button hover */
+button:hover {
+  background-color: #198754; /* Green background on hover */
+  color: #ffffff; /* White text */
+  cursor: pointer;
+} 

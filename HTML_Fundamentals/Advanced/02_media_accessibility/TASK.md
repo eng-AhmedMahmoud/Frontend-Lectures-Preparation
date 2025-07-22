@@ -1,0 +1,3 @@
+# Advanced – Multimedia, ARIA & SEO (2 hours)
+
+Handle multimedia, ARIA, and SEO. Review MDN on embedding and Google’s SEO starter guide. Add a video with mp4 and webm sources plus a poster. Include track captions. Embed a YouTube iframe with title and allowfullscreen. Insert an audio player with a fallback download link. Add descriptive title and meta description tags. Implement breadcrumb navigation with aria-label. Provide JSON-LD structured data for a recipe. Validate rich results with Google tools. Take the two 5-question quizzes. Finish both exercises in two hours. 

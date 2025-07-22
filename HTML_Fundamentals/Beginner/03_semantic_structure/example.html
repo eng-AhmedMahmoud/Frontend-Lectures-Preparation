@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- Demonstrates semantic HTML elements introduced in HTML5 -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Provides a concise summary of the page’s content for search engines -->
+  <meta name="description" content="Semantic HTML layout demonstration for beginners.">
+  <!-- Identifies the author of the document -->
+  <meta name="author" content="Frontend Lectures">
+  <!-- Keywords help with SEO although many engines now ignore them -->
+  <meta name="keywords" content="HTML, Semantic HTML, beginner, tutorial">
+  <!-- Tells search engine robots whether to index this page -->
+  <meta name="robots" content="index, follow">
+  <title>Semantic HTML Layout</title>
+  <style>
+    /* Basic styling to visualize the semantic regions */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    header,
+    nav,
+    main,
+    aside,
+    footer {
+      padding: 1rem;
+      border: 1px dashed #ccc;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #0d6efd;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header usually contains logo or introductory content -->
+  <header>
+    <h1>Site Title</h1>
+    <!-- nav inside header is common -->
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- main contains the document's primary content -->
+  <main>
+    <!-- article represents a self-contained piece of content -->
+    <article>
+      <h2>Article Heading</h2>
+      <p>The article element is great for blog posts, news stories, etc.</p>
+    </article>
+
+    <!-- section groups related thematic content -->
+    <section>
+      <h2>Related Section</h2>
+      <p>This section groups together related content within main.</p>
+    </section>
+  </main>
+
+  <!-- aside contains content tangentially related to the main content -->
+  <aside>
+    <h3>Sidebar</h3>
+    <p>This could contain ads, related links, or author bio.</p>
+  </aside>
+
+  <!-- footer contains metadata, copyright, etc. -->
+  <footer>
+    <small>&copy; 2025 Demo Website</small>
+  </footer>
+</body>
+
+</html>

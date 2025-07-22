@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- Demonstrates HTML imagemap usage for beginners -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HTML imagemap demonstration for beginners.">
+  <meta name="author" content="Frontend Lectures">
+  <meta name="keywords" content="HTML, imagemap, map, area, beginner, tutorial">
+  <title>HTML Imagemap Example</title>
+  <style>
+    /* Basic styling for the example */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    img {
+      border: 2px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .info {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+
+    .clickable-area {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>HTML Imagemap Example</h1>
+
+    <div class="info">
+      <p><strong>What is an imagemap?</strong></p>
+      <p>An imagemap allows you to define clickable areas on an image. Each area can link to different URLs or trigger
+        different actions.</p>
+    </div>
+
+    <h2>Simple Office Layout Map</h2>
+    <p>Click on different areas of the office layout below:</p>
+
+    <!-- Image with usemap attribute linking to the map -->
+    <img
+      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8IS0tIE9mZmljZSBsYXlvdXQgYmFja2dyb3VuZCAtLT4KICA8cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YwZjBmMCIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8IS0tIFJlY2VwdGlvbiAtLT4KICA8cmVjdCB4PSIxMCIgeT0iMTAiIHdpZHRoPSIxNDAiIGhlaWdodD0iODAiIGZpbGw9IiNlNmY3ZmYiIHN0cm9rZT0iIzAwN2JmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iODAiIHk9IjU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMDA3YmZmIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPllJU3RlPC90ZXh0PgogIDwhLS0gTWVldGluZyBSb29tIC0tPgogIDxyZWN0IHg9IjE4MCIgeT0iMTAiIHdpZHRoPSIxNDAiIGhlaWdodD0iODAiIGZpbGw9IiNmZmY0ZTYiIHN0cm9rZT0iI2ZmOWMwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iMjUwIiB5PSI1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmOWMwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5NZWV0aW5nIFJvb208L3RleHQ+CiAgPCEtLSBLaXRjaGVuIC0tPgogIDxyZWN0IHg9IjM1MCIgeT0iMTAiIHdpZHRoPSIxNDAiIGhlaWdodD0iODAiIGZpbGw9IiNlNmZmZTYiIHN0cm9rZT0iIzI4YTc0NSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iNDIwIiB5PSI1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzI4YTc0NSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5LaXRjaGVuPC90ZXh0PgogIDwhLS0gV29ya3NwYWNlIC0tPgogIDxyZWN0IHg9IjEwIiB5PSIxMjAiIHdpZHRoPSIzMTAiIGhlaWdodD0iMTcwIiBmaWxsPSIjZmZlNmU2IiBzdHJva2U9IiNkYzM1NDUiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjE2NSIgeT0iMjEwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZGMzNTQ1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiPldvcmtzcGFjZTwvdGV4dD4KICA8IS0tIFN0b3JhZ2UgLS0+CiAgPHJlY3QgeD0iMzUwIiB5PSIxMjAiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTcwIiBmaWxsPSIjZjhlNmZmIiBzdHJva2U9IiM2ZjQyYzEiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjQyMCIgeT0iMjEwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmY0MmMxIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiPlN0b3JhZ2U8L3RleHQ+Cjwvc3ZnPg=="
+      alt="Office Layout Map" usemap="#office-map" width="500" height="300">
+
+    <!-- Map definition with clickable areas -->
+    <map name="office-map">
+      <!-- Reception area (rectangle) -->
+      <area shape="rect" coords="10,10,150,90" href="#reception" alt="Reception Area"
+        title="Click to learn about the Reception">
+
+      <!-- Meeting room (rectangle) -->
+      <area shape="rect" coords="180,10,320,90" href="#meeting-room" alt="Meeting Room"
+        title="Click to learn about the Meeting Room">
+
+      <!-- Kitchen (rectangle) -->
+      <area shape="rect" coords="350,10,490,90" href="#kitchen" alt="Kitchen" title="Click to learn about the Kitchen">
+
+      <!-- Workspace (rectangle) -->
+      <area shape="rect" coords="10,120,320,290" href="#workspace" alt="Workspace"
+        title="Click to learn about the Workspace">
+
+      <!-- Storage (rectangle) -->
+      <area shape="rect" coords="350,120,490,290" href="#storage" alt="Storage"
+        title="Click to learn about the Storage">
+    </map>
+
+    <!-- Information sections for each area -->
+    <div class="info">
+      <h3 id="reception">Reception Area</h3>
+      <p>The reception area is where visitors are welcomed and directed to their destinations.</p>
+
+      <h3 id="meeting-room">Meeting Room</h3>
+      <p>A dedicated space for team meetings, presentations, and collaborative discussions.</p>
+
+      <h3 id="kitchen">Kitchen</h3>
+      <p>A shared space for meal preparation and informal gatherings during breaks.</p>
+
+      <h3 id="workspace">Workspace</h3>
+      <p>The main working area with desks, computers, and collaborative spaces.</p>
+
+      <h3 id="storage">Storage</h3>
+      <p>Storage area for office supplies, equipment, and archived materials.</p>
+    </div>
+
+    <!-- Key concepts explanation -->
+    <div class="info">
+      <h3>Key Imagemap Elements:</h3>
+      <ul>
+        <li><strong>&lt;img usemap="#mapname"&gt;</strong> - Links the image to a map</li>
+        <li><strong>&lt;map name="mapname"&gt;</strong> - Defines the map container</li>
+        <li><strong>&lt;area&gt;</strong> - Defines clickable regions with coordinates</li>
+        <li><strong>shape</strong> - Can be "rect", "circle", or "poly"</li>
+        <li><strong>coords</strong> - Defines the area boundaries</li>
+        <li><strong>href</strong> - Specifies the link destination</li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>

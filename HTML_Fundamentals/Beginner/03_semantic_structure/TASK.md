@@ -1,0 +1,3 @@
+# Beginner – Semantic HTML (2 hours)
+
+Learn the key semantic elements: header, nav, main, section, article, aside, and footer. Watch the 18-minute video on HTML5 semantics. Skim MDN’s semantic elements reference. Build a one-page portfolio using only semantic tags. Set the correct lang attribute on the html element. Add a header with your name and a nav list. Group core content inside main and logical sections. Use h1-h3 headings in order. Finish with a footer containing copyright. Validate the page with W3C. Take the 5-question quiz. Aim to finish in 30 minutes. 

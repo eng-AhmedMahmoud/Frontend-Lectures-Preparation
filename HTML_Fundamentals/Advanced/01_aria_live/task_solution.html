@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List with Live Announcements</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 1.5rem; }
+    ul { padding-left: 1.2rem; }
+  </style>
+</head>
+<body>
+  <h1>Accessible Todo List</h1>
+  <label for="todoInput">New item:</label>
+  <input id="todoInput" type="text"> <button id="addBtn">Add</button>
+
+  <ul id="list"></ul>
+
+  <!-- Live region to announce new items -->
+  <div id="live" aria-live="polite" style="position:absolute; left:-9999px;"></div>
+  <!-- Benefit: Screen-reader users are immediately informed; Drawback: Frequent updates can become noisy. -->
+
+  <script>
+    const input = document.getElementById('todoInput');
+    const list  = document.getElementById('list');
+    const live  = document.getElementById('live');
+    document.getElementById('addBtn').addEventListener('click', () => {
+      const txt = input.value.trim();
+      if (!txt) return;
+      const li = document.createElement('li');
+      li.textContent = txt;
+      list.appendChild(li);
+      live.textContent = `${txt} added to list`;
+      input.value = '';
+      input.focus();
+    });
+  </script>
+</body>
+</html> 

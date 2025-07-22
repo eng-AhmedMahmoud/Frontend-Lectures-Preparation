@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!-- Demonstrates performance meta and best-practice tags -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance & SEO Demo</title>
+  <meta name="description" content="Advanced example focusing on performance and SEO tags.">
+  <meta name="author" content="Frontend Lectures">
+  <!-- Preconnect improves third-party font loading performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Benefit: Faster first paint; Drawback: Extra DNS lookups if unused -->
+  <link rel="preload" href="hero.webp" as="image">
+  <!-- Benefit: Prioritises hero image; Drawback: Wasted bandwidth if image not viewed -->
+</head>
+<body>
+  <!-- SECTION: Hero Image -->
+  <img src="hero.webp" alt="Hero placeholder" width="600" height="300">
+</body>
+</html> 

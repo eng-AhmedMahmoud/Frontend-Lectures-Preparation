@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- Accessible contact form solution as per Intermediate Task -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.5; margin: 1.5rem; }
+    .form-group { margin-bottom: 1rem; }
+    label { font-weight: bold; display: block; margin-bottom: 0.25rem; }
+    input, textarea { width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; }
+    .error { color: #b02a37; font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <h1>Contact Form</h1>
+  <form id="contact" novalidate>
+    <div class="form-group">
+      <label for="name">Name <span aria-hidden="true">*</span></label>
+      <input type="text" id="name" name="name" required aria-required="true">
+      <div id="nameErr" class="error" aria-live="polite"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email <span aria-hidden="true">*</span></label>
+      <input type="email" id="email" name="email" required aria-required="true" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
+      <div id="emailErr" class="error" aria-live="polite"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5"></textarea>
+    </div>
+
+    <button type="submit">Send</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('contact');
+    const err = {
+      name: document.getElementById('nameErr'),
+      email: document.getElementById('emailErr')
+    };
+    form.addEventListener('submit', e => {
+      err.name.textContent = err.email.textContent = '';
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        if (!form.name.checkValidity()) err.name.textContent = 'Please enter your name';
+        if (!form.email.checkValidity()) err.email.textContent = 'Enter a valid email address';
+      }
+    });
+  </script>
+</body>
+</html> 

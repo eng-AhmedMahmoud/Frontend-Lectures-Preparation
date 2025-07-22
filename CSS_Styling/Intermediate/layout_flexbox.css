@@ -1,0 +1,37 @@
+/*
+  layout_flexbox.css
+  ------------------
+  Demonstrates Flexbox properties for layout control.
+*/
+
+/* Container becomes a flex context */
+.flex-container {
+  /* Enables Flexbox */
+  display: flex;
+
+  /* Arranges items in a row (default) */
+  flex-direction: row;
+
+  /* Adds space between items */
+  gap: 1rem;
+
+  /* Allows items to wrap onto new lines */
+  flex-wrap: wrap;
+
+  /* Centers items horizontally */
+  justify-content: center;
+}
+
+/* Child items */
+.card {
+  background-color: #f8f9fa; /* Off-white card background */
+  border: 2px solid #0d6efd;
+  color: #212121;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;   /* vertical centering */
+  justify-content: center; /* horizontal centering */
+  font-size: 2rem;
+  font-weight: bold;
+} 

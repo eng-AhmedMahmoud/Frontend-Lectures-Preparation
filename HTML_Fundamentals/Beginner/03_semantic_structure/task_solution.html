@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!-- One-page semantic portfolio following Beginner Task "Semantic Structure Practice" -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Doe – Portfolio</title>
+  <!-- Description helps SEO and screen-reader summary -->
+  <meta name="description" content="Portfolio of John Doe, front-end developer.">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; line-height: 1.6; }
+    header, nav, main, section, footer { padding: 1rem; }
+    nav ul { display: flex; gap: 1rem; list-style: none; padding: 0; }
+    nav a { text-decoration: none; color: #0d6efd; }
+    section { border-top: 1px solid #eee; }
+  </style>
+</head>
+<body>
+  <!-- HEADER: landmark for branding -->
+  <header>
+    <h1>John Doe</h1>
+    <!-- NAV: semantic navigation menu -->
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN: wraps primary content -->
+  <main>
+    <!-- ABOUT SECTION
+         Benefit: Easy landmark for assistive tech; Drawback: Over-nesting sections can create noise. -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Front-end developer focused on accessible, performant interfaces.</p>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <article>
+        <h3>Accessible To-Do App</h3>
+        <p>Built with vanilla JS and ARIA live regions.</p>
+      </article>
+      <article>
+        <h3>Responsive Image Gallery</h3>
+        <p>Uses <code>&lt;picture&gt;</code> for optimal loading.</p>
+      </article>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:john@example.com">john@example.com</a></p>
+    </section>
+  </main>
+
+  <!-- FOOTER: global information -->
+  <footer>
+    <small>&copy; 2025 John Doe</small>
+  </footer>
+</body>
+</html> 

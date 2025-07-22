@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Photo Gallery</title>
+  <style>
+    table { border: 1px solid #ccc; border-collapse: collapse; margin-top: 1rem; }
+    th, td { border: 1px solid #ccc; padding: 0.5rem; }
+    img { margin-right: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>My Gallery</h1>
+  <div>
+    <img src="https://via.placeholder.com/200x150" alt="Sunset placeholder" width="200" height="150">
+    <img src="https://via.placeholder.com/200x150?text=Beach" alt="Beach placeholder" width="200" height="150">
+    <img src="https://via.placeholder.com/200x150?text=Forest" alt="Forest placeholder" width="200" height="150">
+  </div>
+
+  <table>
+    <caption>Image Descriptions</caption>
+    <tr><th>File</th><th>Description</th></tr>
+    <tr><td>sunset.jpg</td><td>Colourful sunset over hills</td></tr>
+    <tr><td>beach.jpg</td><td>Sunny beach with palm trees</td></tr>
+    <tr><td>forest.jpg</td><td>Misty forest in morning light</td></tr>
+  </table>
+
+  <!-- Drawback: Tables should not be used for page layout because they are hard to make responsive and confuse screen-readers. -->
+</body>
+</html> 

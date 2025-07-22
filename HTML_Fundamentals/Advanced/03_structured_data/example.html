@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- Demonstrates JSON-LD structured data -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structured Data Demo</title>
+  <meta name="description" content="Advanced example adding JSON-LD for recipes.">
+  <meta name="author" content="Frontend Lectures">
+</head>
+<body>
+  <!-- SECTION: Recipe Content
+       Benefit: Rich snippets in search results.
+       Drawback: Incorrect data can harm SEO. -->
+  <h1>Chocolate Chip Cookies</h1>
+  <p>Prep time: 15 min • Cook: 20 min • Serves: 24</p>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Recipe",
+    "name": "Chocolate Chip Cookies",
+    "author": {
+      "@type": "Person",
+      "name": "Grandma"
+    },
+    "cookTime": "PT20M",
+    "recipeYield": "24 cookies"
+  }
+  </script>
+</body>
+</html> 
