@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- Demonstrates advanced performance techniques -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Performance Optimization</title>
+  <meta name="description" content="Advanced HTML techniques for optimizing page performance and Core Web Vitals.">
+  <meta name="author" content="Frontend Lectures">
+
+  <!-- Critical CSS inlined for faster rendering -->
+  <style>
+    /* Critical path CSS inlined to avoid render-blocking */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #fff;
+    }
+
+    .hero {
+      width: 100%;
+      height: 500px;
+      background-color: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    h1,
+    h2 {
+      margin-top: 0;
+    }
+
+    .card {
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Content that appears "below the fold" should be loaded later */
+  </style>
+
+  <!-- Preload critical assets -->
+  <link rel="preload" href="fonts/roboto-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload"
+    href="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&auto=format&fit=crop&q=80"
+    as="image">
+
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://cdn.example.com">
+  <link rel="preconnect" href="https://api.example.com">
+
+  <!-- DNS prefetching for external resources -->
+  <link rel="dns-prefetch" href="https://analytics.example.com">
+
+  <!-- Defer non-critical CSS -->
+  <link rel="preload" href="styles/non-critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="styles/non-critical.css">
+  </noscript>
+
+  <!-- Specify resource hints for anticipated navigation -->
+  <link rel="prefetch" href="next-page.html">
+
+  <!-- Browser hints for resource priorities {Depricated}-->
+  <meta http-equiv="Priority" content="High">
+
+  <!-- Disable unused features to improve performance  {Deprecated}-->
+  <meta http-equiv="Feature-Policy" content="camera 'none'; microphone 'none'; geolocation 'none'">
+  <!-- Now we use Permissions-Policy -->
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+</head>
+
+<body>
+  <!-- Hero section with responsive image using WebP with fallback -->
+  <div class="hero">
+    <picture>
+      <!-- WebP format for browsers that support it -->
+      <source srcset="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fm=webp&fit=crop&q=80"
+        type="image/webp">
+      <!-- Fallback to JPEG for browsers that don't support WebP -->
+      <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&auto=format&fit=crop&q=80"
+        alt="Performance Optimization - Code on screen" width="800" height="400" loading="eager">
+    </picture>
+    <h1>Advanced Performance Optimization</h1>
+    <p>Techniques for faster loading and better user experience</p>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h2>Core Web Vitals Optimization</h2>
+      <p>Learn how to optimize Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift
+        (CLS).</p>
+    </div>
+
+    <!-- Images with lazy loading -->
+    <div class="card">
+      <h2>Lazy Loading Images</h2>
+      <p>Images below will load only when they're about to enter the viewport:</p>
+
+      <img
+        src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&h=400&auto=format&fit=crop&blur=20&q=10"
+        data-src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&h=400&auto=format&fit=crop&q=80"
+        alt="Lazy loaded image - Code editor" width="600" height="400" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=600&h=400&auto=format&fit=crop&blur=20&q=10"
+        data-src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=600&h=400&auto=format&fit=crop&q=80"
+        alt="Lazy loaded image - Laptop with code" width="600" height="400" loading="lazy">
+    </div>
+  </div>
+
+  <!-- Structured comments explaining each technique -->
+  <!-- 
+    Performance Techniques Used:
+    
+    1. Critical CSS Inlining
+       Benefit: Eliminates render-blocking CSS for faster first render
+       Drawback: Increases HTML size and can't be cached separately
+    
+    2. Resource Hints (preload, preconnect, dns-prefetch)
+       Benefit: Establishes early connections and prioritizes critical resources
+       Drawback: Too many hints can waste bandwidth and CPU resources
+    
+    3. WebP Images with Fallbacks
+       Benefit: WebP offers 25-35% smaller file sizes than JPEG at equivalent quality
+       Drawback: Requires multiple image formats and more complex markup
+    
+    4. Native Lazy Loading
+       Benefit: Defers loading offscreen images to improve initial page load
+       Drawback: Not supported in all browsers (needs JavaScript fallback)
+    
+    5. Font Optimization
+       Benefit: Preloaded fonts prevent layout shifts and flash of unstyled text
+       Drawback: Increases number of initial requests
+  -->
+
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="js/non-critical.js"></script>
+
+  <!-- Inline critical JavaScript -->
+  <script>
+    // Lazy load images fallback for browsers without native support
+    document.addEventListener('DOMContentLoaded', function () {
+      if ('loading' in HTMLImageElement.prototype) {
+        // Browser supports native lazy loading
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        images.forEach(img => {
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+          }
+        });
+      } else {
+        // Fallback for browsers that don't support native lazy loading
+        // Would implement Intersection Observer here in a real example
+      }
+    });
+
+    // Mark the time when the page becomes interactive
+    window.addEventListener('load', function () {
+      // Would send performance metrics to analytics in a real application
+      if ('performance' in window) {
+        const paintMetrics = performance.getEntriesByType('paint');
+        console.log('Performance metrics:', paintMetrics);
+      }
+    });
+  </script>
+</body>
+
+</html>

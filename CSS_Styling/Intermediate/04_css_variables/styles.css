@@ -1,0 +1,390 @@
+/* CSS Variables Definition at Root Level */
+:root {
+    /* Color Palette */
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #e74c3c;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --white: #ffffff;
+    
+    /* Typography */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-base: 16px;
+    --font-size-small: 14px;
+    --font-size-large: 20px;
+    --font-size-xl: 24px;
+    --line-height: 1.6;
+    
+    /* Spacing System */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Sizing */
+    --base-size: 50px;
+    --border-radius: 8px;
+    --border-width: 2px;
+    
+    /* Shadows */
+    --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --shadow-heavy: 0 8px 16px rgba(0, 0, 0, 0.2);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Dynamic Variables (will be modified by JavaScript) */
+    --dynamic-hue: 220;
+    --dynamic-size: 50px;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height);
+    color: var(--dark-color);
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border-radius: var(--border-radius);
+}
+
+.header h1 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.subtitle {
+    font-size: var(--font-size-large);
+    opacity: 0.9;
+}
+
+/* Main Content */
+.main-content {
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+    overflow: hidden;
+}
+
+section {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--light-color);
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+section h2 {
+    color: var(--dark-color);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-xl);
+}
+
+/* Basic Variable Usage Demo */
+.variable-examples {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-md);
+}
+
+.color-box {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    color: var(--white);
+    font-weight: bold;
+    text-align: center;
+    min-width: 150px;
+    transition: transform var(--transition-medium);
+}
+
+.color-box:hover {
+    transform: translateY(-4px);
+}
+
+.color-box.primary {
+    background-color: var(--primary-color);
+}
+
+.color-box.secondary {
+    background-color: var(--secondary-color);
+}
+
+.color-box.accent {
+    background-color: var(--accent-color);
+}
+
+/* Scoping Demo */
+.scope-container {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-medium);
+}
+
+/* Light Theme Variables */
+.light-theme {
+    --theme-bg: #ffffff;
+    --theme-text: #2c3e50;
+    --theme-button: #3498db;
+    --theme-border: #ecf0f1;
+    
+    background-color: var(--theme-bg);
+    color: var(--theme-text);
+    border: var(--border-width) solid var(--theme-border);
+}
+
+/* Dark Theme Variables */
+.dark-theme {
+    --theme-bg: #2c3e50;
+    --theme-text: #ecf0f1;
+    --theme-button: #e74c3c;
+    --theme-border: #34495e;
+    
+    background-color: var(--theme-bg);
+    color: var(--theme-text);
+    border: var(--border-width) solid var(--theme-border);
+}
+
+.themed-text {
+    color: var(--theme-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.themed-button {
+    background-color: var(--theme-button);
+    color: var(--white);
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+
+.themed-button:hover {
+    opacity: 0.8;
+}
+
+/* Calculations Demo */
+.calc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.calc-item {
+    text-align: center;
+}
+
+.size-demo {
+    margin: var(--spacing-sm) auto;
+    background-color: var(--accent-color);
+    border-radius: var(--border-radius);
+}
+
+.base-size {
+    width: var(--base-size);
+    height: var(--base-size);
+}
+
+.double-size {
+    width: calc(var(--base-size) * 2);
+    height: calc(var(--base-size) * 2);
+}
+
+.half-size {
+    width: calc(var(--base-size) / 2);
+    height: calc(var(--base-size) / 2);
+}
+
+/* Fallback Demo */
+.fallback-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.fallback-box {
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    background-color: var(--light-color);
+}
+
+.fallback-text {
+    color: var(--primary-color, blue); /* Fallback to blue */
+}
+
+.undefined-text {
+    color: var(--undefined-variable, red); /* Will use red fallback */
+}
+
+/* Inheritance Demo */
+.parent-container {
+    --container-spacing: var(--spacing-lg);
+    --container-bg: #f8f9fa;
+    
+    background-color: var(--container-bg);
+    padding: var(--container-spacing);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+}
+
+.child-container {
+    --container-bg: #e9ecef;
+    --container-spacing: var(--spacing-md);
+    
+    background-color: var(--container-bg);
+    padding: var(--container-spacing);
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-sm);
+}
+
+.grandchild-container {
+    --container-bg: #dee2e6;
+    --container-spacing: var(--spacing-sm);
+    
+    background-color: var(--container-bg);
+    padding: var(--container-spacing);
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-xs);
+}
+
+/* Media Queries with Variables */
+.responsive-container {
+    --responsive-font-size: var(--font-size-base);
+    --responsive-spacing: var(--spacing-md);
+    
+    background-color: var(--light-color);
+    padding: var(--responsive-spacing);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+}
+
+.responsive-text {
+    font-size: var(--responsive-font-size);
+    margin-bottom: var(--spacing-sm);
+}
+
+.responsive-spacing {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: var(--responsive-spacing);
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+/* Dynamic Variables Demo */
+.controls {
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.controls label {
+    font-weight: bold;
+    margin-right: var(--spacing-xs);
+}
+
+.controls input[type="range"] {
+    width: 200px;
+}
+
+.dynamic-box {
+    width: var(--dynamic-size);
+    height: var(--dynamic-size);
+    background-color: hsl(var(--dynamic-hue), 70%, 50%);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: bold;
+    margin: var(--spacing-md) auto;
+    transition: all var(--transition-medium);
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: var(--dark-color);
+    color: var(--white);
+    border-radius: var(--border-radius);
+}
+
+/* Media Queries that modify CSS variables */
+@media (max-width: 768px) {
+    :root {
+        --font-size-base: 14px;
+        --font-size-large: 18px;
+        --font-size-xl: 22px;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+    }
+    
+    .responsive-container {
+        --responsive-font-size: var(--font-size-small);
+        --responsive-spacing: var(--spacing-sm);
+    }
+    
+    .variable-examples {
+        flex-direction: column;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .controls input[type="range"] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-lg: 1rem;
+        --spacing-xl: 1.5rem;
+    }
+    
+    .container {
+        padding: var(--spacing-md);
+    }
+    
+    .responsive-container {
+        --responsive-spacing: var(--spacing-xs);
+    }
+}

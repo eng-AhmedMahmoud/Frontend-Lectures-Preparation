@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Data Processor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1,
+    h2 {
+      color: #2c3e50;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .column {
+      flex: 1;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    button:disabled {
+      background-color: #95a5a6;
+      cursor: not-allowed;
+    }
+
+    .progress-container {
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    progress {
+      width: 100%;
+      height: 20px;
+    }
+
+    .status {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .time {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 15px 0;
+      color: #e74c3c;
+    }
+
+    .animation-box {
+      width: 50px;
+      height: 50px;
+      background-color: #3498db;
+      animation: bounce 0.5s infinite alternate;
+      margin: 20px 0;
+    }
+
+    @keyframes bounce {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(20px);
+      }
+    }
+
+    #fileInput {
+      margin-bottom: 20px;
+    }
+
+    .sample-data {
+      font-size: 0.9rem;
+      color: #7f8c8d;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>CSV Data Processor</h1>
+  <p>Upload a CSV file or use the sample data to see the difference between main thread and Web Worker processing.</p>
+
+  <div class="sample-data">
+    <p>Sample data will be generated if no file is uploaded (10,000 rows with 5 columns each).</p>
+  </div>
+
+  <input type="file" id="fileInput" accept=".csv">
+
+  <div class="container">
+    <div class="column">
+      <h2>Main Thread Processing</h2>
+      <button id="processMain">Process on Main Thread</button>
+      <div class="progress-container">
+        <progress id="mainProgress" value="0" max="100"></progress>
+      </div>
+      <div id="mainStatus" class="status">Ready</div>
+      <div id="mainTime" class="time"></div>
+      <div class="animation-box" id="mainAnimation"></div>
+      <div id="mainResults">
+        <table id="mainTable" style="display: none">
+          <thead>
+            <tr>
+              <th>Sum</th>
+              <th>Average</th>
+              <th>Min</th>
+              <th>Max</th>
+              <th>Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="mainStats"></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="column">
+      <h2>Web Worker Processing</h2>
+      <button id="processWorker">Process with Web Worker</button>
+      <div class="progress-container">
+        <progress id="workerProgress" value="0" max="100"></progress>
+      </div>
+      <div id="workerStatus" class="status">Ready</div>
+      <div id="workerTime" class="time"></div>
+      <div class="animation-box" id="workerAnimation"></div>
+      <div id="workerResults">
+        <table id="workerTable" style="display: none">
+          <thead>
+            <tr>
+              <th>Sum</th>
+              <th>Average</th>
+              <th>Min</th>
+              <th>Max</th>
+              <th>Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="workerStats"></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Elements
+    const fileInput = document.getElementById('fileInput');
+    const processMainBtn = document.getElementById('processMain');
+    const processWorkerBtn = document.getElementById('processWorker');
+    const mainProgress = document.getElementById('mainProgress');
+    const workerProgress = document.getElementById('workerProgress');
+    const mainStatus = document.getElementById('mainStatus');
+    const workerStatus = document.getElementById('workerStatus');
+    const mainTime = document.getElementById('mainTime');
+    const workerTime = document.getElementById('workerTime');
+    const mainStats = document.getElementById('mainStats');
+    const workerStats = document.getElementById('workerStats');
+    const mainTable = document.getElementById('mainTable');
+    const workerTable = document.getElementById('workerTable');
+
+    let csvData = null;
+    let worker;
+
+    // Generate sample CSV data if no file is uploaded
+    function generateSampleData() {
+      const rows = 10000;
+      const cols = 5;
+      let data = '';
+
+      // Header row
+      let header = [];
+      for (let j = 0; j < cols; j++) {
+        header.push(`Column${j + 1}`);
+      }
+      data += header.join(',') + '\n';
+
+      // Data rows
+      for (let i = 0; i < rows; i++) {
+        let row = [];
+        for (let j = 0; j < cols; j++) {
+          row.push(Math.floor(Math.random() * 1000));
+        }
+        data += row.join(',') + '\n';
+      }
+
+      return data;
+    }
+
+    // Process CSV in the main thread
+    function processOnMainThread(data) {
+      const startTime = performance.now();
+      mainProgress.value = 0;
+      mainStatus.textContent = 'Processing...';
+      mainTime.textContent = '';
+      mainTable.style.display = 'none';
+
+      // Parse CSV on next tick to allow UI updates
+      setTimeout(() => {
+        const lines = data.split('\n');
+        const header = lines[0].split(',');
+        const values = [];
+
+        // Skip header and process lines
+        for (let i = 1; i < lines.length; i++) {
+          if (lines[i].trim() === '') continue;
+
+          const row = lines[i].split(',');
+          const numericValues = row.map(val => parseFloat(val)).filter(val => !isNaN(val));
+          values.push(...numericValues);
+
+          // Update progress every 100 lines
+          if (i % 100 === 0) {
+            const progress = Math.floor((i / lines.length) * 100);
+            mainProgress.value = progress;
+            mainStatus.textContent = `Processing... ${progress}%`;
+          }
+        }
+
+        // Calculate statistics
+        const sum = values.reduce((acc, val) => acc + val, 0);
+        const avg = sum / values.length;
+        const min = Math.min(...values);
+        const max = Math.max(...values);
+        const count = values.length;
+
+        // Display results
+        mainStats.innerHTML = `
+          <td>${sum.toFixed(2)}</td>
+          <td>${avg.toFixed(2)}</td>
+          <td>${min}</td>
+          <td>${max}</td>
+          <td>${count}</td>
+        `;
+
+        const endTime = performance.now();
+        const processingTime = (endTime - startTime).toFixed(2);
+
+        mainProgress.value = 100;
+        mainStatus.textContent = 'Processing complete!';
+        mainTime.textContent = `Processing time: ${processingTime} ms`;
+        mainTable.style.display = 'table';
+
+        // Enable buttons
+        processMainBtn.disabled = false;
+        processWorkerBtn.disabled = false;
+      }, 10);
+    }
+
+    // Setup worker for background processing
+    function setupWorker() {
+      if (worker) {
+        worker.terminate();
+      }
+
+      worker = new Worker('csv-worker.js');
+
+      worker.onmessage = function (e) {
+        const data = e.data;
+
+        if (data.type === 'progress') {
+          workerProgress.value = data.value;
+          workerStatus.textContent = `Processing... ${data.value}%`;
+        }
+        else if (data.type === 'result') {
+          // Display results
+          workerStats.innerHTML = `
+            <td>${data.sum.toFixed(2)}</td>
+            <td>${data.avg.toFixed(2)}</td>
+            <td>${data.min}</td>
+            <td>${data.max}</td>
+            <td>${data.count}</td>
+          `;
+
+          workerProgress.value = 100;
+          workerStatus.textContent = 'Processing complete!';
+          workerTime.textContent = `Processing time: ${data.time} ms`;
+          workerTable.style.display = 'table';
+
+          // Enable buttons
+          processMainBtn.disabled = false;
+          processWorkerBtn.disabled = false;
+        }
+      };
+    }
+
+    // Initialize worker
+    setupWorker();
+
+    // File input change handler
+    fileInput.addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          csvData = e.target.result;
+        };
+        reader.readAsText(file);
+      }
+    });
+
+    // Main thread process button
+    processMainBtn.addEventListener('click', function () {
+      // Disable buttons during processing
+      processMainBtn.disabled = true;
+      processWorkerBtn.disabled = true;
+
+      // Get data from file input or generate sample
+      const data = csvData || generateSampleData();
+      processOnMainThread(data);
+    });
+
+    // Worker process button
+    processWorkerBtn.addEventListener('click', function () {
+      // Disable buttons during processing
+      processMainBtn.disabled = true;
+      processWorkerBtn.disabled = true;
+
+      // Reset UI
+      workerProgress.value = 0;
+      workerStatus.textContent = 'Starting worker...';
+      workerTime.textContent = '';
+      workerTable.style.display = 'none';
+
+      // Get data from file input or generate sample
+      const data = csvData || generateSampleData();
+
+      // Send data to worker for processing
+      worker.postMessage({
+        command: 'process',
+        data: data
+      });
+    });
+  </script>
+
+  <!-- CSV Worker Script (referenced in the script above) -->
+  <script id="worker-script" type="text/plain">
+    // This is the content for the csv-worker.js file
+    self.onmessage = function(e) {
+      if (e.data.command === 'process') {
+        processCSV(e.data.data);
+      }
+    };
+    
+    function processCSV(data) {
+      const startTime = performance.now();
+      
+      try {
+        const lines = data.split('\n');
+        const header = lines[0].split(',');
+        const values = [];
+        
+        // Process data line by line
+        for (let i = 1; i < lines.length; i++) {
+          if (lines[i].trim() === '') continue;
+          
+          const row = lines[i].split(',');
+          const numericValues = row.map(val => parseFloat(val)).filter(val => !isNaN(val));
+          values.push(...numericValues);
+          
+          // Report progress periodically
+          if (i % 100 === 0) {
+            const progress = Math.floor((i / lines.length) * 100);
+            self.postMessage({
+              type: 'progress',
+              value: progress
+            });
+          }
+        }
+        
+        // Calculate statistics
+        const sum = values.reduce((acc, val) => acc + val, 0);
+        const avg = sum / values.length;
+        const min = Math.min(...values);
+        const max = Math.max(...values);
+        const count = values.length;
+        
+        // Calculate processing time
+        const endTime = performance.now();
+        const processingTime = (endTime - startTime).toFixed(2);
+        
+        // Send results back to main thread
+        self.postMessage({
+          type: 'result',
+          sum: sum,
+          avg: avg,
+          min: min,
+          max: max,
+          count: count,
+          time: processingTime
+        });
+      } catch (error) {
+        self.postMessage({
+          type: 'error',
+          message: error.message
+        });
+      }
+    }
+  </script>
+
+  <!-- Extract Worker Script and save to file -->
+  <script>
+    // Create the worker file from the script template
+    function createWorkerFile() {
+      const workerScript = document.getElementById('worker-script').textContent;
+      const blob = new Blob([workerScript], { type: 'application/javascript' });
+
+      // Check if the worker file already exists
+      fetch('csv-worker.js')
+        .then(response => {
+          if (!response.ok) {
+            // If file doesn't exist or is inaccessible, create it
+            // Note: This won't actually work in a browser due to security restrictions,
+            // but demonstrates the concept for our example
+            console.log('Worker file would be created here in a real app.');
+          }
+        })
+        .catch(() => {
+          console.log('Worker file would be created here in a real app.');
+        });
+    }
+
+    // Call on page load
+    createWorkerFile();
+  </script>
+
+  <!-- 
+    Benefit: Web Workers enable processing large datasets without freezing the UI, 
+    leading to a more responsive user experience.
+    
+    Drawback: Communication overhead between main thread and workers adds complexity and
+    can impact performance for smaller datasets due to serialization costs.
+  -->
+</body>
+
+</html>

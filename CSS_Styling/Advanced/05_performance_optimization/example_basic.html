@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Performance Optimization - Basic Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__container">
+                <div class="header__brand">
+                    <h1 class="header__logo">Performance CSS</h1>
+                </div>
+                <nav class="header__nav">
+                    <ul class="nav nav--horizontal">
+                        <li class="nav__item">
+                            <a href="#" class="nav__link nav__link--active">Home</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Performance</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Optimization</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Tools</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero__container">
+                    <div class="hero__content">
+                        <h2 class="hero__title">CSS Performance Optimization</h2>
+                        <p class="hero__subtitle">Learn techniques to optimize CSS for better performance and user experience</p>
+                        <div class="hero__actions">
+                            <button class="btn btn--primary btn--large">Get Started</button>
+                            <button class="btn btn--secondary btn--large">View Examples</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Performance Metrics -->
+            <section class="metrics">
+                <div class="metrics__container">
+                    <h2 class="metrics__title">Performance Metrics</h2>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-card__header">
+                                <h3 class="metric-card__title">First Contentful Paint</h3>
+                            </div>
+                            <div class="metric-card__content">
+                                <div class="metric-value metric-value--good">1.2s</div>
+                                <p class="metric-card__description">Time until first content appears</p>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-card__header">
+                                <h3 class="metric-card__title">Largest Contentful Paint</h3>
+                            </div>
+                            <div class="metric-card__content">
+                                <div class="metric-value metric-value--good">2.1s</div>
+                                <p class="metric-card__description">Largest element paint time</p>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-card__header">
+                                <h3 class="metric-card__title">Cumulative Layout Shift</h3>
+                            </div>
+                            <div class="metric-card__content">
+                                <div class="metric-value metric-value--excellent">0.05</div>
+                                <p class="metric-card__description">Visual stability score</p>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-card__header">
+                                <h3 class="metric-card__title">CSS Bundle Size</h3>
+                            </div>
+                            <div class="metric-card__content">
+                                <div class="metric-value metric-value--good">32KB</div>
+                                <p class="metric-card__description">Compressed CSS size</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Optimization Techniques -->
+            <section class="techniques">
+                <div class="techniques__container">
+                    <h2 class="techniques__title">Optimization Techniques</h2>
+                    
+                    <div class="technique-list">
+                        <!-- Critical CSS -->
+                        <div class="technique-item">
+                            <div class="technique-item__icon">🚀</div>
+                            <div class="technique-item__content">
+                                <h3 class="technique-item__title">Critical CSS</h3>
+                                <p class="technique-item__description">
+                                    Inline critical above-the-fold CSS to eliminate render-blocking resources
+                                </p>
+                                <div class="code-example">
+                                    <pre><code>&lt;style&gt;
+/* Critical styles inlined */
+.header { background: #fff; }
+.hero { min-height: 100vh; }
+&lt;/style&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Async Loading -->
+                        <div class="technique-item">
+                            <div class="technique-item__icon">⚡</div>
+                            <div class="technique-item__content">
+                                <h3 class="technique-item__title">Async CSS Loading</h3>
+                                <p class="technique-item__description">
+                                    Load non-critical CSS asynchronously to avoid blocking rendering
+                                </p>
+                                <div class="code-example">
+                                    <pre><code>&lt;link rel="preload" href="styles.css" 
+      as="style" onload="this.rel='stylesheet'"&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Font Optimization -->
+                        <div class="technique-item">
+                            <div class="technique-item__icon">🔤</div>
+                            <div class="technique-item__content">
+                                <h3 class="technique-item__title">Font Optimization</h3>
+                                <p class="technique-item__description">
+                                    Optimize font loading with font-display and preloading strategies
+                                </p>
+                                <div class="code-example">
+                                    <pre><code>@font-face {
+  font-family: 'WebFont';
+  font-display: swap;
+  src: url('font.woff2') format('woff2');
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CSS Containment -->
+                        <div class="technique-item">
+                            <div class="technique-item__icon">📦</div>
+                            <div class="technique-item__content">
+                                <h3 class="technique-item__title">CSS Containment</h3>
+                                <p class="technique-item__description">
+                                    Use containment to isolate layout and paint operations
+                                </p>
+                                <div class="code-example">
+                                    <pre><code>.component {
+  contain: layout style paint;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Performance Tools -->
+            <section class="tools">
+                <div class="tools__container">
+                    <h2 class="tools__title">Performance Tools</h2>
+                    
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-card__header">
+                                <h3 class="tool-card__title">Lighthouse</h3>
+                                <div class="tool-badge tool-badge--google">Google</div>
+                            </div>
+                            <div class="tool-card__content">
+                                <p class="tool-card__description">
+                                    Comprehensive performance auditing for web pages
+                                </p>
+                                <ul class="tool-features">
+                                    <li>Performance scoring</li>
+                                    <li>Core Web Vitals</li>
+                                    <li>Optimization suggestions</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tool-card">
+                            <div class="tool-card__header">
+                                <h3 class="tool-card__title">WebPageTest</h3>
+                                <div class="tool-badge tool-badge--community">Community</div>
+                            </div>
+                            <div class="tool-card__content">
+                                <p class="tool-card__description">
+                                    Real-world performance testing from multiple locations
+                                </p>
+                                <ul class="tool-features">
+                                    <li>Waterfall analysis</li>
+                                    <li>Filmstrip view</li>
+                                    <li>Multiple test locations</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tool-card">
+                            <div class="tool-card__header">
+                                <h3 class="tool-card__title">Critical</h3>
+                                <div class="tool-badge tool-badge--npm">npm</div>
+                            </div>
+                            <div class="tool-card__content">
+                                <p class="tool-card__description">
+                                    Extract and inline critical-path CSS automatically
+                                </p>
+                                <ul class="tool-features">
+                                    <li>Automated extraction</li>
+                                    <li>Multiple viewports</li>
+                                    <li>Build tool integration</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tool-card">
+                            <div class="tool-card__header">
+                                <h3 class="tool-card__title">PurgeCSS</h3>
+                                <div class="tool-badge tool-badge--npm">npm</div>
+                            </div>
+                            <div class="tool-card__content">
+                                <p class="tool-card__description">
+                                    Remove unused CSS to reduce bundle size
+                                </p>
+                                <ul class="tool-features">
+                                    <li>Dead code elimination</li>
+                                    <li>Framework integration</li>
+                                    <li>Custom extractors</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Best Practices -->
+            <section class="best-practices">
+                <div class="best-practices__container">
+                    <h2 class="best-practices__title">Best Practices</h2>
+                    
+                    <div class="practices-list">
+                        <div class="practice-item">
+                            <div class="practice-item__number">1</div>
+                            <div class="practice-item__content">
+                                <h3 class="practice-item__title">Minimize CSS Bundle Size</h3>
+                                <p class="practice-item__description">
+                                    Remove unused CSS, minify files, and use compression to reduce bundle size.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="practice-item">
+                            <div class="practice-item__number">2</div>
+                            <div class="practice-item__content">
+                                <h3 class="practice-item__title">Optimize Critical Rendering Path</h3>
+                                <p class="practice-item__description">
+                                    Inline critical CSS and load non-critical styles asynchronously.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="practice-item">
+                            <div class="practice-item__number">3</div>
+                            <div class="practice-item__content">
+                                <h3 class="practice-item__title">Use Efficient Selectors</h3>
+                                <p class="practice-item__description">
+                                    Avoid expensive selectors and deep nesting to improve matching performance.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="practice-item">
+                            <div class="practice-item__number">4</div>
+                            <div class="practice-item__content">
+                                <h3 class="practice-item__title">Optimize Animations</h3>
+                                <p class="practice-item__description">
+                                    Use GPU-accelerated properties and avoid animating layout-triggering properties.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="practice-item">
+                            <div class="practice-item__number">5</div>
+                            <div class="practice-item__content">
+                                <h3 class="practice-item__title">Monitor Performance</h3>
+                                <p class="practice-item__description">
+                                    Set performance budgets and continuously monitor Core Web Vitals.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer__container">
+                <div class="footer__content">
+                    <div class="footer__section">
+                        <h4 class="footer__title">CSS Performance</h4>
+                        <p class="footer__text">Optimizing CSS for better user experience and Core Web Vitals.</p>
+                    </div>
+                    <div class="footer__section">
+                        <h4 class="footer__title">Resources</h4>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">Web.dev</a></li>
+                            <li><a href="#" class="footer__link">MDN Performance</a></li>
+                            <li><a href="#" class="footer__link">Chrome DevTools</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p class="footer__copyright">&copy; 2024 CSS Performance Tutorial</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Basic Properties - Task</title>
+    <!-- Link your CSS file here -->
+    <link rel="stylesheet" href="task_solution.css">
+</head>
+<body>
+    <!-- 
+    TASK: Style this HTML page using basic CSS properties
+    
+    Requirements:
+    1. Set a light gray background for the body (#f0f0f0)
+    2. Center the main container and give it a white background
+    3. Style the header with a dark background (#333) and white text
+    4. Make the title 32px and add some letter spacing
+    5. Style the navigation links to be inline with spacing
+    6. Give the article sections padding and margins
+    7. Style the info boxes with different background colors
+    8. Make the buttons look clickable with hover effects
+    9. Style the footer with a dark background
+    
+    Bonus: Add a custom font family and improve the overall typography
+    -->
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Tech Blog</h1>
+            <nav class="nav">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Articles</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <article class="article">
+                <h2 class="article-title">Getting Started with CSS</h2>
+                <p class="article-meta">Posted on January 20, 2024</p>
+                
+                <p class="article-text">
+                    CSS is a powerful tool for styling web pages. In this article, 
+                    we'll explore the fundamental properties that every developer should know.
+                </p>
+
+                <div class="info-boxes">
+                    <div class="info-box success">
+                        <h3>Success!</h3>
+                        <p>You've learned the basics of CSS properties.</p>
+                    </div>
+                    
+                    <div class="info-box warning">
+                        <h3>Warning!</h3>
+                        <p>Remember to test your styles in different browsers.</p>
+                    </div>
+                    
+                    <div class="info-box info">
+                        <h3>Info</h3>
+                        <p>CSS stands for Cascading Style Sheets.</p>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="button primary">Continue Reading</button>
+                    <button class="button secondary">Save Article</button>
+                </div>
+            </article>
+        </main>
+
+        <footer class="footer">
+            <p class="footer-text">© 2024 Tech Blog. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

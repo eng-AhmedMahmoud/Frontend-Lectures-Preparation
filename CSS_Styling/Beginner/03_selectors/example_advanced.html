@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors - Advanced Example</title>
+    <link rel="stylesheet" href="styles_advanced.css">
+</head>
+<body>
+    <div class="container">
+        <header class="site-header">
+            <h1 id="main-title">CSS Selectors Showcase</h1>
+            <nav class="navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="content">
+            <section class="intro-section">
+                <h2>Welcome to Selector Mastery</h2>
+                <p class="lead">Learn how different CSS selectors work together to create beautiful designs.</p>
+            </section>
+
+            <section class="features">
+                <h2>Feature Cards</h2>
+                <div class="card-container">
+                    <article class="feature-card premium">
+                        <h3>Premium Feature</h3>
+                        <p>This card has special styling using multiple classes.</p>
+                        <button class="btn btn-primary">Learn More</button>
+                    </article>
+                    
+                    <article class="feature-card">
+                        <h3>Standard Feature</h3>
+                        <p>A regular feature card with base styling.</p>
+                        <button class="btn">Learn More</button>
+                    </article>
+                    
+                    <article class="feature-card highlighted">
+                        <h3>Highlighted Feature</h3>
+                        <p>This card stands out with a special highlight class.</p>
+                        <button class="btn btn-secondary">Learn More</button>
+                    </article>
+                </div>
+            </section>
+
+            <section id="testimonials" class="testimonials">
+                <h2>What People Say</h2>
+                <blockquote class="testimonial">
+                    <p>"CSS selectors make styling so much easier!"</p>
+                    <cite>- Jane Developer</cite>
+                </blockquote>
+            </section>
+
+            <section class="form-section">
+                <h2>Contact Form</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" class="form-textarea" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Send Message</button>
+                </form>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2024 CSS Selectors Tutorial. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-link twitter">Twitter</a>
+                <a href="#" class="social-link facebook">Facebook</a>
+                <a href="#" class="social-link linkedin">LinkedIn</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

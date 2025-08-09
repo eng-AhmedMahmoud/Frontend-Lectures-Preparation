@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model - Basic Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>CSS Box Model Fundamentals</h1>
+    
+    <section class="box-model-demo">
+        <h2>Understanding the Box Model</h2>
+        
+        <div class="box-example content-box">
+            <h3>Content Box (Default)</h3>
+            <p>Width and height apply to content only. Padding and border are added outside.</p>
+        </div>
+        
+        <div class="box-example border-box">
+            <h3>Border Box</h3>
+            <p>Width and height include padding and border. More predictable sizing.</p>
+        </div>
+    </section>
+
+    <section class="spacing-demo">
+        <h2>Margin and Padding</h2>
+        
+        <div class="spacing-container">
+            <div class="spacing-box margin-demo">
+                <h3>Margin Demo</h3>
+                <p>Space outside the element</p>
+            </div>
+            
+            <div class="spacing-box padding-demo">
+                <h3>Padding Demo</h3>
+                <p>Space inside the element</p>
+            </div>
+            
+            <div class="spacing-box combined-demo">
+                <h3>Combined</h3>
+                <p>Both margin and padding</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="border-demo">
+        <h2>Borders and Outlines</h2>
+        
+        <div class="border-examples">
+            <div class="border-box solid-border">Solid Border</div>
+            <div class="border-box dashed-border">Dashed Border</div>
+            <div class="border-box dotted-border">Dotted Border</div>
+            <div class="border-box rounded-border">Rounded Corners</div>
+        </div>
+    </section>
+
+    <section class="display-demo">
+        <h2>Display Properties</h2>
+        
+        <h3>Block Elements</h3>
+        <div class="display-example block-demo">Block Element 1</div>
+        <div class="display-example block-demo">Block Element 2</div>
+        
+        <h3>Inline Elements</h3>
+        <span class="display-example inline-demo">Inline 1</span>
+        <span class="display-example inline-demo">Inline 2</span>
+        <span class="display-example inline-demo">Inline 3</span>
+        
+        <h3>Inline-Block Elements</h3>
+        <div class="display-example inline-block-demo">Inline-Block 1</div>
+        <div class="display-example inline-block-demo">Inline-Block 2</div>
+        <div class="display-example inline-block-demo">Inline-Block 3</div>
+    </section>
+
+    <section class="positioning-demo">
+        <h2>Positioning Basics</h2>
+        
+        <div class="position-container">
+            <div class="position-box static-pos">Static (Default)</div>
+            <div class="position-box relative-pos">Relative Position</div>
+            <div class="position-box absolute-pos">Absolute Position</div>
+        </div>
+        
+        <div class="sticky-container">
+            <div class="sticky-box">Sticky Element (scroll to see effect)</div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        </div>
+    </section>
+
+    <section class="overflow-demo">
+        <h2>Overflow Control</h2>
+        
+        <div class="overflow-examples">
+            <div class="overflow-box overflow-visible">
+                <h4>Overflow: Visible</h4>
+                <p>This content is longer than the container and will overflow outside the boundaries, which is the default behavior.</p>
+            </div>
+            
+            <div class="overflow-box overflow-hidden">
+                <h4>Overflow: Hidden</h4>
+                <p>This content is longer than the container but will be clipped and hidden when it exceeds the boundaries.</p>
+            </div>
+            
+            <div class="overflow-box overflow-scroll">
+                <h4>Overflow: Scroll</h4>
+                <p>This content is longer than the container and will show scrollbars to allow users to scroll and see all content.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transforms - Task</title>
+    <!-- Create your CSS file and link it here -->
+    <link rel="stylesheet" href="task_solution.css">
+</head>
+<body>
+    <!-- 
+    TASK: Create various transform effects using CSS
+    
+    Requirements:
+    1. Create a .photo-gallery with transform effects:
+       - Images scale up on hover
+       - Add a subtle rotation
+       - Use transform-origin for interesting pivot points
+    
+    2. Build a .card-flip effect:
+       - Cards should flip on hover to reveal back content
+       - Use 3D transforms and perspective
+       - Smooth transition animation
+    
+    3. Create .interactive-buttons with transform effects:
+       - Press effect on click (scale down)
+       - Hover effects with translate and scale
+       - 3D button with depth
+    
+    4. Build a .cube-animation:
+       - 3D cube that rotates continuously
+       - Each face should have different content
+       - Use proper perspective and transform-style
+    
+    5. Create .parallax-elements:
+       - Elements that move at different speeds on scroll simulation
+       - Use transforms for smooth movement
+       - Layer elements with different z-index
+    
+    6. Design a .morphing-shapes section:
+       - Shapes that transform into other shapes on hover
+       - Combine multiple transform properties
+       - Use CSS variables for dynamic values
+    
+    Bonus challenges:
+    - Create a 3D carousel
+    - Build a folding card effect
+    - Implement a CSS-only accordion with transforms
+    - Create a perspective text effect
+    -->
+    
+    <!-- 1. Photo Gallery -->
+    <section class="gallery-section">
+        <h2>Transform Gallery</h2>
+        <div class="photo-gallery">
+            <div class="photo-item" style="--rotation: 2deg;">
+                <img src="https://via.placeholder.com/200x150/3498db/white?text=Photo+1" alt="Photo 1">
+            </div>
+            <div class="photo-item" style="--rotation: -3deg;">
+                <img src="https://via.placeholder.com/200x150/2ecc71/white?text=Photo+2" alt="Photo 2">
+            </div>
+            <div class="photo-item" style="--rotation: 1deg;">
+                <img src="https://via.placeholder.com/200x150/e74c3c/white?text=Photo+3" alt="Photo 3">
+            </div>
+            <div class="photo-item" style="--rotation: -2deg;">
+                <img src="https://via.placeholder.com/200x150/f39c12/white?text=Photo+4" alt="Photo 4">
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Card Flip Effect -->
+    <section class="flip-section">
+        <h2>Flip Cards</h2>
+        <div class="card-container">
+            <div class="card-flip">
+                <div class="card-front">
+                    <h3>Front Side</h3>
+                    <p>Hover to flip</p>
+                </div>
+                <div class="card-back">
+                    <h3>Back Side</h3>
+                    <p>Hidden content revealed!</p>
+                </div>
+            </div>
+            
+            <div class="card-flip">
+                <div class="card-front" style="background: linear-gradient(45deg, #2ecc71, #27ae60);">
+                    <h3>Green Card</h3>
+                    <p>Another flip card</p>
+                </div>
+                <div class="card-back" style="background: linear-gradient(45deg, #27ae60, #2ecc71);">
+                    <h3>Flipped!</h3>
+                    <p>More information here</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Interactive Buttons -->
+    <section class="buttons-section">
+        <h2>Transform Buttons</h2>
+        <div class="interactive-buttons">
+            <button class="btn-3d">3D Button</button>
+            <button class="btn-press">Press Effect</button>
+            <button class="btn-hover">Hover Transform</button>
+            <button class="btn-slide">Slide Effect</button>
+        </div>
+    </section>
+
+    <!-- 4. 3D Cube -->
+    <section class="cube-section">
+        <h2>3D Cube Animation</h2>
+        <div class="cube-container">
+            <div class="cube-animation">
+                <div class="cube-face front">Front</div>
+                <div class="cube-face back">Back</div>
+                <div class="cube-face right">Right</div>
+                <div class="cube-face left">Left</div>
+                <div class="cube-face top">Top</div>
+                <div class="cube-face bottom">Bottom</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Parallax Elements -->
+    <section class="parallax-section">
+        <h2>Parallax Effect Simulation</h2>
+        <div class="parallax-container">
+            <div class="parallax-layer layer-1">Background Layer</div>
+            <div class="parallax-layer layer-2">Middle Layer</div>
+            <div class="parallax-layer layer-3">Foreground Layer</div>
+        </div>
+    </section>
+
+    <!-- 6. Morphing Shapes -->
+    <section class="morphing-section">
+        <h2>Morphing Shapes</h2>
+        <div class="morphing-container">
+            <div class="morphing-shape shape-1"></div>
+            <div class="morphing-shape shape-2"></div>
+            <div class="morphing-shape shape-3"></div>
+            <div class="morphing-shape shape-4"></div>
+        </div>
+    </section>
+
+    <!-- Bonus: 3D Carousel -->
+    <section class="carousel-section">
+        <h2>3D Carousel</h2>
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-item">Item 1</div>
+                <div class="carousel-item">Item 2</div>
+                <div class="carousel-item">Item 3</div>
+                <div class="carousel-item">Item 4</div>
+                <div class="carousel-item">Item 5</div>
+                <div class="carousel-item">Item 6</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonus: Folding Card -->
+    <section class="folding-section">
+        <h2>Folding Card Effect</h2>
+        <div class="folding-card">
+            <div class="fold-part fold-left">Left</div>
+            <div class="fold-part fold-right">Right</div>
+        </div>
+    </section>
+</body>
+</html>

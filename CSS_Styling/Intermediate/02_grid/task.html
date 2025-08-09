@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid - Task</title>
+    <!-- Create your CSS file and link it here -->
+    <link rel="stylesheet" href="task_solution.css">
+</head>
+<body>
+    <!-- 
+    TASK: Create various layouts using CSS Grid
+    
+    Requirements:
+    1. Create a .page-layout grid with:
+       - Header spanning full width
+       - Sidebar (250px wide)
+       - Main content area (takes remaining space)
+       - Footer spanning full width
+       - Use grid-template-areas for layout
+    
+    2. Style .photo-gallery as a grid:
+       - Auto-fit columns with min 200px
+       - Make some photos span 2 columns
+       - Make some photos span 2 rows
+       - Add gap between items
+    
+    3. Create a .pricing-table grid:
+       - 3 equal columns on desktop
+       - Stack on mobile
+       - Center the middle card vertically
+    
+    4. Build a .blog-layout:
+       - Main article takes 2/3 width
+       - Sidebar takes 1/3 width
+       - Related articles grid below
+    
+    5. Design a .dashboard-grid:
+       - 12-column grid system
+       - Stats cards span different columns
+       - Responsive breakpoints
+    
+    Bonus challenges:
+    - Use grid-template shorthand
+    - Implement a masonry-style layout
+    - Create a calendar grid
+    - Use named grid lines
+    -->
+    
+    <!-- 1. Page Layout with Grid Areas -->
+    <div class="page-layout">
+        <header class="page-header">
+            <h1>Grid Layout Website</h1>
+        </header>
+        
+        <aside class="page-sidebar">
+            <h2>Sidebar</h2>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <main class="page-main">
+            <h2>Main Content</h2>
+            <p>This is the main content area using CSS Grid layout.</p>
+        </main>
+        
+        <footer class="page-footer">
+            <p>&copy; 2024 Grid Layout Demo</p>
+        </footer>
+    </div>
+
+    <!-- 2. Photo Gallery -->
+    <section class="gallery-section">
+        <h2>Photo Gallery</h2>
+        <div class="photo-gallery">
+            <div class="photo-item large">Large Photo</div>
+            <div class="photo-item">Photo 2</div>
+            <div class="photo-item tall">Tall Photo</div>
+            <div class="photo-item">Photo 4</div>
+            <div class="photo-item wide">Wide Photo</div>
+            <div class="photo-item">Photo 6</div>
+            <div class="photo-item">Photo 7</div>
+            <div class="photo-item">Photo 8</div>
+        </div>
+    </section>
+
+    <!-- 3. Pricing Table -->
+    <section class="pricing-section">
+        <h2>Choose Your Plan</h2>
+        <div class="pricing-table">
+            <div class="price-card">
+                <h3>Basic</h3>
+                <div class="price">$9/mo</div>
+                <ul class="features">
+                    <li>10 Projects</li>
+                    <li>Basic Support</li>
+                    <li>1GB Storage</li>
+                </ul>
+                <button>Choose Plan</button>
+            </div>
+            
+            <div class="price-card featured">
+                <h3>Professional</h3>
+                <div class="price">$29/mo</div>
+                <ul class="features">
+                    <li>Unlimited Projects</li>
+                    <li>Priority Support</li>
+                    <li>100GB Storage</li>
+                    <li>Advanced Features</li>
+                </ul>
+                <button>Choose Plan</button>
+            </div>
+            
+            <div class="price-card">
+                <h3>Enterprise</h3>
+                <div class="price">$99/mo</div>
+                <ul class="features">
+                    <li>All Features</li>
+                    <li>Dedicated Support</li>
+                    <li>Unlimited Storage</li>
+                </ul>
+                <button>Choose Plan</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Blog Layout -->
+    <section class="blog-container">
+        <h2>Blog</h2>
+        <div class="blog-layout">
+            <article class="main-article">
+                <h3>Featured Article</h3>
+                <p>This is the main blog article content. It takes up most of the space in the layout.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </article>
+            
+            <aside class="blog-sidebar">
+                <h3>Categories</h3>
+                <ul>
+                    <li>Technology</li>
+                    <li>Design</li>
+                    <li>Development</li>
+                </ul>
+            </aside>
+            
+            <section class="related-articles">
+                <h3>Related Articles</h3>
+                <div class="articles-grid">
+                    <article class="article-card">Article 1</article>
+                    <article class="article-card">Article 2</article>
+                    <article class="article-card">Article 3</article>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- 5. Dashboard Grid -->
+    <section class="dashboard-section">
+        <h2>Dashboard</h2>
+        <div class="dashboard-grid">
+            <div class="stat-card col-span-3">Total Sales</div>
+            <div class="stat-card col-span-3">New Users</div>
+            <div class="stat-card col-span-3">Revenue</div>
+            <div class="stat-card col-span-3">Growth</div>
+            
+            <div class="chart-card col-span-8">Sales Chart</div>
+            <div class="activity-card col-span-4">Recent Activity</div>
+            
+            <div class="table-card col-span-12">Data Table</div>
+        </div>
+    </section>
+</body>
+</html>

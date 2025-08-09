@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Units - Task</title>
+    <!-- Create your CSS file and link it here -->
+    <link rel="stylesheet" href="task_solution.css">
+</head>
+<body>
+    <!-- 
+    TASK: Apply appropriate CSS units to create a responsive layout
+    
+    Requirements:
+    1. Set the root font size to 18px for rem calculations
+    2. Create a container that's 90% wide but max 1000px
+    3. Make the header full viewport width (100vw)
+    4. Set the main heading to scale between 24px and 48px using clamp()
+    5. Create cards that are 300px on desktop but 100% on mobile
+    6. Use em units for button padding (0.75em vertical, 1.5em horizontal)
+    7. Make the sidebar 25% of container width with min-width of 200px
+    8. Use rem for consistent spacing throughout (margins/padding)
+    9. Create a footer that's always at least 10vh tall
+    10. Add responsive font sizes that scale with viewport
+    
+    Bonus: Use CSS custom properties for consistent spacing values
+    -->
+    
+    <header class="header">
+        <h1 class="main-heading">Responsive Web Design</h1>
+        <p class="subtitle">Master CSS Units for Better Layouts</p>
+    </header>
+
+    <div class="container">
+        <main class="content">
+            <section class="cards">
+                <div class="card">
+                    <h2 class="card-heading">Pixels (px)</h2>
+                    <p class="card-text">Fixed unit, doesn't scale with user preferences.</p>
+                    <button class="button">Learn More</button>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-heading">Relative (em/rem)</h2>
+                    <p class="card-text">Scales based on font size, great for accessibility.</p>
+                    <button class="button">Learn More</button>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-heading">Viewport (vw/vh)</h2>
+                    <p class="card-text">Relative to viewport dimensions, perfect for responsive design.</p>
+                    <button class="button">Learn More</button>
+                </div>
+            </section>
+
+            <aside class="sidebar">
+                <h3 class="sidebar-heading">Quick Tips</h3>
+                <ul class="tips-list">
+                    <li class="tip-item">Use rem for consistent spacing</li>
+                    <li class="tip-item">Em units inherit from parent</li>
+                    <li class="tip-item">Viewport units for hero sections</li>
+                    <li class="tip-item">Percentages for fluid layouts</li>
+                </ul>
+            </aside>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p class="footer-text">© 2024 CSS Units Tutorial</p>
+    </footer>
+</body>
+</html>

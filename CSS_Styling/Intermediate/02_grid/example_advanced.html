@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid - Advanced Example</title>
+    <link rel="stylesheet" href="styles_advanced.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Dashboard Layout -->
+        <header class="dashboard-header">
+            <h1>Analytics Dashboard</h1>
+            <div class="header-actions">
+                <button class="btn">Export</button>
+                <button class="btn btn-primary">Add Widget</button>
+            </div>
+        </header>
+
+        <nav class="dashboard-nav">
+            <h3>Navigation</h3>
+            <ul>
+                <li><a href="#" class="nav-link active">Dashboard</a></li>
+                <li><a href="#" class="nav-link">Analytics</a></li>
+                <li><a href="#" class="nav-link">Reports</a></li>
+                <li><a href="#" class="nav-link">Settings</a></li>
+            </ul>
+        </nav>
+
+        <main class="dashboard-main">
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Users</h3>
+                    <p class="stat-number">12,543</p>
+                    <span class="stat-change positive">+12.5%</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Revenue</h3>
+                    <p class="stat-number">$45,678</p>
+                    <span class="stat-change positive">+8.3%</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Orders</h3>
+                    <p class="stat-number">1,234</p>
+                    <span class="stat-change negative">-2.1%</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Conversion</h3>
+                    <p class="stat-number">3.45%</p>
+                    <span class="stat-change positive">+0.5%</span>
+                </div>
+            </section>
+
+            <!-- Complex Grid Layout -->
+            <section class="widgets-grid">
+                <div class="widget chart-widget">
+                    <h3>Sales Overview</h3>
+                    <div class="chart-placeholder">Chart Area</div>
+                </div>
+                
+                <div class="widget activity-widget">
+                    <h3>Recent Activity</h3>
+                    <ul class="activity-list">
+                        <li>User John signed up</li>
+                        <li>New order #1234</li>
+                        <li>Payment received</li>
+                        <li>Report generated</li>
+                    </ul>
+                </div>
+                
+                <div class="widget map-widget">
+                    <h3>User Locations</h3>
+                    <div class="map-placeholder">Map View</div>
+                </div>
+                
+                <div class="widget table-widget">
+                    <h3>Top Products</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Sales</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Product A</td>
+                                <td>234</td>
+                                <td>$12,345</td>
+                            </tr>
+                            <tr>
+                                <td>Product B</td>
+                                <td>189</td>
+                                <td>$9,876</td>
+                            </tr>
+                            <tr>
+                                <td>Product C</td>
+                                <td>156</td>
+                                <td>$7,654</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Image Gallery Grid -->
+            <section class="gallery-section">
+                <h2>Product Gallery</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item featured">Featured Product</div>
+                    <div class="gallery-item">Product 2</div>
+                    <div class="gallery-item">Product 3</div>
+                    <div class="gallery-item">Product 4</div>
+                    <div class="gallery-item">Product 5</div>
+                    <div class="gallery-item tall">Tall Image</div>
+                    <div class="gallery-item">Product 7</div>
+                    <div class="gallery-item wide">Wide Image</div>
+                </div>
+            </section>
+
+            <!-- Magazine Layout -->
+            <section class="magazine-layout">
+                <h2>Featured Articles</h2>
+                <div class="magazine-grid">
+                    <article class="article main-article">
+                        <h3>Main Story</h3>
+                        <p>This is the featured article with the most important content...</p>
+                    </article>
+                    <article class="article side-article">
+                        <h3>Side Story 1</h3>
+                        <p>Supporting content...</p>
+                    </article>
+                    <article class="article side-article">
+                        <h3>Side Story 2</h3>
+                        <p>Additional content...</p>
+                    </article>
+                    <article class="article bottom-article">
+                        <h3>Related Article</h3>
+                        <p>More information about the topic...</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-widget">
+                <h3>Quick Actions</h3>
+                <button class="btn btn-block">Create Report</button>
+                <button class="btn btn-block">Schedule Task</button>
+                <button class="btn btn-block">View Calendar</button>
+            </div>
+            
+            <div class="sidebar-widget">
+                <h3>Notifications</h3>
+                <div class="notification">
+                    <span class="notification-badge">3</span>
+                    New messages
+                </div>
+                <div class="notification">
+                    <span class="notification-badge">5</span>
+                    Pending tasks
+                </div>
+            </div>
+        </aside>
+
+        <footer class="dashboard-footer">
+            <p>&copy; 2024 Analytics Dashboard. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

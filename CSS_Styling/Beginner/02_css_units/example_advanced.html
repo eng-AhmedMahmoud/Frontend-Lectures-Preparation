@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Units - Advanced Example</title>
+    <link rel="stylesheet" href="styles_advanced.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1 class="logo">Responsive Design</h1>
+            <p class="tagline">Mastering CSS Units for Flexible Layouts</p>
+        </header>
+
+        <main class="main-content">
+            <article class="article-card">
+                <h2 class="card-title">Fluid Typography</h2>
+                <p class="card-text">
+                    This card demonstrates responsive design using various CSS units. 
+                    The text scales smoothly based on viewport and parent sizes.
+                </p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Responsive</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3rem</span>
+                        <span class="stat-label">Base Size</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">80vw</span>
+                        <span class="stat-label">Max Width</span>
+                    </div>
+                </div>
+            </article>
+
+            <section class="comparison-grid">
+                <div class="comparison-item fixed">
+                    <h3>Fixed Sizing</h3>
+                    <p>300px width doesn't adapt</p>
+                    <div class="demo-box">Fixed Box</div>
+                </div>
+                <div class="comparison-item fluid">
+                    <h3>Fluid Sizing</h3>
+                    <p>Percentage-based adapts to container</p>
+                    <div class="demo-box">Fluid Box</div>
+                </div>
+                <div class="comparison-item responsive">
+                    <h3>Responsive Sizing</h3>
+                    <p>Combines multiple unit types</p>
+                    <div class="demo-box">Responsive Box</div>
+                </div>
+            </section>
+
+            <div class="responsive-image-gallery">
+                <h2 class="gallery-title">Responsive Gallery</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">Image 1</div>
+                    <div class="gallery-item">Image 2</div>
+                    <div class="gallery-item">Image 3</div>
+                    <div class="gallery-item">Image 4</div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p class="footer-text">Resize your browser to see units in action</p>
+        </footer>
+    </div>
+</body>
+</html>

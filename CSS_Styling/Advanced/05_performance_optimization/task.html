@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Performance Optimization - Task</title>
+    
+    <!-- Performance Optimization Demo:
+         Critical CSS is inlined below, non-critical CSS loaded async -->
+    
+    <!-- Critical CSS - Inlined for fastest rendering -->
+    <style>
+        /* Critical above-the-fold styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header__container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header__logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero__title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero__subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Preload font for critical text */
+        @font-face {
+            font-family: 'PerformanceFont';
+            src: url('data:font/woff2;base64,') format('woff2');
+            font-display: swap;
+            font-weight: 400;
+        }
+    </style>
+    
+    <!-- Font preloading for critical fonts -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="preload" href="task_solution.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="task_solution.css"></noscript>
+    
+    <!-- Additional non-critical styles -->
+    <script>
+        // Async CSS loading function
+        function loadCSS(href) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            document.head.appendChild(link);
+        }
+        
+        // Load non-critical CSS after initial render
+        window.addEventListener('load', () => {
+            loadCSS('non-critical.css');
+        });
+    </script>
+</head>
+<body>
+    <!-- 
+    TASK: Optimize this page for maximum performance
+    
+    Requirements:
+    1. Implement critical CSS extraction and inlining
+    2. Optimize CSS selector performance and specificity
+    3. Use CSS containment for layout performance
+    4. Implement efficient font loading strategies
+    5. Create performant animations using GPU acceleration
+    6. Optimize bundle sizes and eliminate unused CSS
+    7. Implement performance monitoring and budgets
+    8. Use async loading for non-critical resources
+    9. Apply CSS Grid/Flexbox performance best practices
+    10. Create a comprehensive performance dashboard
+    -->
+    
+    <div class="performance-app">
+        <!-- Critical Header - Above the fold -->
+        <header class="header" id="header">
+            <div class="header__container">
+                <div class="header__brand">
+                    <h1 class="header__logo">CSS Performance Lab</h1>
+                    <span class="header__tagline">Optimized for Speed</span>
+                </div>
+                
+                <!-- Navigation with performance optimizations -->
+                <nav class="nav" style="contain: layout;">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#metrics" class="nav__link">Metrics</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#optimization" class="nav__link">Optimization</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#monitoring" class="nav__link">Monitoring</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#tools" class="nav__link">Tools</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- Performance indicator -->
+                <div class="performance-indicator" id="performanceIndicator">
+                    <div class="perf-score" id="perfScore">--</div>
+                    <div class="perf-label">Performance</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Critical Hero Section - Above the fold -->
+        <section class="hero" id="hero">
+            <div class="hero__container">
+                <div class="hero__content">
+                    <h2 class="hero__title">CSS Performance Optimization</h2>
+                    <p class="hero__subtitle">Master critical rendering path, efficient selectors, and Core Web Vitals</p>
+                    <div class="hero__metrics">
+                        <div class="metric metric--fcp">
+                            <div class="metric__value" id="fcpValue">--</div>
+                            <div class="metric__label">FCP</div>
+                        </div>
+                        <div class="metric metric--lcp">
+                            <div class="metric__value" id="lcpValue">--</div>
+                            <div class="metric__label">LCP</div>
+                        </div>
+                        <div class="metric metric--cls">
+                            <div class="metric__value" id="clsValue">--</div>
+                            <div class="metric__label">CLS</div>
+                        </div>
+                        <div class="metric metric--fid">
+                            <div class="metric__value" id="fidValue">--</div>
+                            <div class="metric__label">FID</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Metrics Dashboard -->
+        <section class="metrics-dashboard" id="metrics" style="contain: layout style;">
+            <div class="container">
+                <h2 class="section-title">Real-time Performance Metrics</h2>
+                
+                <div class="metrics-grid">
+                    <!-- Core Web Vitals -->
+                    <div class="metric-card metric-card--vital" style="contain: layout;">
+                        <div class="metric-card__header">
+                            <h3 class="metric-card__title">Largest Contentful Paint</h3>
+                            <div class="metric-status" id="lcpStatus">Measuring...</div>
+                        </div>
+                        <div class="metric-card__content">
+                            <div class="metric-display">
+                                <span class="metric-number" id="lcpMetric">--</span>
+                                <span class="metric-unit">s</span>
+                            </div>
+                            <div class="metric-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="lcpProgress"></div>
+                                </div>
+                                <div class="progress-labels">
+                                    <span>Good: &lt;2.5s</span>
+                                    <span>Poor: &gt;4.0s</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card metric-card--vital" style="contain: layout;">
+                        <div class="metric-card__header">
+                            <h3 class="metric-card__title">First Input Delay</h3>
+                            <div class="metric-status" id="fidStatus">Waiting for interaction</div>
+                        </div>
+                        <div class="metric-card__content">
+                            <div class="metric-display">
+                                <span class="metric-number" id="fidMetric">--</span>
+                                <span class="metric-unit">ms</span>
+                            </div>
+                            <div class="metric-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="fidProgress"></div>
+                                </div>
+                                <div class="progress-labels">
+                                    <span>Good: &lt;100ms</span>
+                                    <span>Poor: &gt;300ms</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card metric-card--vital" style="contain: layout;">
+                        <div class="metric-card__header">
+                            <h3 class="metric-card__title">Cumulative Layout Shift</h3>
+                            <div class="metric-status" id="clsStatus">Monitoring</div>
+                        </div>
+                        <div class="metric-card__content">
+                            <div class="metric-display">
+                                <span class="metric-number" id="clsMetric">--</span>
+                                <span class="metric-unit"></span>
+                            </div>
+                            <div class="metric-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="clsProgress"></div>
+                                </div>
+                                <div class="progress-labels">
+                                    <span>Good: &lt;0.1</span>
+                                    <span>Poor: &gt;0.25</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CSS Performance Metrics -->
+                    <div class="metric-card metric-card--css" style="contain: layout;">
+                        <div class="metric-card__header">
+                            <h3 class="metric-card__title">CSS Bundle Size</h3>
+                            <div class="metric-status">Optimized</div>
+                        </div>
+                        <div class="metric-card__content">
+                            <div class="metric-display">
+                                <span class="metric-number" id="cssSizeMetric">--</span>
+                                <span class="metric-unit">KB</span>
+                            </div>
+                            <div class="size-breakdown">
+                                <div class="size-item">
+                                    <span class="size-label">Critical:</span>
+                                    <span class="size-value" id="criticalSize">--KB</span>
+                                </div>
+                                <div class="size-item">
+                                    <span class="size-label">Non-critical:</span>
+                                    <span class="size-value" id="nonCriticalSize">--KB</span>
+                                </div>
+                                <div class="size-item">
+                                    <span class="size-label">Unused:</span>
+                                    <span class="size-value unused" id="unusedSize">--KB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Optimization Techniques Demo -->
+        <section class="optimization-demo" id="optimization" style="contain: layout;">
+            <div class="container">
+                <h2 class="section-title">Performance Optimization Techniques</h2>
+                
+                <!-- Critical CSS Demo -->
+                <div class="demo-section">
+                    <h3 class="demo-title">Critical CSS Extraction</h3>
+                    <div class="demo-grid">
+                        <div class="demo-card demo-card--before">
+                            <h4 class="demo-card__title">Before Optimization</h4>
+                            <div class="code-block">
+                                <pre><code>&lt;head&gt;
+  &lt;link rel="stylesheet" href="all-styles.css"&gt;
+&lt;/head&gt;
+
+/* Blocks rendering until entire CSS loads */
+/* First paint delayed by 500ms+ */</code></pre>
+                            </div>
+                            <div class="demo-metrics">
+                                <div class="demo-metric">
+                                    <span class="metric-label">FCP:</span>
+                                    <span class="metric-value metric-value--poor">2.1s</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="demo-card demo-card--after">
+                            <h4 class="demo-card__title">After Optimization</h4>
+                            <div class="code-block">
+                                <pre><code>&lt;head&gt;
+  &lt;style&gt;/* Critical CSS inlined */&lt;/style&gt;
+  &lt;link rel="preload" href="non-critical.css" 
+        as="style" onload="this.rel='stylesheet'"&gt;
+&lt;/head&gt;</code></pre>
+                            </div>
+                            <div class="demo-metrics">
+                                <div class="demo-metric">
+                                    <span class="metric-label">FCP:</span>
+                                    <span class="metric-value metric-value--good">0.8s</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Selector Performance Demo -->
+                <div class="demo-section">
+                    <h3 class="demo-title">Efficient CSS Selectors</h3>
+                    <div class="selector-examples">
+                        <div class="selector-example selector-example--bad">
+                            <h4 class="example-title">❌ Inefficient Selectors</h4>
+                            <div class="code-block">
+                                <pre><code>/* Expensive - universal selector */
+* { margin: 0; }
+
+/* Expensive - deep nesting */
+.sidebar .widget .content .title a span { }
+
+/* Expensive - complex pseudo-selectors */
+.nav li:nth-child(3n+2):not(.active) { }</code></pre>
+                            </div>
+                            <div class="performance-impact">
+                                <span class="impact-label">Selector matching time:</span>
+                                <span class="impact-value impact-value--bad">15ms</span>
+                            </div>
+                        </div>
+                        
+                        <div class="selector-example selector-example--good">
+                            <h4 class="example-title">✅ Optimized Selectors</h4>
+                            <div class="code-block">
+                                <pre><code>/* Efficient - class-based BEM */
+.widget__title { }
+
+/* Efficient - single class */
+.nav__item--active { }
+
+/* Efficient - minimal specificity */
+.btn--primary { }</code></pre>
+                            </div>
+                            <div class="performance-impact">
+                                <span class="impact-label">Selector matching time:</span>
+                                <span class="impact-value impact-value--good">1ms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CSS Containment Demo -->
+                <div class="demo-section">
+                    <h3 class="demo-title">CSS Containment Performance</h3>
+                    <div class="containment-demo">
+                        <div class="contained-widget" style="contain: layout style paint;">
+                            <h4 class="widget-title">Contained Component</h4>
+                            <p class="widget-text">This component uses CSS containment to isolate layout, style, and paint operations.</p>
+                            <div class="widget-content">
+                                <div class="widget-item">Item 1</div>
+                                <div class="widget-item">Item 2</div>
+                                <div class="widget-item">Item 3</div>
+                            </div>
+                            <div class="containment-info">
+                                <span class="containment-type">contain: layout style paint;</span>
+                            </div>
+                        </div>
+                        
+                        <div class="performance-comparison">
+                            <div class="comparison-metric">
+                                <span class="metric-name">Layout time:</span>
+                                <span class="metric-value metric-value--good">2ms</span>
+                                <span class="metric-improvement">60% faster</span>
+                            </div>
+                            <div class="comparison-metric">
+                                <span class="metric-name">Paint time:</span>
+                                <span class="metric-value metric-value--good">1ms</span>
+                                <span class="metric-improvement">75% faster</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Font Loading Optimization -->
+        <section class="font-optimization" style="contain: layout;">
+            <div class="container">
+                <h2 class="section-title">Font Loading Performance</h2>
+                
+                <div class="font-demo">
+                    <div class="font-loading-strategies">
+                        <div class="strategy-card">
+                            <h3 class="strategy-title">Font Display: Swap</h3>
+                            <div class="font-example font-example--swap">
+                                <p class="font-text">This text uses font-display: swap for immediate rendering</p>
+                            </div>
+                            <div class="strategy-metrics">
+                                <div class="strategy-metric">
+                                    <span class="metric-label">FOIT:</span>
+                                    <span class="metric-value metric-value--good">0ms</span>
+                                </div>
+                                <div class="strategy-metric">
+                                    <span class="metric-label">CLS:</span>
+                                    <span class="metric-value metric-value--warning">0.02</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="strategy-card">
+                            <h3 class="strategy-title">Preloaded Critical Font</h3>
+                            <div class="font-example font-example--preloaded">
+                                <p class="font-text">This text uses a preloaded critical font</p>
+                            </div>
+                            <div class="strategy-metrics">
+                                <div class="strategy-metric">
+                                    <span class="metric-label">FOIT:</span>
+                                    <span class="metric-value metric-value--excellent">0ms</span>
+                                </div>
+                                <div class="strategy-metric">
+                                    <span class="metric-label">CLS:</span>
+                                    <span class="metric-value metric-value--excellent">0.001</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Animation Performance Demo -->
+        <section class="animation-performance" style="contain: layout;">
+            <div class="container">
+                <h2 class="section-title">High-Performance Animations</h2>
+                
+                <div class="animation-demos">
+                    <div class="animation-demo">
+                        <h3 class="demo-title">GPU-Accelerated Animations</h3>
+                        <div class="animation-examples">
+                            <div class="animation-card animation-card--good">
+                                <h4 class="animation-title">✅ Transform + Opacity</h4>
+                                <div class="animated-element animated-element--gpu" id="gpuElement">
+                                    GPU Accelerated
+                                </div>
+                                <div class="animation-metrics">
+                                    <span class="fps-counter" id="gpuFps">60 FPS</span>
+                                    <span class="frame-time">16.7ms</span>
+                                </div>
+                            </div>
+                            
+                            <div class="animation-card animation-card--bad">
+                                <h4 class="animation-title">❌ Layout Properties</h4>
+                                <div class="animated-element animated-element--cpu" id="cpuElement">
+                                    CPU Layout
+                                </div>
+                                <div class="animation-metrics">
+                                    <span class="fps-counter" id="cpuFps">30 FPS</span>
+                                    <span class="frame-time">33.3ms</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Animation Controls -->
+                    <div class="animation-controls">
+                        <button class="btn btn--primary" id="startAnimations">Start Animations</button>
+                        <button class="btn btn--secondary" id="stopAnimations">Stop Animations</button>
+                        <button class="btn btn--outline" id="measurePerformance">Measure Performance</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Monitoring Dashboard -->
+        <section class="monitoring-dashboard" id="monitoring" style="contain: layout;">
+            <div class="container">
+                <h2 class="section-title">Performance Monitoring</h2>
+                
+                <div class="monitoring-grid">
+                    <!-- Real-time Performance Chart -->
+                    <div class="monitor-card monitor-card--chart">
+                        <h3 class="monitor-title">Real-time Performance</h3>
+                        <div class="performance-chart" id="performanceChart">
+                            <canvas id="chartCanvas" width="400" height="200"></canvas>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-color legend-color--fps"></span>
+                                <span class="legend-label">FPS</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color legend-color--memory"></span>
+                                <span class="legend-label">Memory (MB)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Performance Budget -->
+                    <div class="monitor-card monitor-card--budget">
+                        <h3 class="monitor-title">Performance Budget</h3>
+                        <div class="budget-items">
+                            <div class="budget-item">
+                                <div class="budget-header">
+                                    <span class="budget-name">CSS Bundle Size</span>
+                                    <span class="budget-status budget-status--good">✓</span>
+                                </div>
+                                <div class="budget-progress">
+                                    <div class="budget-bar">
+                                        <div class="budget-fill" style="width: 65%"></div>
+                                    </div>
+                                    <div class="budget-values">
+                                        <span class="budget-current">32KB</span>
+                                        <span class="budget-limit">/ 50KB</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="budget-item">
+                                <div class="budget-header">
+                                    <span class="budget-name">First Contentful Paint</span>
+                                    <span class="budget-status budget-status--good">✓</span>
+                                </div>
+                                <div class="budget-progress">
+                                    <div class="budget-bar">
+                                        <div class="budget-fill" style="width: 45%"></div>
+                                    </div>
+                                    <div class="budget-values">
+                                        <span class="budget-current">0.8s</span>
+                                        <span class="budget-limit">/ 1.8s</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="budget-item">
+                                <div class="budget-header">
+                                    <span class="budget-name">Unused CSS</span>
+                                    <span class="budget-status budget-status--warning">⚠</span>
+                                </div>
+                                <div class="budget-progress">
+                                    <div class="budget-bar">
+                                        <div class="budget-fill budget-fill--warning" style="width: 85%"></div>
+                                    </div>
+                                    <div class="budget-values">
+                                        <span class="budget-current">8.5%</span>
+                                        <span class="budget-limit">/ 10%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Tools -->
+        <section class="performance-tools" id="tools" style="contain: layout;">
+            <div class="container">
+                <h2 class="section-title">Performance Analysis Tools</h2>
+                
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h3 class="tool-title">CSS Coverage Analyzer</h3>
+                            <button class="tool-trigger" id="analyzeCoverage">Analyze</button>
+                        </div>
+                        <div class="tool-results" id="coverageResults">
+                            <div class="coverage-summary">
+                                <div class="coverage-stat">
+                                    <span class="stat-label">Used CSS:</span>
+                                    <span class="stat-value stat-value--good" id="usedCss">91.5%</span>
+                                </div>
+                                <div class="coverage-stat">
+                                    <span class="stat-label">Unused CSS:</span>
+                                    <span class="stat-value stat-value--warning" id="unusedCss">8.5%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h3 class="tool-title">Selector Performance</h3>
+                            <button class="tool-trigger" id="analyzeSelectors">Profile</button>
+                        </div>
+                        <div class="tool-results" id="selectorResults">
+                            <div class="selector-stats">
+                                <div class="selector-stat">
+                                    <span class="stat-label">Avg. Matching Time:</span>
+                                    <span class="stat-value stat-value--good">1.2ms</span>
+                                </div>
+                                <div class="selector-stat">
+                                    <span class="stat-label">Slowest Selector:</span>
+                                    <span class="stat-value">5.8ms</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h3 class="tool-title">Layout Thrashing Detector</h3>
+                            <button class="tool-trigger" id="detectThrashing">Detect</button>
+                        </div>
+                        <div class="tool-results" id="thrashingResults">
+                            <div class="thrashing-stats">
+                                <div class="thrashing-stat">
+                                    <span class="stat-label">Layout Events:</span>
+                                    <span class="stat-value stat-value--good">12</span>
+                                </div>
+                                <div class="thrashing-stat">
+                                    <span class="stat-label">Paint Events:</span>
+                                    <span class="stat-value stat-value--good">8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Footer -->
+        <footer class="footer" style="contain: layout;">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4 class="footer-title">CSS Performance Lab</h4>
+                        <p class="footer-text">Optimizing CSS for maximum performance and user experience.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Performance Metrics</h4>
+                        <div class="footer-metrics">
+                            <div class="footer-metric">
+                                <span class="metric-name">Current FCP:</span>
+                                <span class="metric-value" id="footerFCP">--</span>
+                            </div>
+                            <div class="footer-metric">
+                                <span class="metric-name">CSS Size:</span>
+                                <span class="metric-value" id="footerCSSSize">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Performance monitoring script -->
+    <script>
+        // Performance monitoring and Core Web Vitals measurement
+        let performanceData = {
+            fcp: null,
+            lcp: null,
+            cls: null,
+            fid: null
+        };
+
+        // Web Vitals measurement using PerformanceObserver
+        function measureWebVitals() {
+            // Measure FCP
+            new PerformanceObserver((entryList) => {
+                for (const entry of entryList.getEntries()) {
+                    if (entry.name === 'first-contentful-paint') {
+                        performanceData.fcp = entry.startTime / 1000;
+                        updateMetricDisplay('fcpValue', performanceData.fcp.toFixed(2) + 's');
+                        updateMetricDisplay('footerFCP', performanceData.fcp.toFixed(2) + 's');
+                    }
+                }
+            }).observe({entryTypes: ['paint']});
+
+            // Measure LCP
+            new PerformanceObserver((entryList) => {
+                const entries = entryList.getEntries();
+                const lastEntry = entries[entries.length - 1];
+                performanceData.lcp = lastEntry.startTime / 1000;
+                updateMetricDisplay('lcpValue', performanceData.lcp.toFixed(2) + 's');
+                updateMetricDisplay('lcpMetric', performanceData.lcp.toFixed(2));
+                updateProgressBar('lcpProgress', performanceData.lcp, 2.5, 4.0);
+            }).observe({entryTypes: ['largest-contentful-paint']});
+
+            // Measure CLS
+            let clsValue = 0;
+            new PerformanceObserver((entryList) => {
+                for (const entry of entryList.getEntries()) {
+                    if (!entry.hadRecentInput) {
+                        clsValue += entry.value;
+                    }
+                }
+                performanceData.cls = clsValue;
+                updateMetricDisplay('clsValue', clsValue.toFixed(3));
+                updateMetricDisplay('clsMetric', clsValue.toFixed(3));
+                updateProgressBar('clsProgress', clsValue, 0.1, 0.25);
+            }).observe({entryTypes: ['layout-shift']});
+
+            // Measure FID
+            new PerformanceObserver((entryList) => {
+                for (const entry of entryList.getEntries()) {
+                    performanceData.fid = entry.processingStart - entry.startTime;
+                    updateMetricDisplay('fidValue', performanceData.fid.toFixed(0) + 'ms');
+                    updateMetricDisplay('fidMetric', performanceData.fid.toFixed(0));
+                    updateProgressBar('fidProgress', performanceData.fid, 100, 300);
+                }
+            }).observe({entryTypes: ['first-input']});
+        }
+
+        function updateMetricDisplay(id, value) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.textContent = value;
+            }
+        }
+
+        function updateProgressBar(id, value, goodThreshold, poorThreshold) {
+            const element = document.getElementById(id);
+            if (element) {
+                const percentage = Math.min((value / poorThreshold) * 100, 100);
+                element.style.width = percentage + '%';
+                
+                if (value <= goodThreshold) {
+                    element.className = 'progress-fill progress-fill--good';
+                } else if (value <= poorThreshold) {
+                    element.className = 'progress-fill progress-fill--needs-improvement';
+                } else {
+                    element.className = 'progress-fill progress-fill--poor';
+                }
+            }
+        }
+
+        // CSS size calculation
+        function calculateCSSSize() {
+            let totalSize = 0;
+            const stylesheets = document.styleSheets;
+            
+            for (let i = 0; i < stylesheets.length; i++) {
+                try {
+                    const rules = stylesheets[i].cssRules || stylesheets[i].rules;
+                    if (rules) {
+                        for (let j = 0; j < rules.length; j++) {
+                            totalSize += rules[j].cssText.length;
+                        }
+                    }
+                } catch (e) {
+                    // Handle cross-origin stylesheets
+                }
+            }
+            
+            const sizeInKB = (totalSize / 1024).toFixed(1);
+            updateMetricDisplay('cssSizeMetric', sizeInKB);
+            updateMetricDisplay('footerCSSSize', sizeInKB + 'KB');
+        }
+
+        // Animation performance monitoring
+        let animationFrameId;
+        let lastFrameTime = performance.now();
+        let frameCount = 0;
+        let fps = 0;
+
+        function measureFPS() {
+            const now = performance.now();
+            frameCount++;
+            
+            if (now - lastFrameTime >= 1000) {
+                fps = Math.round((frameCount * 1000) / (now - lastFrameTime));
+                updateMetricDisplay('gpuFps', fps + ' FPS');
+                frameCount = 0;
+                lastFrameTime = now;
+            }
+            
+            animationFrameId = requestAnimationFrame(measureFPS);
+        }
+
+        // Tool functionality
+        function initializeTools() {
+            document.getElementById('analyzeCoverage')?.addEventListener('click', () => {
+                // Simulate CSS coverage analysis
+                setTimeout(() => {
+                    updateMetricDisplay('usedCss', '91.5%');
+                    updateMetricDisplay('unusedCss', '8.5%');
+                }, 1000);
+            });
+
+            document.getElementById('analyzeSelectors')?.addEventListener('click', () => {
+                // Simulate selector performance analysis
+                console.log('Analyzing selector performance...');
+            });
+
+            document.getElementById('detectThrashing')?.addEventListener('click', () => {
+                // Simulate layout thrashing detection
+                console.log('Detecting layout thrashing...');
+            });
+
+            document.getElementById('startAnimations')?.addEventListener('click', () => {
+                document.getElementById('gpuElement').style.animationPlayState = 'running';
+                document.getElementById('cpuElement').style.animationPlayState = 'running';
+                measureFPS();
+            });
+
+            document.getElementById('stopAnimations')?.addEventListener('click', () => {
+                document.getElementById('gpuElement').style.animationPlayState = 'paused';
+                document.getElementById('cpuElement').style.animationPlayState = 'paused';
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                }
+            });
+        }
+
+        // Initialize performance monitoring
+        document.addEventListener('DOMContentLoaded', () => {
+            measureWebVitals();
+            calculateCSSSize();
+            initializeTools();
+            
+            // Update performance indicator
+            setTimeout(() => {
+                const perfScore = Math.round(
+                    (performanceData.fcp ? Math.max(0, 100 - performanceData.fcp * 20) : 85) * 0.25 +
+                    (performanceData.lcp ? Math.max(0, 100 - performanceData.lcp * 15) : 85) * 0.25 +
+                    (performanceData.cls ? Math.max(0, 100 - performanceData.cls * 400) : 95) * 0.25 +
+                    85 * 0.25 // Base score for CSS optimization
+                );
+                updateMetricDisplay('perfScore', '');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

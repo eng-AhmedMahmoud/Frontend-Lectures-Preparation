@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Architecture - Basic Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header Component -->
+        <header class="header">
+            <div class="header__container">
+                <div class="header__brand">
+                    <h1 class="header__logo">CSS Architecture</h1>
+                </div>
+                <nav class="header__nav">
+                    <ul class="nav nav--horizontal">
+                        <li class="nav__item">
+                            <a href="#" class="nav__link nav__link--active">Home</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">About</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Services</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero__container">
+                    <div class="hero__content">
+                        <h2 class="hero__title">Scalable CSS Architecture</h2>
+                        <p class="hero__subtitle">Learn methodologies for maintaining large-scale CSS projects</p>
+                        <div class="hero__actions">
+                            <button class="btn btn--primary btn--large">Get Started</button>
+                            <button class="btn btn--secondary btn--large">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Methodology Showcase -->
+            <section class="methodologies">
+                <div class="methodologies__container">
+                    <h2 class="methodologies__title">CSS Methodologies</h2>
+                    
+                    <!-- BEM Example -->
+                    <div class="methodology-card methodology-card--bem">
+                        <div class="methodology-card__header">
+                            <h3 class="methodology-card__title">BEM (Block, Element, Modifier)</h3>
+                        </div>
+                        <div class="methodology-card__content">
+                            <p class="methodology-card__description">
+                                BEM provides a clear structure for CSS classes using blocks, elements, and modifiers.
+                            </p>
+                            <div class="code-example">
+                                <pre class="code-example__content">
+.card { /* Block */ }
+.card__title { /* Element */ }
+.card--featured { /* Modifier */ }
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OOCSS Example -->
+                    <div class="methodology-card methodology-card--oocss">
+                        <div class="methodology-card__header">
+                            <h3 class="methodology-card__title">OOCSS (Object-Oriented CSS)</h3>
+                        </div>
+                        <div class="methodology-card__content">
+                            <p class="methodology-card__description">
+                                OOCSS separates structure from skin and container from content.
+                            </p>
+                            <div class="media-object">
+                                <div class="media-object__figure">
+                                    <div class="avatar avatar--medium">AV</div>
+                                </div>
+                                <div class="media-object__body">
+                                    <h4>Media Object Pattern</h4>
+                                    <p>Reusable component with image and content</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SMACSS Example -->
+                    <div class="methodology-card methodology-card--smacss">
+                        <div class="methodology-card__header">
+                            <h3 class="methodology-card__title">SMACSS Categories</h3>
+                        </div>
+                        <div class="methodology-card__content">
+                            <p class="methodology-card__description">
+                                SMACSS categorizes CSS rules into Base, Layout, Module, State, and Theme.
+                            </p>
+                            <div class="smacss-demo">
+                                <div class="l-grid">
+                                    <div class="module module--product is-featured">
+                                        <h4>Product Module</h4>
+                                        <p>With state and layout classes</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Component Library -->
+            <section class="component-library">
+                <div class="component-library__container">
+                    <h2 class="component-library__title">Component Library</h2>
+                    
+                    <!-- Buttons -->
+                    <div class="component-section">
+                        <h3 class="component-section__title">Buttons</h3>
+                        <div class="component-showcase">
+                            <button class="btn btn--primary">Primary</button>
+                            <button class="btn btn--secondary">Secondary</button>
+                            <button class="btn btn--success">Success</button>
+                            <button class="btn btn--warning">Warning</button>
+                            <button class="btn btn--danger">Danger</button>
+                        </div>
+                        
+                        <div class="component-showcase">
+                            <button class="btn btn--primary btn--small">Small</button>
+                            <button class="btn btn--primary">Medium</button>
+                            <button class="btn btn--primary btn--large">Large</button>
+                        </div>
+                    </div>
+
+                    <!-- Cards -->
+                    <div class="component-section">
+                        <h3 class="component-section__title">Cards</h3>
+                        <div class="grid grid--3-col">
+                            <article class="card">
+                                <div class="card__header">
+                                    <h4 class="card__title">Standard Card</h4>
+                                </div>
+                                <div class="card__body">
+                                    <p class="card__text">This is a standard card component with consistent styling.</p>
+                                </div>
+                                <div class="card__footer">
+                                    <button class="btn btn--primary btn--small">Action</button>
+                                </div>
+                            </article>
+
+                            <article class="card card--featured">
+                                <div class="card__header">
+                                    <h4 class="card__title">Featured Card</h4>
+                                    <span class="badge badge--success">Featured</span>
+                                </div>
+                                <div class="card__body">
+                                    <p class="card__text">This card uses a modifier class for special styling.</p>
+                                </div>
+                                <div class="card__footer">
+                                    <button class="btn btn--primary btn--small">Action</button>
+                                </div>
+                            </article>
+
+                            <article class="card card--outline">
+                                <div class="card__header">
+                                    <h4 class="card__title">Outline Card</h4>
+                                </div>
+                                <div class="card__body">
+                                    <p class="card__text">This card demonstrates the outline variant.</p>
+                                </div>
+                                <div class="card__footer">
+                                    <button class="btn btn--secondary btn--small">Action</button>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Form Elements -->
+                    <div class="component-section">
+                        <h3 class="component-section__title">Form Elements</h3>
+                        <form class="form">
+                            <div class="form__group">
+                                <label class="form__label" for="email">Email</label>
+                                <input class="form__input" type="email" id="email" placeholder="Enter your email">
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label" for="message">Message</label>
+                                <textarea class="form__textarea" id="message" rows="4" placeholder="Your message"></textarea>
+                            </div>
+                            <div class="form__group">
+                                <label class="form__checkbox">
+                                    <input type="checkbox" class="form__checkbox-input">
+                                    <span class="form__checkbox-label">Subscribe to newsletter</span>
+                                </label>
+                            </div>
+                            <div class="form__actions">
+                                <button class="btn btn--primary" type="submit">Submit</button>
+                                <button class="btn btn--secondary" type="reset">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer__container">
+                <div class="footer__content">
+                    <div class="footer__section">
+                        <h4 class="footer__title">About CSS Architecture</h4>
+                        <p class="footer__text">Building maintainable and scalable CSS for modern web applications.</p>
+                    </div>
+                    <div class="footer__section">
+                        <h4 class="footer__title">Resources</h4>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">Documentation</a></li>
+                            <li><a href="#" class="footer__link">Examples</a></li>
+                            <li><a href="#" class="footer__link">Best Practices</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p class="footer__copyright">&copy; 2024 CSS Architecture Tutorial</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

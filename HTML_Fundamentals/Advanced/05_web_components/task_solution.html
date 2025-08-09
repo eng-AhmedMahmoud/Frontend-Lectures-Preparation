@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Switch Web Component</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 1.5rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #222;
+      color: #f0f0f0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Theme Switch Demo</h1>
+    <p>Click the switch below to toggle between light and dark themes.</p>
+
+    <!-- Our custom web component -->
+    <theme-switch label="Dark Mode"></theme-switch>
+
+    <div style="margin-top: 2rem;">
+      <h2>About Web Components</h2>
+      <p>This example demonstrates a simple theme switcher using custom elements and Shadow DOM.</p>
+    </div>
+  </div>
+
+  <script>
+    // Define the custom element
+    class ThemeSwitch extends HTMLElement {
+      constructor() {
+        super();
+        // Create shadow root
+        this.shadow = this.attachShadow({ mode: 'open' });
+
+        // Internal state
+        this.darkMode = false;
+
+        // Render initial component
+        this.render();
+
+        // Bind events
+        this.toggleSwitch = this.toggleSwitch.bind(this);
+      }
+
+      // Lifecycle: When element is added to DOM
+      connectedCallback() {
+        const switchEl = this.shadow.querySelector('.switch');
+        switchEl.addEventListener('click', this.toggleSwitch);
+      }
+
+      // Lifecycle: When element is removed from DOM
+      disconnectedCallback() {
+        const switchEl = this.shadow.querySelector('.switch');
+        switchEl.removeEventListener('click', this.toggleSwitch);
+      }
+
+      // Toggle theme state
+      toggleSwitch() {
+        this.darkMode = !this.darkMode;
+
+        // Update UI
+        const slider = this.shadow.querySelector('.slider');
+        if (this.darkMode) {
+          slider.classList.add('active');
+        } else {
+          slider.classList.remove('active');
+        }
+
+        // Apply theme to document
+        document.body.classList.toggle('dark-mode', this.darkMode);
+
+        // Dispatch custom event
+        const event = new CustomEvent('theme-changed', {
+          bubbles: true,
+          composed: true,
+          detail: { darkMode: this.darkMode }
+        });
+        this.dispatchEvent(event);
+      }
+
+      // Render component
+      render() {
+        const label = this.getAttribute('label') || 'Toggle Theme';
+
+        // Component styles - encapsulated in shadow DOM
+        const style = document.createElement('style');
+        style.textContent = `
+          .theme-switch {
+            display: flex;
+            align-items: center;
+          }
+          .label {
+            margin-right: 10px;
+            cursor: pointer;
+          }
+          .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            cursor: pointer;
+          }
+          .switch-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 15px;
+            transition: 0.3s;
+          }
+          .slider {
+            position: absolute;
+            height: 24px;
+            width: 24px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.3s;
+          }
+          .slider.active {
+            transform: translateX(30px);
+          }
+          .switch-bg.active {
+            background-color: #2196F3;
+          }
+        `;
+
+        // Create component structure
+        const container = document.createElement('div');
+        container.setAttribute('class', 'theme-switch');
+
+        const labelEl = document.createElement('span');
+        labelEl.setAttribute('class', 'label');
+        labelEl.textContent = label;
+
+        const switchEl = document.createElement('div');
+        switchEl.setAttribute('class', 'switch');
+
+        const switchBg = document.createElement('div');
+        switchBg.setAttribute('class', 'switch-bg');
+
+        const sliderEl = document.createElement('div');
+        sliderEl.setAttribute('class', 'slider');
+
+        // Assemble component
+        switchBg.appendChild(sliderEl);
+        switchEl.appendChild(switchBg);
+        container.appendChild(labelEl);
+        container.appendChild(switchEl);
+
+        // Add to shadow DOM
+        this.shadow.appendChild(style);
+        this.shadow.appendChild(container);
+      }
+    }
+
+    // Register the custom element
+    customElements.define('theme-switch', ThemeSwitch);
+
+    // Listen for theme changes
+    document.addEventListener('theme-changed', (e) => {
+      console.log(`Theme changed: ${e.detail.darkMode ? 'dark' : 'light'} mode`);
+    });
+  </script>
+
+  <!-- 
+    Benefit: Encapsulation prevents style conflicts and ensures component integrity.
+    Drawback: Older browsers may need polyfills, and Shadow DOM can complicate CSS theming.
+  -->
+</body>
+
+</html>

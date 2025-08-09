@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model - Task</title>
+    <!-- Create your CSS file and link it here -->
+    <link rel="stylesheet" href="task_solution.css">
+</head>
+<body>
+    <!-- 
+    TASK: Create a professional blog layout demonstrating CSS box model mastery
+    
+    Requirements:
+    1. Apply box-sizing: border-box to all elements for predictable sizing
+    2. Create a header with proper padding and full-width background
+    3. Build article cards with consistent dimensions and spacing
+    4. Implement a sidebar with fixed width and sticky positioning
+    5. Use proper margin/padding for content separation and readability
+    6. Handle image sizing and overflow appropriately
+    7. Create a footer that sticks to bottom when content is short
+    8. Add interactive elements with proper spacing and hover effects
+    9. Ensure responsive behavior across different screen sizes
+    10. Implement proper spacing hierarchy throughout the design
+    
+    Bonus challenges:
+    - Create CSS-only tooltips using positioning
+    - Add loading states using box model techniques
+    - Implement responsive typography that scales with container size
+    - Create floating elements that don't break layout
+    -->
+    
+    <div class="page-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="site-title">Tech Blog</h1>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Articles</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content Layout -->
+        <div class="content-wrapper">
+            <main class="main-content">
+                <!-- Featured Article -->
+                <article class="featured-article">
+                    <div class="article-image">
+                        <img src="https://via.placeholder.com/800x400/3498db/white?text=Featured+Article" alt="Featured article">
+                        <div class="image-overlay">
+                            <span class="category-badge">Featured</span>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <h2 class="article-title">Understanding the CSS Box Model</h2>
+                        <p class="article-meta">Published on January 15, 2024 • 5 min read</p>
+                        <p class="article-excerpt">
+                            Master the fundamental concept that controls how elements take up space 
+                            in CSS. Learn about content, padding, borders, and margins.
+                        </p>
+                        <div class="article-actions">
+                            <button class="btn btn-primary">Read More</button>
+                            <button class="btn btn-secondary">Save</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article Grid -->
+                <section class="articles-section">
+                    <h2 class="section-title">Latest Articles</h2>
+                    <div class="articles-grid">
+                        <article class="article-card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200/2ecc71/white?text=CSS+Grid" alt="CSS Grid article">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Mastering CSS Grid Layout</h3>
+                                <p class="card-excerpt">Learn how to create complex layouts with CSS Grid...</p>
+                                <div class="card-meta">
+                                    <span class="read-time">3 min read</span>
+                                    <span class="post-date">Jan 10</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200/e74c3c/white?text=Flexbox" alt="Flexbox article">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Flexbox Fundamentals</h3>
+                                <p class="card-excerpt">Build flexible layouts with CSS Flexbox properties...</p>
+                                <div class="card-meta">
+                                    <span class="read-time">4 min read</span>
+                                    <span class="post-date">Jan 8</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200/f39c12/white?text=Responsive" alt="Responsive design article">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Responsive Design Patterns</h3>
+                                <p class="card-excerpt">Create websites that work on all devices and screen sizes...</p>
+                                <div class="card-meta">
+                                    <span class="read-time">6 min read</span>
+                                    <span class="post-date">Jan 5</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200/9b59b6/white?text=Animation" alt="CSS Animation article">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">CSS Animation Techniques</h3>
+                                <p class="card-excerpt">Add smooth, performant animations to your web projects...</p>
+                                <div class="card-meta">
+                                    <span class="read-time">5 min read</span>
+                                    <span class="post-date">Jan 3</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Newsletter Signup -->
+                <section class="newsletter-section">
+                    <div class="newsletter-content">
+                        <h2>Stay Updated</h2>
+                        <p>Get the latest articles delivered to your inbox.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Enter your email" class="email-input">
+                            <button type="submit" class="subscribe-btn">Subscribe</button>
+                        </form>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Popular Topics</h3>
+                    <ul class="topic-list">
+                        <li class="topic-item">
+                            <a href="#" class="topic-link">CSS Fundamentals</a>
+                            <span class="topic-count">12</span>
+                        </li>
+                        <li class="topic-item">
+                            <a href="#" class="topic-link">JavaScript</a>
+                            <span class="topic-count">8</span>
+                        </li>
+                        <li class="topic-item">
+                            <a href="#" class="topic-link">Web Performance</a>
+                            <span class="topic-count">6</span>
+                        </li>
+                        <li class="topic-item">
+                            <a href="#" class="topic-link">Accessibility</a>
+                            <span class="topic-count">4</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Recent Comments</h3>
+                    <div class="comment-list">
+                        <div class="comment-item">
+                            <div class="commenter-avatar">JS</div>
+                            <div class="comment-content">
+                                <p class="commenter-name">John Smith</p>
+                                <p class="comment-text">Great explanation of the box model!</p>
+                            </div>
+                        </div>
+                        <div class="comment-item">
+                            <div class="commenter-avatar">AD</div>
+                            <div class="comment-content">
+                                <p class="commenter-name">Alice Davis</p>
+                                <p class="comment-text">This helped me understand positioning.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Advertisement</h3>
+                    <div class="ad-placeholder">
+                        <p>Your Ad Here</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>Learn CSS through practical examples and real-world projects.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">GitHub</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Tech Blog. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Architecture - Practice Task</title>
+    <!-- Link your task solution CSS file here -->
+    <link rel="stylesheet" href="task_solution.css">
+</head>
+<body>
+    <!-- 
+    TASK: Build a comprehensive CSS architecture using multiple methodologies
+    
+    Requirements:
+    1. Implement BEM methodology for component naming
+    2. Apply OOCSS principles for reusable components
+    3. Use SMACSS categories (Base, Layout, Module, State, Theme)
+    4. Create a scalable design system with consistent patterns
+    5. Implement CSS custom properties for theming
+    6. Build modular, maintainable component library
+    7. Apply ITCSS (Inverted Triangle CSS) layering
+    8. Create utility classes following atomic design principles
+    9. Ensure consistent spacing and typography scales
+    10. Document component variations and states
+    
+    Architecture Goals:
+    - Predictable and maintainable CSS
+    - Reusable component patterns
+    - Scalable naming conventions
+    - Clear separation of concerns
+    - Easy theming and customization
+    - Performance optimized styles
+    
+    Components to implement:
+    - Navigation system with states
+    - Card components with variations
+    - Button system with modifiers
+    - Form elements with validation states
+    - Layout grids and utilities
+    - Typography system
+    - Color and spacing tokens
+    -->
+    
+    <div class="app">
+        <!-- ===== HEADER WITH BEM METHODOLOGY ===== -->
+        <header class="header header--primary">
+            <div class="header__container l-container">
+                <div class="header__brand">
+                    <h1 class="header__logo">ArchitectureCSS</h1>
+                    <span class="header__tagline">Scalable Design Systems</span>
+                </div>
+                
+                <!-- Navigation using BEM + State classes -->
+                <nav class="nav nav--horizontal" aria-label="Main navigation">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#" class="nav__link nav__link--active" aria-current="page">Home</a>
+                        </li>
+                        <li class="nav__item nav__item--has-dropdown">
+                            <a href="#" class="nav__link">Components</a>
+                            <ul class="nav__dropdown">
+                                <li class="nav__dropdown-item">
+                                    <a href="#" class="nav__dropdown-link">Buttons</a>
+                                </li>
+                                <li class="nav__dropdown-item">
+                                    <a href="#" class="nav__dropdown-link">Cards</a>
+                                </li>
+                                <li class="nav__dropdown-item">
+                                    <a href="#" class="nav__dropdown-link">Forms</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Methodology</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Examples</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link nav__link--cta">Get Started</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- Mobile menu toggle -->
+                <button class="nav__toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="nav__toggle-line"></span>
+                    <span class="nav__toggle-line"></span>
+                    <span class="nav__toggle-line"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- ===== MAIN CONTENT AREA ===== -->
+        <main class="main">
+            <!-- Hero Section with OOCSS Media Object -->
+            <section class="hero hero--centered">
+                <div class="hero__container l-container">
+                    <div class="media-object media-object--reverse media-object--large">
+                        <div class="media-object__figure">
+                            <div class="hero__visual">
+                                <div class="architecture-diagram">
+                                    <div class="arch-layer arch-layer--settings">Settings</div>
+                                    <div class="arch-layer arch-layer--tools">Tools</div>
+                                    <div class="arch-layer arch-layer--generic">Generic</div>
+                                    <div class="arch-layer arch-layer--elements">Elements</div>
+                                    <div class="arch-layer arch-layer--objects">Objects</div>
+                                    <div class="arch-layer arch-layer--components">Components</div>
+                                    <div class="arch-layer arch-layer--utilities">Utilities</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media-object__body">
+                            <div class="hero__content">
+                                <h2 class="hero__title">Scalable CSS Architecture</h2>
+                                <p class="hero__subtitle">Build maintainable, scalable stylesheets using proven methodologies and design systems.</p>
+                                <div class="hero__actions">
+                                    <a href="#" class="btn btn--primary btn--large">Explore Components</a>
+                                    <a href="#" class="btn btn--secondary btn--large">View Documentation</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Methodology Showcase -->
+            <section class="section section--alt">
+                <div class="section__container l-container">
+                    <div class="section__header">
+                        <h2 class="section__title">CSS Methodologies in Action</h2>
+                        <p class="section__subtitle">See how different CSS architectures work together</p>
+                    </div>
+                    
+                    <div class="l-grid l-grid--3-col">
+                        <!-- BEM Example Card -->
+                        <article class="card card--methodology card--bem">
+                            <header class="card__header">
+                                <div class="card__icon">
+                                    <span class="icon icon--bem">B</span>
+                                </div>
+                                <h3 class="card__title">BEM Methodology</h3>
+                                <div class="badge badge--primary">Block__Element--Modifier</div>
+                            </header>
+                            
+                            <div class="card__body">
+                                <p class="card__text">
+                                    Systematic approach to naming CSS classes using blocks, elements, and modifiers.
+                                </p>
+                                
+                                <div class="code-example">
+                                    <pre class="code-example__content"><code>.card { /* Block */ }
+.card__title { /* Element */ }
+.card--featured { /* Modifier */ }</code></pre>
+                                </div>
+                                
+                                <div class="feature-list">
+                                    <div class="feature-list__item">
+                                        <span class="feature-list__icon">✓</span>
+                                        <span class="feature-list__text">Clear naming conventions</span>
+                                    </div>
+                                    <div class="feature-list__item">
+                                        <span class="feature-list__icon">✓</span>
+                                        <span class="feature-list__text">Component isolation</span>
+                                    </div>
+                                    <div class="feature-list__item">
+                                        <span class="feature-list__icon">✓</span>
+                                        <span class="feature-list__text">Scalable structure</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <footer class="card__footer">
+                                <a href="#" class="btn btn--outline btn--small">Learn BEM</a>
+                            </footer>
+                        </article>
+
+                        <!-- OOCSS Example Card -->
+                        <article class="card card--methodology card--oocss">
+                            <header class="card__header">
+                                <div class="card__icon">
+                                    <span class="icon icon--oocss">O</span>
+                                </div>
+                                <h3 class="card__title">OOCSS Principles</h3>
+                                <div class="badge badge--secondary">Object-Oriented CSS</div>
+                            </header>
+                            
+                            <div class="card__body">
+                                <p class="card__text">
+                                    Separates structure from skin and container from content for maximum reusability.
+                                </p>
+                                
+                                <div class="media-object media-object--small">
+                                    <div class="media-object__figure">
+                                        <div class="avatar avatar--small">OO</div>
+                                    </div>
+                                    <div class="media-object__body">
+                                        <h4 class="media-object__title">Media Object Pattern</h4>
+                                        <p class="media-object__text">Flexible, reusable component</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="feature-list">
+                                    <div class="feature-list__item">
+                                        <span class="feature-list__icon">✓</span>
+                                        <span class="feature-list__text">Separation of concerns</span>
+                                    </div>
+                                    <div class="feature-list__item">
+                                        <span class="feature-list__icon">✓</span>
+                                        <span class="feature-list__text">Reusable objects</span>
+                                    </div>
+                                    <div class="feature-list__item">
+                                        <span class="feature-list__icon">✓</span>
+                                        <span class="feature-list__text">Flexible layouts</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <footer class="card__footer">
+                                <a href="#" class="btn btn--outline btn--small">Learn OOCSS</a>
+                            </footer>
+                        </article>
+
+                        <!-- SMACSS Example Card -->
+                        <article class="card card--methodology card--smacss">
+                            <header class="card__header">
+                                <div class="card__icon">
+                                    <span class="icon icon--smacss">S</span>
+                                </div>
+                                <h3 class="card__title">SMACSS Categories</h3>
+                                <div class="badge badge--success">Scalable & Modular</div>
+                            </header>
+                            
+                            <div class="card__body">
+                                <p class="card__text">
+                                    Categorizes CSS rules into Base, Layout, Module, State, and Theme for organization.
+                                </p>
+                                
+                                <div class="category-showcase">
+                                    <div class="category-item category-item--layout">
+                                        <span class="category-item__prefix">l-</span>
+                                        <span class="category-item__name">Layout</span>
+                                    </div>
+                                    <div class="category-item category-item--module">
+                                        <span class="category-item__prefix">m-</span>
+                                        <span class="category-item__name">Module</span>
+                                    </div>
+                                    <div class="category-item category-item--state">
+                                        <span class="category-item__prefix">is-</span>
+                                        <span class="category-item__name">State</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="feature-list">
+                                    <div class="feature-list__item">
+                                        <span class="feature-list__icon">✓</span>
+                                        <span class="feature-list__text">Clear categorization</span>
+                                    </div>
+                                    <div class="feature-list__item">
+                                        <span class="feature-list__icon">✓</span>
+                                        <span class="feature-list__text">Predictable structure</span>
+                                    </div>
+                                    <div class="feature-list__item">
+                                        <span class="feature-list__icon">✓</span>
+                                        <span class="feature-list__text">Team consistency</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <footer class="card__footer">
+                                <a href="#" class="btn btn--outline btn--small">Learn SMACSS</a>
+                            </footer>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Component Library Showcase -->
+            <section class="section">
+                <div class="section__container l-container">
+                    <div class="section__header">
+                        <h2 class="section__title">Design System Components</h2>
+                        <p class="section__subtitle">Scalable, reusable components built with architectural best practices</p>
+                    </div>
+                    
+                    <!-- Button System -->
+                    <div class="component-showcase">
+                        <h3 class="component-showcase__title">Button System</h3>
+                        <div class="component-demo">
+                            <div class="component-group">
+                                <h4 class="component-group__title">Primary Buttons</h4>
+                                <div class="component-group__items">
+                                    <button class="btn btn--primary btn--small">Small</button>
+                                    <button class="btn btn--primary">Medium</button>
+                                    <button class="btn btn--primary btn--large">Large</button>
+                                    <button class="btn btn--primary" disabled>Disabled</button>
+                                </div>
+                            </div>
+                            
+                            <div class="component-group">
+                                <h4 class="component-group__title">Secondary Buttons</h4>
+                                <div class="component-group__items">
+                                    <button class="btn btn--secondary btn--small">Small</button>
+                                    <button class="btn btn--secondary">Medium</button>
+                                    <button class="btn btn--secondary btn--large">Large</button>
+                                    <button class="btn btn--secondary" disabled>Disabled</button>
+                                </div>
+                            </div>
+                            
+                            <div class="component-group">
+                                <h4 class="component-group__title">Specialized Buttons</h4>
+                                <div class="component-group__items">
+                                    <button class="btn btn--success">Success</button>
+                                    <button class="btn btn--warning">Warning</button>
+                                    <button class="btn btn--danger">Danger</button>
+                                    <button class="btn btn--ghost">Ghost</button>
+                                    <button class="btn btn--link">Link Style</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form System -->
+                    <div class="component-showcase">
+                        <h3 class="component-showcase__title">Form Architecture</h3>
+                        <form class="form form--architectural-demo">
+                            <div class="l-grid l-grid--2-col">
+                                <div class="form-group">
+                                    <label class="form-group__label" for="name">Full Name</label>
+                                    <input class="form-group__input" type="text" id="name" placeholder="Enter your name">
+                                    <div class="form-group__help">Your display name</div>
+                                </div>
+                                
+                                <div class="form-group form-group--error">
+                                    <label class="form-group__label" for="email">Email Address</label>
+                                    <input class="form-group__input" type="email" id="email" value="invalid-email" aria-invalid="true">
+                                    <div class="form-group__error-message">Please enter a valid email address</div>
+                                </div>
+                                
+                                <div class="form-group form-group--success">
+                                    <label class="form-group__label" for="username">Username</label>
+                                    <input class="form-group__input" type="text" id="username" value="available_username" aria-invalid="false">
+                                    <div class="form-group__success-message">Username is available</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-group__label" for="role">Role</label>
+                                    <select class="form-group__select" id="role">
+                                        <option>Frontend Developer</option>
+                                        <option>Backend Developer</option>
+                                        <option>Full Stack Developer</option>
+                                        <option>UI/UX Designer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-group__label" for="bio">Biography</label>
+                                <textarea class="form-group__textarea" id="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <fieldset class="fieldset">
+                                    <legend class="fieldset__legend">Preferences</legend>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox">
+                                            <input class="checkbox__input" type="checkbox" checked>
+                                            <span class="checkbox__checkmark"></span>
+                                            <span class="checkbox__label">Email notifications</span>
+                                        </label>
+                                        <label class="checkbox">
+                                            <input class="checkbox__input" type="checkbox">
+                                            <span class="checkbox__checkmark"></span>
+                                            <span class="checkbox__label">SMS notifications</span>
+                                        </label>
+                                        <label class="checkbox">
+                                            <input class="checkbox__input" type="checkbox">
+                                            <span class="checkbox__checkmark"></span>
+                                            <span class="checkbox__label">Marketing communications</span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+                            <div class="form-group">
+                                <fieldset class="fieldset">
+                                    <legend class="fieldset__legend">Experience Level</legend>
+                                    <div class="radio-group">
+                                        <label class="radio">
+                                            <input class="radio__input" type="radio" name="experience" value="beginner">
+                                            <span class="radio__checkmark"></span>
+                                            <span class="radio__label">Beginner (0-1 years)</span>
+                                        </label>
+                                        <label class="radio">
+                                            <input class="radio__input" type="radio" name="experience" value="intermediate" checked>
+                                            <span class="radio__checkmark"></span>
+                                            <span class="radio__label">Intermediate (2-5 years)</span>
+                                        </label>
+                                        <label class="radio">
+                                            <input class="radio__input" type="radio" name="experience" value="advanced">
+                                            <span class="radio__checkmark"></span>
+                                            <span class="radio__label">Advanced (5+ years)</span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button class="btn btn--primary btn--large" type="submit">Create Profile</button>
+                                <button class="btn btn--secondary btn--large" type="reset">Reset Form</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Card System Variations -->
+                    <div class="component-showcase">
+                        <h3 class="component-showcase__title">Card Component System</h3>
+                        <div class="l-grid l-grid--3-col">
+                            <!-- Standard Card -->
+                            <article class="card">
+                                <header class="card__header">
+                                    <h4 class="card__title">Standard Card</h4>
+                                    <div class="card__meta">
+                                        <time class="card__date">March 15, 2024</time>
+                                        <div class="badge badge--neutral">Article</div>
+                                    </div>
+                                </header>
+                                <div class="card__body">
+                                    <p class="card__text">This is a standard card component showcasing the base card architecture with consistent spacing and typography.</p>
+                                </div>
+                                <footer class="card__footer">
+                                    <a href="#" class="btn btn--outline btn--small">Read More</a>
+                                </footer>
+                            </article>
+
+                            <!-- Featured Card -->
+                            <article class="card card--featured">
+                                <div class="card__ribbon">
+                                    <span class="card__ribbon-text">Featured</span>
+                                </div>
+                                <header class="card__header">
+                                    <h4 class="card__title">Featured Content</h4>
+                                    <div class="card__meta">
+                                        <time class="card__date">March 10, 2024</time>
+                                        <div class="badge badge--primary">Tutorial</div>
+                                    </div>
+                                </header>
+                                <div class="card__body">
+                                    <p class="card__text">Featured card with enhanced styling and visual prominence to highlight important content.</p>
+                                </div>
+                                <footer class="card__footer">
+                                    <a href="#" class="btn btn--primary btn--small">Start Tutorial</a>
+                                </footer>
+                            </article>
+
+                            <!-- Interactive Card -->
+                            <article class="card card--interactive">
+                                <header class="card__header">
+                                    <div class="card__avatar">
+                                        <div class="avatar avatar--medium">JS</div>
+                                    </div>
+                                    <div class="card__author">
+                                        <h4 class="card__title">JavaScript Tips</h4>
+                                        <p class="card__subtitle">By John Smith</p>
+                                    </div>
+                                </header>
+                                <div class="card__body">
+                                    <p class="card__text">Interactive card with hover effects and enhanced user engagement patterns.</p>
+                                </div>
+                                <footer class="card__footer">
+                                    <div class="card__stats">
+                                        <span class="stat">
+                                            <span class="stat__icon">👍</span>
+                                            <span class="stat__value">24</span>
+                                        </span>
+                                        <span class="stat">
+                                            <span class="stat__icon">💬</span>
+                                            <span class="stat__value">8</span>
+                                        </span>
+                                        <span class="stat">
+                                            <span class="stat__icon">🔗</span>
+                                            <span class="stat__value">Share</span>
+                                        </span>
+                                    </div>
+                                </footer>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Utility Classes Demo -->
+            <section class="section section--utilities">
+                <div class="section__container l-container">
+                    <div class="section__header">
+                        <h2 class="section__title">Utility-First Patterns</h2>
+                        <p class="section__subtitle">Atomic CSS utilities for rapid development</p>
+                    </div>
+                    
+                    <div class="utility-demo">
+                        <div class="utility-showcase">
+                            <h3 class="utility-showcase__title">Spacing Utilities</h3>
+                            <div class="spacing-demo">
+                                <div class="u-margin-bottom-xs u-padding-sm u-bg-primary-light u-text-primary-dark u-border-radius">Margin XS, Padding SM</div>
+                                <div class="u-margin-bottom-md u-padding-md u-bg-secondary-light u-text-secondary-dark u-border-radius">Margin MD, Padding MD</div>
+                                <div class="u-margin-bottom-lg u-padding-lg u-bg-success-light u-text-success-dark u-border-radius">Margin LG, Padding LG</div>
+                            </div>
+                        </div>
+                        
+                        <div class="utility-showcase">
+                            <h3 class="utility-showcase__title">Typography Utilities</h3>
+                            <div class="typography-demo">
+                                <p class="u-text-xs u-font-light">Extra small light text</p>
+                                <p class="u-text-sm u-font-normal">Small normal text</p>
+                                <p class="u-text-base u-font-medium">Base medium text</p>
+                                <p class="u-text-lg u-font-semibold">Large semibold text</p>
+                                <p class="u-text-xl u-font-bold">Extra large bold text</p>
+                            </div>
+                        </div>
+                        
+                        <div class="utility-showcase">
+                            <h3 class="utility-showcase__title">Color Utilities</h3>
+                            <div class="color-demo">
+                                <div class="u-bg-primary u-text-white u-padding-sm u-border-radius u-margin-bottom-xs">Primary Background</div>
+                                <div class="u-bg-secondary u-text-white u-padding-sm u-border-radius u-margin-bottom-xs">Secondary Background</div>
+                                <div class="u-bg-success u-text-white u-padding-sm u-border-radius u-margin-bottom-xs">Success Background</div>
+                                <div class="u-bg-warning u-text-dark u-padding-sm u-border-radius u-margin-bottom-xs">Warning Background</div>
+                                <div class="u-bg-danger u-text-white u-padding-sm u-border-radius">Danger Background</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- State Management Demo -->
+            <section class="section section--interactive">
+                <div class="section__container l-container">
+                    <div class="section__header">
+                        <h2 class="section__title">State Management</h2>
+                        <p class="section__subtitle">CSS-only state management using SMACSS state classes</p>
+                    </div>
+                    
+                    <div class="state-demo">
+                        <div class="interactive-panel" id="interactivePanel">
+                            <div class="panel panel--default">
+                                <div class="panel__header">
+                                    <h3 class="panel__title">Interactive Panel</h3>
+                                    <div class="panel__controls">
+                                        <button class="btn btn--small" data-state="loading">Loading</button>
+                                        <button class="btn btn--small" data-state="success">Success</button>
+                                        <button class="btn btn--small" data-state="error">Error</button>
+                                        <button class="btn btn--small" data-state="default">Reset</button>
+                                    </div>
+                                </div>
+                                <div class="panel__body">
+                                    <div class="state-content">
+                                        <div class="state-message state-message--default">
+                                            <p>This panel demonstrates CSS state management. Click the buttons above to see different states.</p>
+                                        </div>
+                                        <div class="state-message state-message--loading">
+                                            <div class="loading-spinner"></div>
+                                            <p>Loading content...</p>
+                                        </div>
+                                        <div class="state-message state-message--success">
+                                            <div class="state-icon state-icon--success">✓</div>
+                                            <p>Operation completed successfully!</p>
+                                        </div>
+                                        <div class="state-message state-message--error">
+                                            <div class="state-icon state-icon--error">✗</div>
+                                            <p>An error occurred. Please try again.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <div class="footer__container l-container">
+                <div class="footer__content">
+                    <div class="footer__section">
+                        <h4 class="footer__title">CSS Architecture</h4>
+                        <p class="footer__text">Building scalable, maintainable stylesheets for modern web applications.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-links__item" aria-label="Twitter">
+                                <span class="icon icon--twitter">T</span>
+                            </a>
+                            <a href="#" class="social-links__item" aria-label="GitHub">
+                                <span class="icon icon--github">G</span>
+                            </a>
+                            <a href="#" class="social-links__item" aria-label="LinkedIn">
+                                <span class="icon icon--linkedin">L</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer__section">
+                        <h4 class="footer__title">Methodologies</h4>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">BEM</a></li>
+                            <li><a href="#" class="footer__link">OOCSS</a></li>
+                            <li><a href="#" class="footer__link">SMACSS</a></li>
+                            <li><a href="#" class="footer__link">ITCSS</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer__section">
+                        <h4 class="footer__title">Components</h4>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">Buttons</a></li>
+                            <li><a href="#" class="footer__link">Forms</a></li>
+                            <li><a href="#" class="footer__link">Cards</a></li>
+                            <li><a href="#" class="footer__link">Navigation</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer__section">
+                        <h4 class="footer__title">Resources</h4>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">Documentation</a></li>
+                            <li><a href="#" class="footer__link">Examples</a></li>
+                            <li><a href="#" class="footer__link">Best Practices</a></li>
+                            <li><a href="#" class="footer__link">Style Guide</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer__bottom">
+                    <p class="footer__copyright">&copy; 2024 CSS Architecture Tutorial. Built with scalable methodologies.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Simple JavaScript for state demo -->
+    <script>
+        // Mobile navigation toggle
+        document.querySelector('.nav__toggle').addEventListener('click', function() {
+            document.querySelector('.nav').classList.toggle('nav--open');
+            this.setAttribute('aria-expanded', 
+                this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+            );
+        });
+
+        // State management demo
+        document.querySelectorAll('[data-state]').forEach(button => {
+            button.addEventListener('click', function() {
+                const panel = document.getElementById('interactivePanel');
+                const state = this.dataset.state;
+                
+                // Remove all state classes
+                panel.className = panel.className.replace(/\bis-\w+/g, '');
+                
+                // Add new state class
+                if (state !== 'default') {
+                    panel.classList.add(`is-${state}`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

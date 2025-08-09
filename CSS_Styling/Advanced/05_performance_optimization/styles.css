@@ -1,0 +1,399 @@
+/* ===== NON-CRITICAL CSS ===== */
+/* This CSS is loaded asynchronously after critical rendering path */
+
+/* ===== BASE STYLES ===== */
+body {
+    background-color: #f8fafc;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== PERFORMANCE OPTIMIZED COMPONENTS ===== */
+
+/* Performance Metrics Section */
+.performance-metrics {
+    padding: 80px 0;
+    background: white;
+    margin-top: 60px; /* Account for fixed header */
+}
+
+.performance-metrics h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 3rem;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.metric-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    /* CSS Containment for performance */
+    contain: layout style;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+    /* GPU-accelerated transform */
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.metric-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #2563eb;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.metric-label {
+    font-size: 1.1rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* Optimization Techniques Section */
+.optimization-techniques {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+}
+
+.optimization-techniques h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 3rem;
+}
+
+.techniques-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.technique-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    /* Performance optimization */
+    contain: layout style;
+    /* Optimize will-change for hover animations */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.technique-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    will-change: transform;
+}
+
+.technique-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.technique-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.technique-card p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* Performance Demo Section */
+.performance-demo {
+    padding: 80px 0;
+    background: white;
+}
+
+.performance-demo h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 3rem;
+}
+
+.demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.demo-card {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    border: 2px solid #e5e7eb;
+    /* Performance containment */
+    contain: layout paint;
+}
+
+.demo-card.optimized {
+    border-color: #10b981;
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+}
+
+.demo-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+}
+
+.animation-box {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ===== PERFORMANCE-OPTIMIZED ANIMATIONS ===== */
+
+/* GPU-accelerated animation using transform and opacity */
+.optimized-animation {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    /* Prepare for hardware acceleration */
+    will-change: transform, opacity;
+    transform: translateZ(0); /* Force GPU layer */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.optimized-animation:hover {
+    /* Only animate transform and opacity for 60fps performance */
+    transform: translateZ(0) scale(1.2) rotate(15deg);
+    opacity: 0.8;
+}
+
+/* Layout-triggering animation (less performant) */
+.layout-animation {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    transition: width 0.3s ease, height 0.3s ease, margin 0.3s ease;
+}
+
+.layout-animation:hover {
+    /* These properties trigger layout recalculation */
+    width: 100px;
+    height: 100px;
+    margin-top: -10px;
+}
+
+/* ===== EFFICIENT SELECTOR PATTERNS ===== */
+
+/* Good: Low specificity, fast matching */
+.btn { 
+    padding: 12px 24px; 
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+/* Good: Direct class targeting */
+.btn-primary { 
+    background: #3b82f6; 
+    color: white; 
+}
+
+.btn-primary:hover { 
+    background: #2563eb; 
+}
+
+/* ===== CSS CONTAINMENT EXAMPLES ===== */
+
+/* Layout containment - isolates layout calculations */
+.layout-contained {
+    contain: layout;
+}
+
+/* Style containment - prevents style recalculation from affecting children */
+.style-contained {
+    contain: style;
+}
+
+/* Paint containment - isolates paint operations */
+.paint-contained {
+    contain: paint;
+}
+
+/* Size containment - element size doesn't depend on children */
+.size-contained {
+    contain: size;
+}
+
+/* Comprehensive containment */
+.fully-contained {
+    contain: layout style paint size;
+    /* Modern content-visibility for better performance */
+    content-visibility: auto;
+}
+
+/* ===== RESPONSIVE DESIGN WITH PERFORMANCE IN MIND ===== */
+
+/* Mobile-first approach for better performance on mobile devices */
+@media (max-width: 768px) {
+    .metrics-grid,
+    .techniques-grid,
+    .demo-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .performance-metrics h2,
+    .optimization-techniques h2,
+    .performance-demo h2 {
+        font-size: 2rem;
+    }
+    
+    .metric-number {
+        font-size: 2.5rem;
+    }
+    
+    .technique-card,
+    .metric-card {
+        padding: 1.5rem;
+    }
+    
+    /* Disable hover effects on touch devices for better performance */
+    .technique-card:hover,
+    .metric-card:hover {
+        transform: none;
+    }
+}
+
+/* Larger screens - enhanced experience */
+@media (min-width: 1024px) {
+    .metrics-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .techniques-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .demo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4rem;
+    }
+}
+
+/* ===== PRINT OPTIMIZATION ===== */
+@media print {
+    .performance-metrics,
+    .optimization-techniques,
+    .performance-demo {
+        padding: 40px 0;
+    }
+    
+    .animation-box {
+        display: none;
+    }
+    
+    .metric-card,
+    .technique-card,
+    .demo-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+}
+
+/* ===== ACCESSIBILITY AND PERFORMANCE ===== */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .optimized-animation,
+    .layout-animation,
+    .technique-card,
+    .metric-card {
+        transition: none;
+        animation: none;
+    }
+    
+    .optimized-animation:hover,
+    .technique-card:hover,
+    .metric-card:hover {
+        transform: none;
+    }
+}
+
+/* High contrast mode optimizations */
+@media (prefers-contrast: high) {
+    .metric-card,
+    .technique-card,
+    .demo-card {
+        border-width: 2px;
+        border-color: #000;
+    }
+}
+
+/* ===== PERFORMANCE-OPTIMIZED UTILITY CLASSES ===== */
+
+/* GPU acceleration utilities */
+.gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Content visibility utilities */
+.auto-visibility {
+    content-visibility: auto;
+}
+
+.hidden-visibility {
+    content-visibility: hidden;
+}
+
+/* Containment utilities */
+.contain-layout { contain: layout; }
+.contain-style { contain: style; }
+.contain-paint { contain: paint; }
+.contain-size { contain: size; }
+.contain-all { contain: layout style paint size; }
+
+/* Performance-optimized display utilities */
+.flex-perf {
+    display: flex;
+    /* Optimize flex container for performance */
+    contain: layout style;
+}
+
+.grid-perf {
+    display: grid;
+    /* Optimize grid container for performance */
+    contain: layout;
+}
+
+/* ===== CRITICAL CSS EXTRACTION MARKERS ===== */
+/*
+These comments help identify critical vs non-critical CSS:
+- Critical: Above-the-fold content (header, hero)
+- Non-critical: Below-the-fold content (loaded asynchronously)
+*/

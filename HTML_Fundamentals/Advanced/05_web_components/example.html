@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- Demonstrates Web Components custom elements -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Components Demo</title>
+  <meta name="description" content="Advanced example showing Web Components custom elements and Shadow DOM.">
+  <meta name="author" content="Frontend Lectures">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Web Components Custom Elements</h1>
+
+  <!-- SECTION: Custom Element
+       Benefit: Reusable, encapsulated components.
+       Drawback: Browser support varies for newer features. -->
+  <user-card name="Jane Doe" avatar="https://via.placeholder.com/100" position="Frontend Developer"></user-card>
+  <user-card name="John Smith" avatar="https://via.placeholder.com/100" position="UX Designer"></user-card>
+
+  <script>
+    class UserCard extends HTMLElement {
+      constructor() {
+        super();
+        // Create shadow DOM
+        const shadow = this.attachShadow({ mode: 'open' });
+
+        // Create styles
+        const style = document.createElement('style');
+        style.textContent = `
+          .card {
+            display: flex;
+            align-items: center;
+            width: 450px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          }
+          .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+          }
+          .info h2 {
+            margin: 0 0 0.5rem 0;
+          }
+          .info p {
+            margin: 0;
+            color: #666;
+          }
+        `;
+
+        // Create card template
+        const card = document.createElement('div');
+        card.setAttribute('class', 'card');
+
+        const avatar = document.createElement('img');
+        avatar.setAttribute('class', 'avatar');
+        avatar.src = this.getAttribute('avatar') || 'https://via.placeholder.com/60';
+
+        const info = document.createElement('div');
+        info.setAttribute('class', 'info');
+
+        const name = document.createElement('h2');
+        name.textContent = this.getAttribute('name') || 'Unknown';
+
+        const position = document.createElement('p');
+        position.textContent = this.getAttribute('position') || 'Not specified';
+
+        // Append elements to shadow DOM
+        info.appendChild(name);
+        info.appendChild(position);
+        card.appendChild(avatar);
+        card.appendChild(info);
+        shadow.appendChild(style);
+        shadow.appendChild(card);
+      }
+    }
+
+    // Define the custom element
+    customElements.define('user-card', UserCard);
+  </script>
+</body>
+
+</html>

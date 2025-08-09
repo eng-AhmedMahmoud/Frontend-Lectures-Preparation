@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!-- Demonstrates Web Workers for background processing -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Workers Demo</title>
+  <meta name="description" content="Advanced example showing Web Workers for non-blocking computation.">
+  <meta name="author" content="Frontend Lectures">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .demo-section {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+
+    progress {
+      width: 100%;
+      margin: 1rem 0;
+    }
+
+    .animation {
+      width: 50px;
+      height: 50px;
+      background-color: #3498db;
+      border-radius: 50%;
+      margin: 1rem 0;
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.2);
+      }
+    }
+
+    #results {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Web Workers Demo</h1>
+  <p>Run intensive tasks in the background without blocking the UI.</p>
+
+  <!-- SECTION: Web Worker Demo
+       Benefit: Non-blocking UI during heavy computation.
+       Drawback: No direct DOM access from workers. -->
+  <div class="demo-section">
+    <h2>Prime Number Calculator</h2>
+    <div>
+      <button id="startWorker">Calculate Primes (Worker)</button>
+      <button id="startMain">Calculate Primes (Main Thread)</button>
+      <button id="resetDemo">Reset</button>
+    </div>
+    <div id="status">Status: Idle</div>
+    <progress id="progress" value="0" max="100" style="display: none;"></progress>
+    <div id="results"></div>
+  </div>
+
+  <!-- SECTION: UI Responsiveness Test -->
+  <div class="demo-section">
+    <h2>UI Responsiveness Test</h2>
+    <p>This animation should remain smooth when calculations run in a Web Worker, but will freeze when run on the main
+      thread.</p>
+    <div class="animation"></div>
+  </div>
+
+  <script>
+    // Elements
+    const startWorkerBtn = document.getElementById('startWorker');
+    const startMainBtn = document.getElementById('startMain');
+    const resetBtn = document.getElementById('resetDemo');
+    const status = document.getElementById('status');
+    const progress = document.getElementById('progress');
+    const results = document.getElementById('results');
+
+    let worker; // Will hold our worker instance
+
+    // Initialize/reset the worker
+    function setupWorker() {
+      // Terminate existing worker if any
+      if (worker) {
+        worker.terminate();
+      }
+
+      // Create a new worker
+      worker = new Worker('worker.js');
+
+      // Listen for messages from the worker
+      worker.onmessage = function (e) {
+        const data = e.data;
+
+        if (data.type === 'progress') {
+          // Update progress
+          progress.value = data.value;
+          status.textContent = `Status: ${data.value}% complete`;
+        }
+        else if (data.type === 'result') {
+          // Display results
+          progress.style.display = 'none';
+          status.textContent = 'Status: Completed';
+          results.innerHTML = `<p>Found ${data.primes.length} prime numbers.</p>
+                              <p>First 5: ${data.primes.slice(0, 5).join(', ')}...</p>
+                              <p>Calculation took ${data.time} ms</p>`;
+
+          // Enable buttons
+          startWorkerBtn.disabled = false;
+          startMainBtn.disabled = false;
+        }
+      };
+    }
+
+    // Setup worker initially
+    setupWorker();
+
+    // Calculate primes on the main thread (will block UI)
+    function calculatePrimesMainThread() {
+      const start = performance.now();
+      status.textContent = 'Status: Calculating on main thread...';
+
+      // Force browser to render status update before blocking
+      setTimeout(() => {
+        const max = 100000;
+        const primes = [];
+
+        // Simple prime check function
+        function isPrime(n) {
+          if (n <= 1) return false;
+          if (n <= 3) return true;
+          if (n % 2 === 0 || n % 3 === 0) return false;
+
+          let i = 5;
+          while (i * i <= n) {
+            if (n % i === 0 || n % (i + 2) === 0) return false;
+            i += 6;
+          }
+          return true;
+        }
+
+        // Find primes
+        for (let i = 2; i < max; i++) {
+          if (isPrime(i)) {
+            primes.push(i);
+          }
+
+          // Update progress occasionally
+          if (i % 1000 === 0) {
+            const percentComplete = Math.round((i / max) * 100);
+            progress.value = percentComplete;
+          }
+        }
+
+        const end = performance.now();
+        const time = Math.round(end - start);
+
+        // Display results
+        progress.style.display = 'none';
+        status.textContent = 'Status: Completed';
+        results.innerHTML = `<p>Found ${primes.length} prime numbers.</p>
+                            <p>First 5: ${primes.slice(0, 5).join(', ')}...</p>
+                            <p>Calculation took ${time} ms</p>`;
+
+        // Enable buttons
+        startWorkerBtn.disabled = false;
+        startMainBtn.disabled = false;
+      }, 10);
+    }
+
+    // Event Listeners
+    startWorkerBtn.addEventListener('click', () => {
+      // Reset UI
+      results.textContent = '';
+      progress.value = 0;
+      progress.style.display = 'block';
+
+      // Disable buttons while calculating
+      startWorkerBtn.disabled = true;
+      startMainBtn.disabled = true;
+
+      // Update status
+      status.textContent = 'Status: Calculating using Web Worker...';
+
+      // Start the worker
+      worker.postMessage({ command: 'calculate', max: 100000 });
+    });
+
+    startMainBtn.addEventListener('click', () => {
+      // Reset UI
+      results.textContent = '';
+      progress.value = 0;
+      progress.style.display = 'block';
+
+      // Disable buttons while calculating
+      startWorkerBtn.disabled = true;
+      startMainBtn.disabled = true;
+
+      // Calculate on main thread
+      calculatePrimesMainThread();
+    });
+
+    resetBtn.addEventListener('click', () => {
+      // Reset everything
+      setupWorker();
+      results.textContent = '';
+      status.textContent = 'Status: Idle';
+      progress.value = 0;
+      progress.style.display = 'none';
+
+      // Enable buttons
+      startWorkerBtn.disabled = false;
+      startMainBtn.disabled = false;
+    });
+  </script>
+</body>
+
+</html>

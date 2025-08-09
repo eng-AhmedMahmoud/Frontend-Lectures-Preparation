@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Layout - Task</title>
+    <!-- Create your CSS file and link it here -->
+    <link rel="stylesheet" href="task_solution.css">
+</head>
+<body>
+    <!-- 
+    TASK: Create a responsive layout using Flexbox
+    
+    Requirements:
+    1. Make the .page-wrapper a flex container (column direction)
+    2. Create a sticky header with:
+       - Logo on the left
+       - Navigation in the center (use flex to space items)
+       - Search button on the right
+    3. Style the .sidebar-layout to have:
+       - Main content that takes up available space
+       - Sidebar that's 300px wide on desktop
+       - Stack them vertically on mobile (max-width: 768px)
+    4. Create a .card-grid with:
+       - Cards that wrap and have equal heights
+       - 3 cards per row on desktop
+       - 2 cards per row on tablet
+       - 1 card per row on mobile
+    5. Style the .media-object with:
+       - Image on the left
+       - Content on the right
+       - Vertically centered alignment
+    6. Create a footer with:
+       - 3 equal columns on desktop
+       - Stack vertically on mobile
+       - Center align the copyright at the bottom
+    
+    Bonus challenges:
+    - Add order property to rearrange sidebar on mobile
+    - Use flex-grow to make certain cards larger
+    - Create a holy grail layout (header, main with 2 sidebars, footer)
+    -->
+    
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">FlexLogo</div>
+            <nav class="nav">
+                <a href="#" class="nav-item">Home</a>
+                <a href="#" class="nav-item">Products</a>
+                <a href="#" class="nav-item">About</a>
+                <a href="#" class="nav-item">Contact</a>
+            </nav>
+            <button class="search-btn">Search</button>
+        </header>
+
+        <!-- Main content with sidebar -->
+        <div class="sidebar-layout">
+            <main class="main-content">
+                <h1>Flexbox Layout Exercise</h1>
+                
+                <!-- Media object -->
+                <div class="media-object">
+                    <div class="media-image">Image</div>
+                    <div class="media-content">
+                        <h3>Media Object Title</h3>
+                        <p>This is a common pattern where an image sits alongside content. Use flexbox to align them properly.</p>
+                    </div>
+                </div>
+
+                <!-- Card grid -->
+                <section class="cards-section">
+                    <h2>Featured Products</h2>
+                    <div class="card-grid">
+                        <article class="card">
+                            <h3>Product 1</h3>
+                            <p>Description of the first product goes here.</p>
+                            <button class="card-btn">View Details</button>
+                        </article>
+                        
+                        <article class="card featured">
+                            <h3>Featured Product</h3>
+                            <p>This is a featured product with more content. It should maintain equal height with other cards.</p>
+                            <button class="card-btn">View Details</button>
+                        </article>
+                        
+                        <article class="card">
+                            <h3>Product 3</h3>
+                            <p>Short description.</p>
+                            <button class="card-btn">View Details</button>
+                        </article>
+                        
+                        <article class="card">
+                            <h3>Product 4</h3>
+                            <p>Another product description with medium length content.</p>
+                            <button class="card-btn">View Details</button>
+                        </article>
+                        
+                        <article class="card">
+                            <h3>Product 5</h3>
+                            <p>Description text here.</p>
+                            <button class="card-btn">View Details</button>
+                        </article>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <h3>Sidebar</h3>
+                <ul class="sidebar-list">
+                    <li>Category 1</li>
+                    <li>Category 2</li>
+                    <li>Category 3</li>
+                    <li>Category 4</li>
+                </ul>
+            </aside>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FlexLogo. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

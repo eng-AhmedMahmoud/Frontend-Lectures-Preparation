@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors - Task</title>
+    <!-- Create your CSS file and link it here -->
+    <link rel="stylesheet" href="task_solution.css">
+</head>
+<body>
+    <!-- 
+    TASK: Apply CSS selectors to style this HTML page
+    
+    Requirements:
+    1. Use a universal selector to reset margins and padding
+    2. Style the body with a font family and background color
+    3. Use an ID selector to style #page-header (dark background, white text)
+    4. Use class selectors for .menu-item (inline display, padding)
+    5. Create hover effects for .menu-item links
+    6. Style .product cards with borders and shadows
+    7. Use multiple classes: .product.featured should have a gold border
+    8. Style .price differently inside .product.featured
+    9. Use descendant selectors for .product h3 and .product p
+    10. Create a :hover effect for .add-to-cart buttons
+    11. Use attribute selectors to style input[type="email"]
+    12. Group selectors for consistent heading styles
+    
+    Bonus challenges:
+    - Use :first-child to style the first product differently
+    - Use :nth-child to alternate background colors for products
+    - Create a .sold-out class that grays out the product
+    -->
+    
+    <header id="page-header">
+        <h1>Online Store</h1>
+        <nav class="main-nav">
+            <ul class="menu">
+                <li class="menu-item"><a href="#">Home</a></li>
+                <li class="menu-item"><a href="#">Products</a></li>
+                <li class="menu-item"><a href="#">About</a></li>
+                <li class="menu-item"><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="products-section">
+            <h2>Our Products</h2>
+            
+            <div class="products-grid">
+                <article class="product featured">
+                    <h3>Premium Laptop</h3>
+                    <p class="description">High-performance laptop for professionals</p>
+                    <p class="price">$1,299</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </article>
+                
+                <article class="product">
+                    <h3>Wireless Mouse</h3>
+                    <p class="description">Ergonomic design with long battery life</p>
+                    <p class="price">$49</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </article>
+                
+                <article class="product sold-out">
+                    <h3>Mechanical Keyboard</h3>
+                    <p class="description">RGB backlit with cherry MX switches</p>
+                    <p class="price">$129</p>
+                    <button class="add-to-cart" disabled>Sold Out</button>
+                </article>
+                
+                <article class="product">
+                    <h3>USB-C Hub</h3>
+                    <p class="description">7-in-1 multiport adapter</p>
+                    <p class="price">$39</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <h2>Subscribe to Our Newsletter</h2>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <input type="submit" value="Subscribe" class="submit-btn">
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 Online Store. All rights reserved.</p>
+    </footer>
+</body>
+</html>

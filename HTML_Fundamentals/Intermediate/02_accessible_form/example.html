@@ -46,19 +46,30 @@
       cursor: not-allowed;
     }
   </style>
+    <!-- Live validation script -->
+    <script defer>
+      const form = document.querySelector('form');
+      form.addEventListener('submit', e => {
+        if (!form.checkValidity()) {
+          e.preventDefault();
+          alert('Please complete the required fields.');
+        }
+      });
+    </script>
 </head>
 <body>
+  Accessability 
   <h1>Accessible Contact Form</h1>
-  <form action="#" novalidate>
+  <form action="#">
     <div class="form-group">
       <label for="name">Name <span aria-hidden="true">*</span></label>
       <input type="text" id="name" name="name" required aria-required="true">
     </div>
-
-    <div class="form-group">
+    
+    <section class="form-group">
       <label for="email">Email <span aria-hidden="true">*</span></label>
       <input type="email" id="email" name="email" required aria-required="true" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
-    </div>
+    </section>
 
     <div class="form-group">
       <label for="message">Message</label>
@@ -69,15 +80,15 @@
     <button type="submit">Send</button>
   </form>
 
-  <!-- Live validation script -->
-  <script>
-    const form = document.querySelector('form');
-    form.addEventListener('submit', e => {
-      if (!form.checkValidity()) {
-        e.preventDefault();
-        alert('Please complete the required fields.');
-      }
-    });
-  </script>
+  <fieldset>
+    <legend>Contact Information</legend>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" aria-describedby="phoneHelp">
+      <small id="phoneHelp">We'll never share your phone number.</small>
+    </div>
+  </fieldset>
+
+
 </body>
 </html> 

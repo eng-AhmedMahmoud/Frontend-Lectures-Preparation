@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Photo Gallery</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    header {
+      background-color: #34495e;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .progress-container {
+      position: fixed;
+      top: 0;
+      z-index: 1;
+      width: 100%;
+      height: 8px;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #3498db;
+      width: 0%;
+      transition: width 0.2s ease;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .intro {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .intro.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .photo-card {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .photo-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      background-color: #f1f1f1;
+    }
+
+    .photo-info {
+      padding: 1rem;
+    }
+
+    .photo-info h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    section {
+      margin: 4rem 0;
+    }
+
+    section h2 {
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    section h2.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background-color: #3498db;
+      transition: width 1.2s ease;
+    }
+
+    section h2.visible::after {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <header>
+    <h1>Travel Photography Gallery</h1>
+    <p>Beautiful destinations around the world</p>
+  </header>
+
+  <main>
+    <div class="intro">
+      <h2>Welcome to our Gallery</h2>
+      <p>Scroll down to explore stunning travel photography from around the world. Images will load as you scroll to
+        preserve bandwidth and improve performance.</p>
+    </div>
+
+    <section>
+      <h2>European Destinations</h2>
+      <div class="gallery">
+        <div class="photo-card">
+          <img data-src="https://via.placeholder.com/600x400?text=Paris" alt="Paris, France">
+          <div class="photo-info">
+            <h3>Paris, France</h3>
+            <p>The iconic Eiffel Tower and charming streets of Paris.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <img data-src="https://via.placeholder.com/600x400?text=Rome" alt="Rome, Italy">
+          <div class="photo-info">
+            <h3>Rome, Italy</h3>
+            <p>Ancient history meets modern city life in Rome.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <img data-src="https://via.placeholder.com/600x400?text=Santorini" alt="Santorini, Greece">
+          <div class="photo-info">
+            <h3>Santorini, Greece</h3>
+            <p>White-washed buildings with stunning ocean views.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Asian Adventures</h2>
+      <div class="gallery">
+        <div class="photo-card">
+          <img data-src="https://via.placeholder.com/600x400?text=Tokyo" alt="Tokyo, Japan">
+          <div class="photo-info">
+            <h3>Tokyo, Japan</h3>
+            <p>Ultramodern meets traditional in this bustling metropolis.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <img data-src="https://via.placeholder.com/600x400?text=Bali" alt="Bali, Indonesia">
+          <div class="photo-info">
+            <h3>Bali, Indonesia</h3>
+            <p>Lush landscapes and spiritual temples dot this island paradise.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <img data-src="https://via.placeholder.com/600x400?text=Bangkok" alt="Bangkok, Thailand">
+          <div class="photo-info">
+            <h3>Bangkok, Thailand</h3>
+            <p>Vibrant street life and ornate shrines in Thailand's capital.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>American Wonders</h2>
+      <div class="gallery">
+        <div class="photo-card">
+          <img data-src="https://via.placeholder.com/600x400?text=New+York" alt="New York, USA">
+          <div class="photo-info">
+            <h3>New York, USA</h3>
+            <p>The city that never sleeps with its iconic skyline.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <img data-src="https://via.placeholder.com/600x400?text=Grand+Canyon" alt="Grand Canyon, USA">
+          <div class="photo-info">
+            <h3>Grand Canyon, USA</h3>
+            <p>Breathtaking natural wonder carved by the Colorado River.</p>
+          </div>
+        </div>
+        <div class="photo-card">
+          <img data-src="https://via.placeholder.com/600x400?text=Rio" alt="Rio de Janeiro, Brazil">
+          <div class="photo-info">
+            <h3>Rio de Janeiro, Brazil</h3>
+            <p>Famous beaches and the iconic Christ the Redeemer statue.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Progress bar implementation
+    function updateProgressBar() {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight - windowHeight;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const progress = (scrollTop / documentHeight) * 100;
+      document.getElementById('progressBar').style.width = progress + '%';
+    }
+
+    window.addEventListener('scroll', updateProgressBar);
+
+    // Lazy loading images with Intersection Observer
+    const lazyImages = document.querySelectorAll('img[data-src]');
+
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          imageObserver.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '100px', // Load images 100px before they enter viewport
+      threshold: 0.1 // Trigger when 10% visible
+    });
+
+    lazyImages.forEach(img => {
+      imageObserver.observe(img);
+    });
+
+    // Animate in photo cards
+    const cards = document.querySelectorAll('.photo-card');
+
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Add small delay for staggered effect
+          setTimeout(() => {
+            cardObserver.unobserve(entry.target);
+          }, 100);
+        }
+      });
+    }, {
+      threshold: 0.15 // 15% visible
+    });
+
+    cards.forEach(card => {
+      cardObserver.observe(card);
+    });
+
+    // Animate section headings with different threshold
+    const sectionHeadings = document.querySelectorAll('section h2');
+
+    const headingObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          headingObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.8 // 80% visible - higher threshold for headings
+    });
+
+    sectionHeadings.forEach(heading => {
+      headingObserver.observe(heading);
+    });
+
+    // Animate intro section
+    const intro = document.querySelector('.intro');
+
+    const introObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          introObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.5 // 50% visible
+    });
+
+    introObserver.observe(intro);
+  </script>
+
+  <!-- 
+    Benefit: Intersection Observer is more performant than scroll events as it doesn't fire on every scroll pixel.
+    Drawback: Requires polyfill for older browsers and has a slightly more complex API to learn initially.
+  -->
+</body>
+
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<!-- Advanced example of ARIA live regions with multiple priorities -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced ARIA Live Regions</title>
+  <meta name="description" content="Complex example using different types of ARIA live regions.">
+  <meta name="author" content="Frontend Lectures">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      background-color: #f8f9fa;
+    }
+
+    .alert-container {
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+      border-left: 4px solid #6c757d;
+    }
+
+    .error {
+      border-left-color: #dc3545;
+      background-color: #f8d7da;
+    }
+
+    .warning {
+      border-left-color: #ffc107;
+      background-color: #fff3cd;
+    }
+
+    .success {
+      border-left-color: #28a745;
+      background-color: #d4edda;
+    }
+
+    .info {
+      border-left-color: #17a2b8;
+      background-color: #d1ecf1;
+    }
+
+    .alert-actions {
+      margin-top: 1rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      background-color: #0d6efd;
+      color: white;
+      cursor: pointer;
+      margin-right: 0.5rem;
+    }
+
+    button:hover {
+      background-color: #0b5ed7;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .notification-log {
+      margin-top: 2rem;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .notification-log p {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border-bottom: 1px solid #eee;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Advanced ARIA Live Region Examples</h1>
+  <p>This demo shows different types of ARIA live regions with varying priorities and use cases.</p>
+
+  <div class="dashboard">
+    <div class="card">
+      <h2>User Dashboard</h2>
+      <p>Status: <span id="userStatus">Online</span></p>
+      <button id="toggleStatus">Toggle Status</button>
+
+      <!-- Polite live region for status updates -->
+      <div id="statusUpdate" aria-live="polite" class="sr-only"></div>
+    </div>
+
+    <div class="card">
+      <h2>System Metrics</h2>
+      <p>Memory Usage: <span id="memoryUsage">45%</span></p>
+      <p>CPU Load: <span id="cpuLoad">23%</span></p>
+      <button id="refreshMetrics">Refresh Metrics</button>
+
+      <!-- Off live region - won't announce updates -->
+      <div aria-live="off">Metrics last updated: <span id="lastUpdated">Just now</span></div>
+    </div>
+  </div>
+
+  <!-- Alert Section -->
+  <h2>Alert Management</h2>
+  <div class="alert-actions" aria-atomic="false">
+    <button id="triggerInfo">Info Alert</button>
+    <button id="triggerSuccess">Success Alert</button>
+    <button id="triggerWarning">Warning Alert</button>
+    <button id="triggerError">Error Alert</button>
+  </div>
+  <div class="alert-actions" aria-atomic="true">
+    <button id="triggerInfo">Info Alert</button>
+    <button id="triggerSuccess">Success Alert</button>
+    <button id="triggerWarning">Warning Alert</button>
+    <button id="triggerError">Error Alert</button>
+    <data value="Error Alert" aria-label="Error"> Error alert</data>
+  </div>
+
+  <!-- Alert container with assertive announcements -->
+  <div id="alertContainer"></div>
+
+  <!-- Live region with assertive priority for critical alerts -->
+  <div id="criticalAlerts" aria-live="asertive" aria-atomic="true" class="sr-only"></div>
+
+  <!-- Live region with polite priority for normal alerts -->
+  <div id="normalAlerts" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <!-- Notification log with ARIA live-region attribute -->
+  <div class="notification-log">
+    <h3>Notification History</h3>
+    <div id="logContainer" aria-live="polite"></div>
+  </div>
+
+  <script>
+    // Elements
+    const userStatus = document.getElementById('userStatus');
+    const toggleStatusBtn = document.getElementById('toggleStatus');
+    const statusUpdate = document.getElementById('statusUpdate');
+    const memoryUsage = document.getElementById('memoryUsage');
+    const cpuLoad = document.getElementById('cpuLoad');
+    const refreshMetricsBtn = document.getElementById('refreshMetrics');
+    const lastUpdated = document.getElementById('lastUpdated');
+    const alertContainer = document.getElementById('alertContainer');
+    const criticalAlerts = document.getElementById('criticalAlerts');
+    const normalAlerts = document.getElementById('normalAlerts');
+    const logContainer = document.getElementById('logContainer');
+
+    // Toggle user status
+    toggleStatusBtn.addEventListener('click', () => {
+      const isOnline = userStatus.textContent === 'Online';
+      userStatus.textContent = isOnline ? 'Offline' : 'Online';
+
+      // Announce status change with polite priority
+      statusUpdate.textContent = `Status changed to ${userStatus.textContent}`;
+
+      // Log the notification
+      addToLog(`Status changed to ${userStatus.textContent}`);
+    });
+
+    // Refresh system metrics
+    refreshMetricsBtn.addEventListener('click', () => {
+      // Generate random values
+      const memory = Math.floor(Math.random() * 100);
+      const cpu = Math.floor(Math.random() * 100);
+
+      // Update displayed values
+      memoryUsage.textContent = `${memory}%`;
+      cpuLoad.textContent = `${cpu}%`;
+
+      // Update last updated timestamp
+      const now = new Date();
+      lastUpdated.textContent = now.toLocaleTimeString();
+
+      // Check for high usage and announce if needed
+      if (memory > 80) {
+        // Use assertive for critical alerts
+        criticalAlerts.textContent = `Warning: Memory usage is critically high at ${memory}%`;
+        createAlert('warning', `High Memory Usage: ${memory}%`);
+      } else if (cpu > 80) {
+        criticalAlerts.textContent = `Warning: CPU load is critically high at ${cpu}%`;
+        createAlert('warning', `High CPU Load: ${cpu}%`);
+      } else {
+        // Use polite for normal updates
+        normalAlerts.textContent = 'System metrics updated';
+      }
+
+      // Log the update
+      addToLog('System metrics refreshed');
+    });
+
+    // Alert trigger buttons
+    document.getElementById('triggerInfo').addEventListener('click', () => {
+      createAlert('info', 'This is an informational message');
+      normalAlerts.textContent = 'New information alert';
+      addToLog('Information alert triggered');
+    });
+
+    document.getElementById('triggerSuccess').addEventListener('click', () => {
+      createAlert('success', 'Operation completed successfully');
+      normalAlerts.textContent = 'Success alert: Operation completed';
+      addToLog('Success alert triggered');
+    });
+
+    document.getElementById('triggerWarning').addEventListener('click', () => {
+      createAlert('warning', 'Warning: Low disk space detected');
+      normalAlerts.textContent = 'Warning alert: Low disk space';
+      addToLog('Warning alert triggered');
+    });
+
+    document.getElementById('triggerError').addEventListener('click', () => {
+      createAlert('error', 'Error: Connection to server lost');
+      criticalAlerts.textContent = 'Error alert: Connection to server lost';
+      addToLog('Error alert triggered');
+    });
+
+    // Create alert element
+    function createAlert(type, message) {
+      const alertEl = document.createElement('div');
+      alertEl.className = `alert-container ${type}`;
+      alertEl.textContent = message;
+
+      // Add close button
+      const closeBtn = document.createElement('button');
+      closeBtn.textContent = 'Dismiss';
+      closeBtn.addEventListener('click', () => {
+        alertEl.remove();
+
+        // Announce dismissal with polite priority
+        normalAlerts.textContent = `${type} alert dismissed`;
+      });
+
+      alertEl.appendChild(closeBtn);
+      alertContainer.appendChild(alertEl);
+
+      // Auto-remove info and success alerts after 5 seconds
+      if (type === 'info' || type === 'success') {
+        setTimeout(() => {
+          if (alertEl.parentNode === alertContainer) {
+            alertEl.remove();
+          }
+        }, 5000);
+      }
+    }
+
+    // Add entry to notification log
+    function addToLog(message) {
+      const entry = document.createElement('p');
+      const time = new Date().toLocaleTimeString();
+      entry.textContent = `${time}: ${message}`;
+
+      // Insert at the top for newest first
+      if (logContainer.firstChild) {
+        logContainer.insertBefore(entry, logContainer.firstChild);
+      } else {
+        logContainer.appendChild(entry);
+      }
+    }
+  </script>
+</body>
+
+</html>

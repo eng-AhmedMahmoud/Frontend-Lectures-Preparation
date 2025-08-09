@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Layout - Advanced Example</title>
+    <link rel="stylesheet" href="styles_advanced.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header with flexbox navigation -->
+        <header class="header">
+            <div class="logo">FlexShop</div>
+            <nav class="nav">
+                <a href="#" class="nav-link">Products</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn">🔍</button>
+                <button class="icon-btn">🛒 <span class="badge">3</span></button>
+                <button class="icon-btn">👤</button>
+            </div>
+        </header>
+
+        <!-- Hero section with centered content -->
+        <section class="hero">
+            <h1 class="hero-title">Master Flexbox Layouts</h1>
+            <p class="hero-subtitle">Create responsive, flexible designs with ease</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Get Started</button>
+                <button class="btn btn-secondary">Learn More</button>
+            </div>
+        </section>
+
+        <!-- Feature cards with equal height -->
+        <section class="features">
+            <h2 class="section-title">Why Use Flexbox?</h2>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">📐</div>
+                    <h3>Flexible Layouts</h3>
+                    <p>Create layouts that adapt to different screen sizes automatically.</p>
+                    <a href="#" class="feature-link">Learn more →</a>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">⚖️</div>
+                    <h3>Perfect Alignment</h3>
+                    <p>Align items vertically and horizontally with simple properties.</p>
+                    <a href="#" class="feature-link">Learn more →</a>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>Build mobile-first layouts that work on any device.</p>
+                    <a href="#" class="feature-link">Learn more →</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Pricing table with flexbox -->
+        <section class="pricing">
+            <h2 class="section-title">Choose Your Plan</h2>
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <h3 class="plan-name">Basic</h3>
+                    <div class="plan-price">$9<span>/month</span></div>
+                    <ul class="plan-features">
+                        <li>✓ 10 Projects</li>
+                        <li>✓ Basic Support</li>
+                        <li>✓ 1GB Storage</li>
+                    </ul>
+                    <button class="plan-button">Choose Basic</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <h3 class="plan-name">Pro</h3>
+                    <div class="plan-price">$29<span>/month</span></div>
+                    <ul class="plan-features">
+                        <li>✓ Unlimited Projects</li>
+                        <li>✓ Priority Support</li>
+                        <li>✓ 100GB Storage</li>
+                        <li>✓ Advanced Features</li>
+                    </ul>
+                    <button class="plan-button">Choose Pro</button>
+                </div>
+                <div class="pricing-card">
+                    <h3 class="plan-name">Enterprise</h3>
+                    <div class="plan-price">$99<span>/month</span></div>
+                    <ul class="plan-features">
+                        <li>✓ Everything in Pro</li>
+                        <li>✓ Dedicated Support</li>
+                        <li>✓ Unlimited Storage</li>
+                        <li>✓ Custom Solutions</li>
+                    </ul>
+                    <button class="plan-button">Contact Sales</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery with wrapping flex items -->
+        <section class="gallery">
+            <h2 class="section-title">Project Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">Project 1</div>
+                <div class="gallery-item">Project 2</div>
+                <div class="gallery-item">Project 3</div>
+                <div class="gallery-item">Project 4</div>
+                <div class="gallery-item">Project 5</div>
+                <div class="gallery-item">Project 6</div>
+            </div>
+        </section>
+
+        <!-- Footer with multiple flex containers -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Us</h4>
+                    <p>Learn flexbox through practical examples and real-world applications.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Examples</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">GitHub</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FlexShop. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

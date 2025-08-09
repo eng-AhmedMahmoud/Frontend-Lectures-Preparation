@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Preprocessing - Basic Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__container">
+                <div class="header__brand">
+                    <h1 class="header__logo">Sass Preprocessing</h1>
+                    <span class="header__tagline">Powerful CSS with Superpowers</span>
+                </div>
+                <nav class="header__nav">
+                    <ul class="nav nav--horizontal">
+                        <li class="nav__item">
+                            <a href="#" class="nav__link nav__link--active">Features</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Mixins</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Functions</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Architecture</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero__container">
+                    <div class="hero__content">
+                        <h2 class="hero__title">CSS Preprocessing with Sass</h2>
+                        <p class="hero__subtitle">Write more maintainable CSS with variables, mixins, functions, and advanced features</p>
+                        <div class="hero__actions">
+                            <button class="btn btn--primary btn--large">Explore Features</button>
+                            <button class="btn btn--secondary btn--large">View Examples</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sass Features -->
+            <section class="features">
+                <div class="features__container">
+                    <h2 class="features__title">Sass Features Showcase</h2>
+                    
+                    <div class="features__grid">
+                        <!-- Variables -->
+                        <div class="feature-card feature-card--variables">
+                            <div class="feature-card__header">
+                                <div class="feature-card__icon">
+                                    <span class="icon">$</span>
+                                </div>
+                                <h3 class="feature-card__title">Variables & Maps</h3>
+                            </div>
+                            <div class="feature-card__content">
+                                <p class="feature-card__description">
+                                    Centralize values and create complex data structures for maintainable styles.
+                                </p>
+                                <div class="code-example">
+                                    <pre class="code-example__content"><code>// Sass variables and maps
+$primary-color: #3498db;
+$font-sizes: (
+  'small': 0.875rem,
+  'base': 1rem,
+  'large': 1.25rem
+);</code></pre>
+                                </div>
+                                <div class="feature-benefits">
+                                    <div class="benefit">
+                                        <span class="benefit__icon">✓</span>
+                                        <span class="benefit__text">Centralized configuration</span>
+                                    </div>
+                                    <div class="benefit">
+                                        <span class="benefit__icon">✓</span>
+                                        <span class="benefit__text">Easy theme management</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mixins -->
+                        <div class="feature-card feature-card--mixins">
+                            <div class="feature-card__header">
+                                <div class="feature-card__icon">
+                                    <span class="icon">@</span>
+                                </div>
+                                <h3 class="feature-card__title">Mixins</h3>
+                            </div>
+                            <div class="feature-card__content">
+                                <p class="feature-card__description">
+                                    Reusable code blocks that accept parameters for flexible styling patterns.
+                                </p>
+                                <div class="code-example">
+                                    <pre class="code-example__content"><code>// Responsive breakpoint mixin
+@mixin respond-to($breakpoint) {
+  @media (min-width: #{$breakpoint}) {
+    @content;
+  }
+}</code></pre>
+                                </div>
+                                <div class="feature-benefits">
+                                    <div class="benefit">
+                                        <span class="benefit__icon">✓</span>
+                                        <span class="benefit__text">DRY code principles</span>
+                                    </div>
+                                    <div class="benefit">
+                                        <span class="benefit__icon">✓</span>
+                                        <span class="benefit__text">Parametric styling</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Functions -->
+                        <div class="feature-card feature-card--functions">
+                            <div class="feature-card__header">
+                                <div class="feature-card__icon">
+                                    <span class="icon">ƒ</span>
+                                </div>
+                                <h3 class="feature-card__title">Functions</h3>
+                            </div>
+                            <div class="feature-card__content">
+                                <p class="feature-card__description">
+                                    Custom functions for calculations, color manipulation, and value transformations.
+                                </p>
+                                <div class="code-example">
+                                    <pre class="code-example__content"><code>// Fluid typography function
+@function fluid-size($min, $max) {
+  @return clamp(#{$min}, 4vw, #{$max});
+}</code></pre>
+                                </div>
+                                <div class="feature-benefits">
+                                    <div class="benefit">
+                                        <span class="benefit__icon">✓</span>
+                                        <span class="benefit__text">Mathematical calculations</span>
+                                    </div>
+                                    <div class="benefit">
+                                        <span class="benefit__icon">✓</span>
+                                        <span class="benefit__text">Color manipulations</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Control Directives -->
+                        <div class="feature-card feature-card--control">
+                            <div class="feature-card__header">
+                                <div class="feature-card__icon">
+                                    <span class="icon">🔄</span>
+                                </div>
+                                <h3 class="feature-card__title">Control Directives</h3>
+                            </div>
+                            <div class="feature-card__content">
+                                <p class="feature-card__description">
+                                    Loops, conditions, and programmatic CSS generation for powerful automation.
+                                </p>
+                                <div class="code-example">
+                                    <pre class="code-example__content"><code>// Generate utility classes
+@for $i from 1 through 5 {
+  .m-#{$i} {
+    margin: #{$i * 0.5}rem;
+  }
+}</code></pre>
+                                </div>
+                                <div class="feature-benefits">
+                                    <div class="benefit">
+                                        <span class="benefit__icon">✓</span>
+                                        <span class="benefit__text">Automated CSS generation</span>
+                                    </div>
+                                    <div class="benefit">
+                                        <span class="benefit__icon">✓</span>
+                                        <span class="benefit__text">Conditional styling</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Component Library -->
+            <section class="component-library">
+                <div class="component-library__container">
+                    <h2 class="component-library__title">Sass-Powered Components</h2>
+                    
+                    <!-- Button System -->
+                    <div class="component-section">
+                        <h3 class="component-section__title">Button System</h3>
+                        <p class="component-section__description">Generated using Sass mixins and maps for consistent variants</p>
+                        
+                        <div class="component-showcase">
+                            <div class="button-group">
+                                <h4 class="group-title">Primary Buttons</h4>
+                                <div class="button-row">
+                                    <button class="btn btn--primary btn--small">Small</button>
+                                    <button class="btn btn--primary">Medium</button>
+                                    <button class="btn btn--primary btn--large">Large</button>
+                                </div>
+                            </div>
+                            
+                            <div class="button-group">
+                                <h4 class="group-title">Secondary Buttons</h4>
+                                <div class="button-row">
+                                    <button class="btn btn--secondary btn--small">Small</button>
+                                    <button class="btn btn--secondary">Medium</button>
+                                    <button class="btn btn--secondary btn--large">Large</button>
+                                </div>
+                            </div>
+                            
+                            <div class="button-group">
+                                <h4 class="group-title">Contextual Buttons</h4>
+                                <div class="button-row">
+                                    <button class="btn btn--success">Success</button>
+                                    <button class="btn btn--warning">Warning</button>
+                                    <button class="btn btn--danger">Danger</button>
+                                    <button class="btn btn--info">Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-reveal">
+                            <button class="code-reveal__trigger">View Sass Code</button>
+                            <div class="code-reveal__content">
+                                <pre class="code-block"><code>// Button variant mixin
+@mixin button-variant($color, $bg, $border) {
+  color: $color;
+  background-color: $bg;
+  border-color: $border;
+  
+  &:hover {
+    background-color: darken($bg, 7.5%);
+    border-color: darken($border, 10%);
+  }
+}
+
+// Generate button variants
+@each $variant, $colors in $button-variants {
+  .btn--#{$variant} {
+    @include button-variant(
+      map-get($colors, 'color'),
+      map-get($colors, 'bg'),
+      map-get($colors, 'border')
+    );
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card System -->
+                    <div class="component-section">
+                        <h3 class="component-section__title">Card System</h3>
+                        <p class="component-section__description">Flexible card components with Sass-generated variants</p>
+                        
+                        <div class="card-showcase">
+                            <div class="card">
+                                <div class="card__header">
+                                    <h4 class="card__title">Default Card</h4>
+                                    <span class="badge badge--neutral">Standard</span>
+                                </div>
+                                <div class="card__body">
+                                    <p class="card__text">This is a default card component with basic styling generated through Sass mixins.</p>
+                                </div>
+                                <div class="card__footer">
+                                    <button class="btn btn--outline btn--small">Action</button>
+                                </div>
+                            </div>
+
+                            <div class="card card--elevated">
+                                <div class="card__header">
+                                    <h4 class="card__title">Elevated Card</h4>
+                                    <span class="badge badge--primary">Featured</span>
+                                </div>
+                                <div class="card__body">
+                                    <p class="card__text">Elevated card variant with enhanced shadow and styling using Sass conditional mixins.</p>
+                                </div>
+                                <div class="card__footer">
+                                    <button class="btn btn--primary btn--small">Primary Action</button>
+                                </div>
+                            </div>
+
+                            <div class="card card--outlined">
+                                <div class="card__header">
+                                    <h4 class="card__title">Outlined Card</h4>
+                                    <span class="badge badge--secondary">Alternative</span>
+                                </div>
+                                <div class="card__body">
+                                    <p class="card__text">Outlined variant demonstrating Sass parameter-based styling variations.</p>
+                                </div>
+                                <div class="card__footer">
+                                    <button class="btn btn--secondary btn--small">Secondary</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Architecture Demo -->
+            <section class="architecture">
+                <div class="architecture__container">
+                    <h2 class="architecture__title">Sass Architecture Patterns</h2>
+                    
+                    <div class="architecture-patterns">
+                        <!-- 7-1 Pattern -->
+                        <div class="pattern-card">
+                            <h3 class="pattern-card__title">7-1 Architecture Pattern</h3>
+                            <div class="file-structure">
+                                <div class="folder">
+                                    <div class="folder__name">📁 sass/</div>
+                                    <div class="folder__children">
+                                        <div class="folder">
+                                            <div class="folder__name">📁 abstracts/</div>
+                                            <div class="folder__children">
+                                                <div class="file">📄 _variables.scss</div>
+                                                <div class="file">📄 _functions.scss</div>
+                                                <div class="file">📄 _mixins.scss</div>
+                                            </div>
+                                        </div>
+                                        <div class="folder">
+                                            <div class="folder__name">📁 base/</div>
+                                            <div class="folder__children">
+                                                <div class="file">📄 _reset.scss</div>
+                                                <div class="file">📄 _typography.scss</div>
+                                            </div>
+                                        </div>
+                                        <div class="folder">
+                                            <div class="folder__name">📁 components/</div>
+                                            <div class="folder__children">
+                                                <div class="file">📄 _buttons.scss</div>
+                                                <div class="file">📄 _cards.scss</div>
+                                            </div>
+                                        </div>
+                                        <div class="file file--main">📄 main.scss</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ITCSS Pattern -->
+                        <div class="pattern-card">
+                            <h3 class="pattern-card__title">ITCSS with Sass</h3>
+                            <div class="itcss-layers">
+                                <div class="itcss-layer itcss-layer--settings">
+                                    <span class="layer-name">Settings</span>
+                                    <span class="layer-description">Global variables and configuration</span>
+                                </div>
+                                <div class="itcss-layer itcss-layer--tools">
+                                    <span class="layer-name">Tools</span>
+                                    <span class="layer-description">Mixins and functions</span>
+                                </div>
+                                <div class="itcss-layer itcss-layer--generic">
+                                    <span class="layer-name">Generic</span>
+                                    <span class="layer-description">Reset and normalize styles</span>
+                                </div>
+                                <div class="itcss-layer itcss-layer--elements">
+                                    <span class="layer-name">Elements</span>
+                                    <span class="layer-description">Bare HTML elements</span>
+                                </div>
+                                <div class="itcss-layer itcss-layer--objects">
+                                    <span class="layer-name">Objects</span>
+                                    <span class="layer-description">Layout patterns</span>
+                                </div>
+                                <div class="itcss-layer itcss-layer--components">
+                                    <span class="layer-name">Components</span>
+                                    <span class="layer-description">UI components</span>
+                                </div>
+                                <div class="itcss-layer itcss-layer--utilities">
+                                    <span class="layer-name">Utilities</span>
+                                    <span class="layer-description">Helper classes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Benefits -->
+            <section class="benefits">
+                <div class="benefits__container">
+                    <h2 class="benefits__title">Why Use CSS Preprocessing?</h2>
+                    
+                    <div class="benefits__grid">
+                        <div class="benefit-card">
+                            <div class="benefit-card__icon">🚀</div>
+                            <h3 class="benefit-card__title">Developer Productivity</h3>
+                            <p class="benefit-card__description">
+                                Write less code, reuse more patterns, and maintain consistency across large projects.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <div class="benefit-card__icon">🔧</div>
+                            <h3 class="benefit-card__title">Maintainability</h3>
+                            <p class="benefit-card__description">
+                                Organize code with imports, use variables for consistency, and create modular architectures.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <div class="benefit-card__icon">⚡</div>
+                            <h3 class="benefit-card__title">Advanced Features</h3>
+                            <p class="benefit-card__description">
+                                Leverage functions, mixins, and control directives for powerful CSS generation.
+                            </p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <div class="benefit-card__icon">📦</div>
+                            <h3 class="benefit-card__title">Modularity</h3>
+                            <p class="benefit-card__description">
+                                Break CSS into logical modules, import only what you need, and create reusable libraries.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer__container">
+                <div class="footer__content">
+                    <div class="footer__section">
+                        <h4 class="footer__title">CSS Preprocessing</h4>
+                        <p class="footer__text">Enhance your CSS development workflow with Sass superpowers.</p>
+                    </div>
+                    <div class="footer__section">
+                        <h4 class="footer__title">Resources</h4>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">Sass Documentation</a></li>
+                            <li><a href="#" class="footer__link">Sass Guidelines</a></li>
+                            <li><a href="#" class="footer__link">Architecture Patterns</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p class="footer__copyright">&copy; 2024 CSS Preprocessing Tutorial</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript for interactive features -->
+    <script>
+        // Code reveal functionality
+        document.querySelectorAll('.code-reveal__trigger').forEach(trigger => {
+            trigger.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                content.classList.toggle('is-visible');
+                this.textContent = content.classList.contains('is-visible') ? 'Hide Code' : 'View Sass Code';
+            });
+        });
+
+        // Folder toggle functionality
+        document.querySelectorAll('.folder__name').forEach(folder => {
+            folder.addEventListener('click', function() {
+                const children = this.nextElementSibling;
+                if (children) {
+                    children.classList.toggle('is-collapsed');
+                    this.classList.toggle('is-collapsed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

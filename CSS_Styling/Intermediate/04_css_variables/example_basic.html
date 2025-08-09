@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Variables - Basic Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>CSS Variables (Custom Properties)</h1>
+            <p class="subtitle">Learn how to use CSS variables for maintainable stylesheets</p>
+        </header>
+
+        <main class="main-content">
+            <section class="basics-demo">
+                <h2>Basic Variable Usage</h2>
+                <div class="variable-examples">
+                    <div class="color-box primary">Primary Color</div>
+                    <div class="color-box secondary">Secondary Color</div>
+                    <div class="color-box accent">Accent Color</div>
+                </div>
+                <p>These boxes use CSS variables defined in the :root selector.</p>
+            </section>
+
+            <section class="scoping-demo">
+                <h2>Variable Scoping</h2>
+                <div class="scope-container light-theme">
+                    <h3>Light Theme Section</h3>
+                    <p class="themed-text">This text uses theme-specific variables.</p>
+                    <button class="themed-button">Light Button</button>
+                </div>
+                
+                <div class="scope-container dark-theme">
+                    <h3>Dark Theme Section</h3>
+                    <p class="themed-text">This text uses different variable values.</p>
+                    <button class="themed-button">Dark Button</button>
+                </div>
+            </section>
+
+            <section class="calculations-demo">
+                <h2>Variables in Calculations</h2>
+                <div class="calc-grid">
+                    <div class="calc-item">
+                        <h4>Base Size</h4>
+                        <div class="size-demo base-size"></div>
+                    </div>
+                    <div class="calc-item">
+                        <h4>Double Size</h4>
+                        <div class="size-demo double-size"></div>
+                    </div>
+                    <div class="calc-item">
+                        <h4>Half Size</h4>
+                        <div class="size-demo half-size"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fallback-demo">
+                <h2>Fallback Values</h2>
+                <div class="fallback-examples">
+                    <div class="fallback-box">
+                        <h4>With Fallback</h4>
+                        <p class="fallback-text">This uses a fallback value if the variable isn't defined.</p>
+                    </div>
+                    <div class="fallback-box undefined-var">
+                        <h4>Undefined Variable</h4>
+                        <p class="undefined-text">This shows fallback behavior.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="inheritance-demo">
+                <h2>Variable Inheritance</h2>
+                <div class="parent-container">
+                    <h3>Parent Container</h3>
+                    <div class="child-container">
+                        <h4>Child Container</h4>
+                        <p>Child inherits variables from parent unless overridden.</p>
+                        <div class="grandchild-container">
+                            <h5>Grandchild Container</h5>
+                            <p>Variables cascade down the inheritance chain.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="media-queries-demo">
+                <h2>Variables with Media Queries</h2>
+                <div class="responsive-container">
+                    <h3>Responsive Typography</h3>
+                    <p class="responsive-text">This text size changes based on screen size using CSS variables in media queries.</p>
+                    <div class="responsive-spacing">Responsive spacing also changes with screen size.</div>
+                </div>
+            </section>
+
+            <section class="dynamic-demo">
+                <h2>Dynamic Variables</h2>
+                <div class="controls">
+                    <label for="hue-slider">Hue:</label>
+                    <input type="range" id="hue-slider" min="0" max="360" value="220">
+                    
+                    <label for="size-slider">Size:</label>
+                    <input type="range" id="size-slider" min="10" max="100" value="50">
+                </div>
+                <div class="dynamic-box" id="dynamic-box">
+                    Dynamic Styling
+                </div>
+                <p><em>Use the sliders above to see CSS variables change in real-time!</em></p>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 CSS Variables Tutorial</p>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript to demonstrate dynamic CSS variables
+        const hueSlider = document.getElementById('hue-slider');
+        const sizeSlider = document.getElementById('size-slider');
+        const dynamicBox = document.getElementById('dynamic-box');
+
+        hueSlider.addEventListener('input', (e) => {
+            document.documentElement.style.setProperty('--dynamic-hue', e.target.value);
+        });
+
+        sizeSlider.addEventListener('input', (e) => {
+            document.documentElement.style.setProperty('--dynamic-size', e.target.value + 'px');
+        });
+    </script>
+</body>
+</html>

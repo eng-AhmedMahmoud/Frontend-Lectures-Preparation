@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- Demonstrates Progressive Web App features -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PWA Features Demo</title>
+  <meta name="description" content="Advanced example showing Progressive Web App features.">
+  <meta name="author" content="Frontend Lectures">
+  <!-- PWA requirements -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2196f3">
+  <!-- iOS support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .feature {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .install-btn {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Progressive Web App Features</h1>
+
+  <!-- SECTION: PWA Installation
+       Benefit: App-like experience without app store.
+       Drawback: Browser support varies for newer features. -->
+  <div class="feature">
+    <h2>Installable Web App</h2>
+    <p>This demo can be installed on your device's home screen.</p>
+    <button id="installBtn" class="install-btn">Install App</button>
+  </div>
+
+  <!-- SECTION: Offline Support
+       Benefit: Works without internet connection.
+       Drawback: Cache management complexity. -->
+  <div class="feature">
+    <h2>Offline Support</h2>
+    <p>Content is cached using service workers for offline access.</p>
+    <div id="status">Online status: <span id="onlineStatus">Checking...</span></div>
+  </div>
+
+  <!-- Register Service Worker -->
+  <script>
+    // Check if service worker is supported
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => {
+            console.log('Service worker registered successfully', reg);
+          })
+          .catch(err => {
+            console.error('Service worker registration failed:', err);
+          });
+      });
+    }
+
+    // Track online status
+    function updateOnlineStatus() {
+      const status = document.getElementById('onlineStatus');
+      if (navigator.onLine) {
+        status.textContent = 'Online';
+        status.style.color = 'green';
+      } else {
+        status.textContent = 'Offline';
+        status.style.color = 'red';
+      }
+    }
+
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    updateOnlineStatus();
+
+    // Handle app installation
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67+ from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later
+      deferredPrompt = e;
+      // Show the install button
+      installBtn.style.display = 'block';
+    });
+
+    installBtn.addEventListener('click', () => {
+      // Hide the install button
+      installBtn.style.display = 'none';
+      // Show the install prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+        // Clear the saved prompt
+        deferredPrompt = null;
+      });
+    });
+  </script>
+</body>
+
+</html>

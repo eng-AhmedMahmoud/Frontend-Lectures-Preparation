@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern CSS Features - Basic Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Modern CSS Features</h1>
+            <p class="subtitle">Exploring cutting-edge CSS capabilities</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Container Queries -->
+            <section class="container-queries-demo">
+                <h2>Container Queries</h2>
+                <div class="responsive-card">
+                    <div class="card-content">
+                        <h3>Responsive Card</h3>
+                        <p>This card adapts based on its container size, not the viewport.</p>
+                        <div class="card-meta">
+                            <span class="tag">Container Query</span>
+                            <span class="date">2024</span>
+                        </div>
+                    </div>
+                </div>
+                <p><em>Resize the container to see the card layout change.</em></p>
+            </section>
+
+            <!-- CSS Nesting -->
+            <section class="nesting-demo">
+                <h2>CSS Nesting</h2>
+                <div class="nested-component">
+                    <h3>Nested Component</h3>
+                    <p>This component uses native CSS nesting for cleaner code organization.</p>
+                    <div class="nested-buttons">
+                        <button class="primary">Primary</button>
+                        <button class="secondary">Secondary</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CSS :has() Selector -->
+            <section class="has-selector-demo">
+                <h2>CSS :has() Selector</h2>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                    <span class="error-message">Please enter a valid email</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" placeholder="Enter password">
+                    <span class="error-message">Password is required</span>
+                </div>
+                <p><em>Form groups style differently when they contain invalid inputs using :has().</em></p>
+            </section>
+
+            <!-- Logical Properties -->
+            <section class="logical-properties-demo">
+                <h2>CSS Logical Properties</h2>
+                <div class="logical-box">
+                    <h3>Logical Properties Box</h3>
+                    <p>This box uses logical properties (margin-inline, padding-block) that adapt to writing direction.</p>
+                </div>
+                <button onclick="toggleDirection()">Toggle Writing Direction</button>
+            </section>
+
+            <!-- Cascade Layers -->
+            <section class="cascade-layers-demo">
+                <h2>CSS Cascade Layers</h2>
+                <div class="layered-component">
+                    <h3>Layered Styling</h3>
+                    <p>This component demonstrates cascade layers for predictable styling.</p>
+                    <div class="layer-buttons">
+                        <button class="base-button">Base Layer</button>
+                        <button class="theme-button">Theme Layer</button>
+                        <button class="utilities-button">Utilities Layer</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CSS Subgrid -->
+            <section class="subgrid-demo">
+                <h2>CSS Subgrid</h2>
+                <div class="main-grid">
+                    <div class="subgrid-item">
+                        <h4>Subgrid Item 1</h4>
+                        <p>Short content</p>
+                        <button>Action</button>
+                    </div>
+                    <div class="subgrid-item">
+                        <h4>Subgrid Item 2</h4>
+                        <p>This item has much longer content that would normally cause alignment issues, but subgrid keeps everything aligned.</p>
+                        <button>Action</button>
+                    </div>
+                    <div class="subgrid-item">
+                        <h4>Subgrid Item 3</h4>
+                        <p>Medium length content here.</p>
+                        <button>Action</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CSS Functions -->
+            <section class="functions-demo">
+                <h2>Modern CSS Functions</h2>
+                
+                <div class="function-examples">
+                    <div class="clamp-demo">
+                        <h3>clamp() Function</h3>
+                        <p class="fluid-text">This text uses clamp() for responsive typography.</p>
+                    </div>
+                    
+                    <div class="min-max-demo">
+                        <h3>min() and max() Functions</h3>
+                        <div class="flexible-box">Flexible sizing with min() and max()</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CSS Color Functions -->
+            <section class="color-functions-demo">
+                <h2>Modern Color Functions</h2>
+                <div class="color-examples">
+                    <div class="hsl-box">HSL Colors</div>
+                    <div class="hwb-box">HWB Colors</div>
+                    <div class="lab-box">Lab Colors</div>
+                    <div class="oklch-box">OKLCH Colors</div>
+                </div>
+            </section>
+
+            <!-- CSS Scroll Snap -->
+            <section class="scroll-snap-demo">
+                <h2>CSS Scroll Snap</h2>
+                <div class="scroll-container">
+                    <div class="snap-item item-1">Snap Item 1</div>
+                    <div class="snap-item item-2">Snap Item 2</div>
+                    <div class="snap-item item-3">Snap Item 3</div>
+                    <div class="snap-item item-4">Snap Item 4</div>
+                </div>
+                <p><em>Scroll horizontally to see snap points in action.</em></p>
+            </section>
+
+            <!-- CSS Anchor Positioning -->
+            <section class="anchor-positioning-demo">
+                <h2>CSS Anchor Positioning</h2>
+                <div class="anchor-container">
+                    <button class="anchor-button" id="anchor-btn">Anchor Button</button>
+                    <div class="tooltip">
+                        Tooltip positioned relative to anchor
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Modern CSS Features Showcase</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleDirection() {
+            const box = document.querySelector('.logical-properties-demo');
+            const currentDir = box.style.direction || 'ltr';
+            box.style.direction = currentDir === 'ltr' ? 'rtl' : 'ltr';
+        }
+
+        // Add some interactivity for form validation demo
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('blur', function() {
+                if (!this.validity.valid) {
+                    this.setAttribute('aria-invalid', 'true');
+                } else {
+                    this.removeAttribute('aria-invalid');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

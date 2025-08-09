@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <!-- Demonstrates lists and links -->
 <html lang="en">
 <head>
   <!-- Character encoding for proper text display -->
-  <meta charset="UTF-8"> 
+  <meta charset="UTF-8">
   <!-- viewport for responsive design -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- viewport no zoom -->
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <!-- viewport controlled zoom -->
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0"> -->
+  <!-- <meta name="viewport" copntent="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0"> -->
   <!-- viewport old sites fixed width -->
   <!-- <meta name="viewport" content="width=1024"> -->
    
@@ -17,17 +18,33 @@
   <!-- Summary for SEO -->
   <meta name="description" content="Beginner example showing ordered/unordered lists and hyperlinks.">
   <meta name="author" content="Frontend Lectures">
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="example.css">
+
+
+  <!-- internal style -->
   <style>
-    body { font-family: Arial, sans-serif; margin: 1.5rem; }
-    ol, ul { margin-bottom: 1rem; }
+    p {
+      width: 100px;
+    }
   </style>
 </head>
 <body>
   <!-- SECTION 1: Ordered List
        Benefit: Communicates step-by-step sequences clearly.
        Drawback: Misuse for non-sequential data confuses assistive tech. -->
-  <h2>Recipe Steps (Ordered List)</h2>
-  <ol>
+    <header id="head">
+      <h1>hi from heading tag</h1>
+    </header>
+       <p style="width: 10px;">hi from heading tag</p>
+  <h2>hi from heading tag</h2>
+  <h3>hi from heading tag</h3>
+  <h4>hi from heading tag</h4>
+  <h5>hi from heading tag</h5>
+  <h6>hi from heading tag</h6>
+
+  <!-- inline style -->
+  <ol style="width: 200px;"> 
     <li>Preheat oven to 180 °C.</li>
     <li>Mix ingredients.</li>
     <li>Bake for 30 minutes.</li>
@@ -45,6 +62,8 @@
   <!-- SECTION 3: Hyperlinks
        Benefit: Primary way to navigate between resources.
        Drawback: Vague link text (e.g., “click here”) hurts usability. -->
-  <p>Read more on <a href="https://developer.mozilla.org" target="_blank" rel="noopener">MDN Web Docs</a>.</p>
+  <p>Read more on <a href="#head" target="_self">scroll to top</a>.</p>
+  <!-- copy write -->
+  <a href="">Frontend Lectures</a>
 </body>
 </html> 

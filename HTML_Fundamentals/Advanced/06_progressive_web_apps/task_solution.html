@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather PWA</title>
+  <meta name="description" content="Progressive Web App demonstration with offline support">
+  <!-- PWA requirements -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#3367D6">
+  <!-- iOS support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Weather PWA">
+  <link rel="apple-touch-icon" href="icons/icon-152.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background: #3367D6;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .weather-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .temp {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .status {
+      margin: 1rem 0;
+      padding: 0.5rem;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .online {
+      background: #dff2bf;
+      color: #4f8a10;
+    }
+
+    .offline {
+      background: #ffbaba;
+      color: #d8000c;
+    }
+
+    .install-btn {
+      display: none;
+      margin: 1rem auto;
+      padding: 0.75rem 1.5rem;
+      background: #3367D6;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Weather PWA</h1>
+  </header>
+
+  <main>
+    <div id="network-status" class="status">Checking connection status...</div>
+
+    <div class="card weather-card">
+      <div>
+        <h2>Berlin</h2>
+        <p>Partly Cloudy</p>
+      </div>
+      <div class="temp">21°C</div>
+    </div>
+
+    <div class="card">
+      <h2>Forecast</h2>
+      <ul id="forecast">
+        <li>Monday: 22°C, Sunny</li>
+        <li>Tuesday: 19°C, Rain</li>
+        <li>Wednesday: 20°C, Cloudy</li>
+      </ul>
+    </div>
+
+    <button id="install-button" class="install-btn">Add to Home Screen</button>
+  </main>
+
+  <script>
+    // Check online status
+    function updateOnlineStatus() {
+      const status = document.getElementById('network-status');
+      if (navigator.onLine) {
+        status.textContent = 'You are online';
+        status.className = 'status online';
+      } else {
+        status.textContent = 'You are offline. Using cached data';
+        status.className = 'status offline';
+      }
+    }
+
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+    updateOnlineStatus();
+
+    // Register service worker for offline support
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(registration => {
+            console.log('ServiceWorker registered with scope:', registration.scope);
+          })
+          .catch(err => {
+            console.error('ServiceWorker registration failed:', err);
+          });
+      });
+    }
+
+    // Handle app installation
+    let deferredPrompt;
+    const installButton = document.getElementById('install-button');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 76+ from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later
+      deferredPrompt = e;
+      // Show the install button
+      installButton.style.display = 'block';
+    });
+
+    installButton.addEventListener('click', () => {
+      // Hide the install button
+      installButton.style.display = 'none';
+      // Show the install prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        // Clear the saved prompt
+        deferredPrompt = null;
+      });
+    });
+  </script>
+
+  <!-- 
+    Benefit: Works offline and provides an app-like experience without app store distribution.
+    Drawback: Limited access to device features compared to native apps, and browser support varies.
+  -->
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Design - Basic Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Responsive Design Basics</h1>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link">Home</a></li>
+                    <li><a href="#" class="nav-link">About</a></li>
+                    <li><a href="#" class="nav-link">Services</a></li>
+                    <li><a href="#" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <section class="hero">
+                <h2 class="hero-title">Welcome to Responsive Design</h2>
+                <p class="hero-text">Learn how to create websites that work on all devices</p>
+                <button class="cta-button">Get Started</button>
+            </section>
+
+            <section class="features">
+                <h2>Key Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Mobile First</h3>
+                        <p>Start with mobile design and enhance for larger screens</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Flexible Layouts</h3>
+                        <p>Use fluid grids and flexible containers</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Media Queries</h3>
+                        <p>Apply different styles for different screen sizes</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="responsive-images">
+                <h2>Responsive Images</h2>
+                <div class="image-examples">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/400x300/3498db/white?text=Desktop+Image" 
+                             alt="Responsive example" 
+                             class="responsive-img">
+                        <p>This image scales with container width</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <picture class="picture-element">
+                            <source media="(max-width: 768px)" 
+                                    srcset="https://via.placeholder.com/300x200/e74c3c/white?text=Mobile">
+                            <source media="(max-width: 1024px)" 
+                                    srcset="https://via.placeholder.com/400x250/f39c12/white?text=Tablet">
+                            <img src="https://via.placeholder.com/600x300/2ecc71/white?text=Desktop" 
+                                 alt="Art direction example">
+                        </picture>
+                        <p>This image changes based on screen size</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="typography">
+                <h2>Responsive Typography</h2>
+                <div class="text-examples">
+                    <h3 class="fluid-heading">Fluid Heading</h3>
+                    <p class="fluid-text">This text uses clamp() to scale smoothly between minimum and maximum sizes based on viewport width.</p>
+                    
+                    <h3 class="breakpoint-heading">Breakpoint Heading</h3>
+                    <p class="breakpoint-text">This text changes size at specific breakpoints using media queries.</p>
+                </div>
+            </section>
+
+            <section class="layout-demo">
+                <h2>Layout Changes</h2>
+                <div class="flexible-layout">
+                    <div class="sidebar">
+                        <h3>Sidebar</h3>
+                        <ul>
+                            <li>Menu Item 1</li>
+                            <li>Menu Item 2</li>
+                            <li>Menu Item 3</li>
+                        </ul>
+                    </div>
+                    <div class="content">
+                        <h3>Main Content</h3>
+                        <p>This layout changes from side-by-side on desktop to stacked on mobile. The sidebar moves below the content on smaller screens.</p>
+                        <p>Resize your browser window to see the layout change at different breakpoints.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Responsive Design Tutorial</p>
+        </footer>
+    </div>
+</body>
+</html>

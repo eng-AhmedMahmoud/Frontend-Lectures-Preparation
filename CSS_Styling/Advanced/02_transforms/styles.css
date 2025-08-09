@@ -1,0 +1,243 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+h2 {
+    color: white;
+    margin: 3rem 0 2rem 0;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.transforms-demo {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* 2D Transforms */
+.transform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.transform-box {
+    width: 200px;
+    height: 150px;
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.transform-box p {
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.transform-box p:first-child {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Individual 2D transform effects */
+.translate:hover {
+    transform: translate(20px, -20px);
+}
+
+.rotate:hover {
+    transform: rotate(15deg);
+}
+
+.scale:hover {
+    transform: scale(1.2);
+}
+
+.skew:hover {
+    transform: skew(15deg, 5deg);
+}
+
+/* 3D Transforms */
+.transform-3d-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+    perspective: 1000px;
+}
+
+.transform-3d-box {
+    width: 200px;
+    height: 150px;
+    background: linear-gradient(45deg, #e74c3c, #f39c12);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+}
+
+.transform-3d-box p {
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.transform-3d-box p:first-child {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Individual 3D transform effects */
+.rotateX:hover {
+    transform: rotateX(45deg);
+}
+
+.rotateY:hover {
+    transform: rotateY(45deg);
+}
+
+.rotateZ:hover {
+    transform: rotateZ(45deg);
+}
+
+.perspective-demo:hover {
+    transform: perspective(500px) rotateX(30deg) rotateY(30deg);
+}
+
+/* Transform Origin Demo */
+.origin-demo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.origin-box {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(45deg, #9b59b6, #8e44ad);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    font-weight: bold;
+    text-align: center;
+}
+
+.origin-center {
+    transform-origin: center;
+}
+
+.origin-center:hover {
+    transform: rotate(45deg);
+}
+
+.origin-top-left {
+    transform-origin: top left;
+}
+
+.origin-top-left:hover {
+    transform: rotate(45deg);
+}
+
+.origin-bottom-right {
+    transform-origin: bottom right;
+}
+
+.origin-bottom-right:hover {
+    transform: rotate(45deg);
+}
+
+/* Combined Transforms */
+.combined-demo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.combined-box {
+    width: 180px;
+    height: 120px;
+    background: linear-gradient(45deg, #16a085, #f39c12);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    font-weight: bold;
+    text-align: center;
+}
+
+.combined-1:hover {
+    transform: rotate(20deg) scale(1.1);
+}
+
+.combined-2:hover {
+    transform: translate(30px, -20px) rotate(-15deg);
+}
+
+.combined-3:hover {
+    transform: scale(1.2) skew(10deg, 5deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .transform-grid,
+    .transform-3d-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .transform-box,
+    .transform-3d-box {
+        width: 150px;
+        height: 120px;
+    }
+    
+    .origin-demo,
+    .combined-demo {
+        flex-direction: column;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+}

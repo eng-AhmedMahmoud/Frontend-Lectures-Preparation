@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Preprocessing - Task</title>
+    <!-- Link to compiled CSS from Sass -->
+    <link rel="stylesheet" href="task_solution.css">
+</head>
+<body>
+    <!-- 
+    TASK: Build a comprehensive design system using advanced Sass preprocessing
+    
+    Requirements:
+    1. Create advanced Sass architecture using 7-1 pattern or ITCSS
+    2. Implement complex mixins for responsive design and component variants
+    3. Build powerful functions for calculations and transformations
+    4. Use control directives for automated CSS generation
+    5. Create flexible theming system with CSS custom properties
+    6. Implement modular component library with Sass
+    7. Build automated utility class generation
+    8. Create performance-optimized build workflow
+    9. Implement design token management system
+    10. Build comprehensive documentation system
+    
+    Sass Features to Demonstrate:
+    - Variables, maps, and complex data structures
+    - Advanced mixins with parameters and @content
+    - Custom functions for calculations and transformations  
+    - Control directives (@if, @for, @each, @while)
+    - Extends and placeholder selectors
+    - Modular imports and architecture
+    - Integration with CSS custom properties
+    - Build optimization and source maps
+    -->
+    
+    <div class="app" data-theme="light">
+        <!-- Header with theme switcher -->
+        <header class="header">
+            <div class="container">
+                <div class="header__content">
+                    <div class="header__brand">
+                        <h1 class="header__logo">Sass Design System</h1>
+                        <span class="header__tagline">Advanced CSS Preprocessing</span>
+                    </div>
+                    
+                    <!-- Theme Switcher -->
+                    <div class="theme-switcher">
+                        <button class="theme-switcher__btn" data-theme="light" aria-label="Light theme">
+                            <span class="icon icon--sun">☀️</span>
+                        </button>
+                        <button class="theme-switcher__btn" data-theme="dark" aria-label="Dark theme">
+                            <span class="icon icon--moon">🌙</span>
+                        </button>
+                        <button class="theme-switcher__btn" data-theme="auto" aria-label="Auto theme">
+                            <span class="icon icon--auto">🌓</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Navigation -->
+                    <nav class="nav">
+                        <ul class="nav__list">
+                            <li class="nav__item">
+                                <a href="#design-tokens" class="nav__link">Design Tokens</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#components" class="nav__link">Components</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#utilities" class="nav__link">Utilities</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#patterns" class="nav__link">Patterns</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero__content">
+                    <h2 class="hero__title">Advanced Sass Design System</h2>
+                    <p class="hero__subtitle">Demonstrating powerful CSS preprocessing with Sass mixins, functions, and automated generation</p>
+                    
+                    <!-- Live Sass Features Demo -->
+                    <div class="sass-features">
+                        <div class="feature-pill feature-pill--variables">
+                            <span class="feature-pill__icon">$</span>
+                            <span class="feature-pill__text">Variables & Maps</span>
+                        </div>
+                        <div class="feature-pill feature-pill--mixins">
+                            <span class="feature-pill__icon">@</span>
+                            <span class="feature-pill__text">Advanced Mixins</span>
+                        </div>
+                        <div class="feature-pill feature-pill--functions">
+                            <span class="feature-pill__icon">ƒ</span>
+                            <span class="feature-pill__text">Custom Functions</span>
+                        </div>
+                        <div class="feature-pill feature-pill--loops">
+                            <span class="feature-pill__icon">🔄</span>
+                            <span class="feature-pill__text">Control Directives</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero__actions">
+                        <button class="btn btn--primary btn--large">Explore Components</button>
+                        <button class="btn btn--secondary btn--large">View Source</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Tokens Section -->
+        <section class="design-tokens" id="design-tokens">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-header__title">Design Tokens</h2>
+                    <p class="section-header__subtitle">Sass-powered design system foundations</p>
+                </div>
+                
+                <div class="tokens-showcase">
+                    <!-- Color System -->
+                    <div class="token-category">
+                        <h3 class="token-category__title">Color System</h3>
+                        <p class="token-category__description">Generated from Sass maps and functions</p>
+                        
+                        <div class="color-palette">
+                            <!-- Primary Colors -->
+                            <div class="color-group">
+                                <h4 class="color-group__title">Primary</h4>
+                                <div class="color-swatches">
+                                    <div class="color-swatch color-swatch--primary-50">
+                                        <div class="color-swatch__color"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">primary-50</span>
+                                            <span class="color-swatch__value">#eff6ff</span>
+                                        </div>
+                                    </div>
+                                    <div class="color-swatch color-swatch--primary-100">
+                                        <div class="color-swatch__color"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">primary-100</span>
+                                            <span class="color-swatch__value">#dbeafe</span>
+                                        </div>
+                                    </div>
+                                    <div class="color-swatch color-swatch--primary-500">
+                                        <div class="color-swatch__color"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">primary-500</span>
+                                            <span class="color-swatch__value">#3b82f6</span>
+                                        </div>
+                                    </div>
+                                    <div class="color-swatch color-swatch--primary-900">
+                                        <div class="color-swatch__color"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">primary-900</span>
+                                            <span class="color-swatch__value">#1e3a8a</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Secondary Colors -->
+                            <div class="color-group">
+                                <h4 class="color-group__title">Secondary</h4>
+                                <div class="color-swatches">
+                                    <div class="color-swatch color-swatch--secondary-50">
+                                        <div class="color-swatch__color"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">secondary-50</span>
+                                            <span class="color-swatch__value">#f0fdf4</span>
+                                        </div>
+                                    </div>
+                                    <div class="color-swatch color-swatch--secondary-100">
+                                        <div class="color-swatch__color"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">secondary-100</span>
+                                            <span class="color-swatch__value">#dcfce7</span>
+                                        </div>
+                                    </div>
+                                    <div class="color-swatch color-swatch--secondary-500">
+                                        <div class="color-swatch__color"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">secondary-500</span>
+                                            <span class="color-swatch__value">#22c55e</span>
+                                        </div>
+                                    </div>
+                                    <div class="color-swatch color-swatch--secondary-900">
+                                        <div class="color-swatch__color"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">secondary-900</span>
+                                            <span class="color-swatch__value">#14532d</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-showcase">
+                            <h4 class="code-showcase__title">Sass Implementation</h4>
+                            <pre class="code-block"><code>// Color system generated with Sass
+$colors: (
+  'primary': #3b82f6,
+  'secondary': #22c55e,
+  'danger': #ef4444
+);
+
+// Generate color variations
+@each $name, $color in $colors {
+  @for $i from 1 through 9 {
+    .color-#{$name}-#{$i * 100} {
+      --color-#{$name}-#{$i * 100}: #{mix(white, $color, (10 - $i) * 10%)};
+    }
+  }
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Typography Scale -->
+                    <div class="token-category">
+                        <h3 class="token-category__title">Typography Scale</h3>
+                        <p class="token-category__description">Fluid typography using Sass functions</p>
+                        
+                        <div class="typography-scale">
+                            <div class="type-sample type-sample--xs">
+                                <span class="type-sample__text">The quick brown fox jumps</span>
+                                <div class="type-sample__info">
+                                    <span class="type-sample__name">text-xs</span>
+                                    <span class="type-sample__size">12px / 16px</span>
+                                </div>
+                            </div>
+                            <div class="type-sample type-sample--sm">
+                                <span class="type-sample__text">The quick brown fox jumps</span>
+                                <div class="type-sample__info">
+                                    <span class="type-sample__name">text-sm</span>
+                                    <span class="type-sample__size">14px / 20px</span>
+                                </div>
+                            </div>
+                            <div class="type-sample type-sample--base">
+                                <span class="type-sample__text">The quick brown fox jumps</span>
+                                <div class="type-sample__info">
+                                    <span class="type-sample__name">text-base</span>
+                                    <span class="type-sample__size">16px / 24px</span>
+                                </div>
+                            </div>
+                            <div class="type-sample type-sample--lg">
+                                <span class="type-sample__text">The quick brown fox jumps</span>
+                                <div class="type-sample__info">
+                                    <span class="type-sample__name">text-lg</span>
+                                    <span class="type-sample__size">18px / 28px</span>
+                                </div>
+                            </div>
+                            <div class="type-sample type-sample--xl">
+                                <span class="type-sample__text">The quick brown fox</span>
+                                <div class="type-sample__info">
+                                    <span class="type-sample__name">text-xl</span>
+                                    <span class="type-sample__size">20px / 28px</span>
+                                </div>
+                            </div>
+                            <div class="type-sample type-sample--2xl">
+                                <span class="type-sample__text">The quick brown</span>
+                                <div class="type-sample__info">
+                                    <span class="type-sample__name">text-2xl</span>
+                                    <span class="type-sample__size">24px / 32px</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-showcase">
+                            <h4 class="code-showcase__title">Fluid Typography Function</h4>
+                            <pre class="code-block"><code>// Fluid typography Sass function
+@function fluid-type($min-size, $max-size, $min-width: 320px, $max-width: 1200px) {
+  $slope: ($max-size - $min-size) / ($max-width - $min-width);
+  $intercept: $min-size - $slope * $min-width;
+  @return clamp(#{$min-size}, #{$intercept} + #{$slope * 100vw}, #{$max-size});
+}
+
+// Usage
+.text-lg {
+  font-size: fluid-type(1rem, 1.25rem);
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Spacing System -->
+                    <div class="token-category">
+                        <h3 class="token-category__title">Spacing System</h3>
+                        <p class="token-category__description">Mathematical spacing scale generated with loops</p>
+                        
+                        <div class="spacing-scale">
+                            <div class="spacing-demo">
+                                <!-- Spacing samples generated by Sass -->
+                                <div class="spacing-sample">
+                                    <div class="spacing-sample__visual spacing-1"></div>
+                                    <div class="spacing-sample__info">
+                                        <span class="spacing-sample__name">spacing-1</span>
+                                        <span class="spacing-sample__value">4px</span>
+                                    </div>
+                                </div>
+                                <div class="spacing-sample">
+                                    <div class="spacing-sample__visual spacing-2"></div>
+                                    <div class="spacing-sample__info">
+                                        <span class="spacing-sample__name">spacing-2</span>
+                                        <span class="spacing-sample__value">8px</span>
+                                    </div>
+                                </div>
+                                <div class="spacing-sample">
+                                    <div class="spacing-sample__visual spacing-4"></div>
+                                    <div class="spacing-sample__info">
+                                        <span class="spacing-sample__name">spacing-4</span>
+                                        <span class="spacing-sample__value">16px</span>
+                                    </div>
+                                </div>
+                                <div class="spacing-sample">
+                                    <div class="spacing-sample__visual spacing-6"></div>
+                                    <div class="spacing-sample__info">
+                                        <span class="spacing-sample__name">spacing-6</span>
+                                        <span class="spacing-sample__value">24px</span>
+                                    </div>
+                                </div>
+                                <div class="spacing-sample">
+                                    <div class="spacing-sample__visual spacing-8"></div>
+                                    <div class="spacing-sample__info">
+                                        <span class="spacing-sample__name">spacing-8</span>
+                                        <span class="spacing-sample__value">32px</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Component Library -->
+        <section class="component-library" id="components">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-header__title">Component Library</h2>
+                    <p class="section-header__subtitle">Sass-powered components with advanced mixins</p>
+                </div>
+                
+                <!-- Advanced Button System -->
+                <div class="component-showcase">
+                    <h3 class="component-showcase__title">Advanced Button System</h3>
+                    <p class="component-showcase__description">Generated using complex Sass mixins and maps</p>
+                    
+                    <div class="button-matrix">
+                        <!-- Size variations -->
+                        <div class="button-row">
+                            <span class="button-row__label">Sizes:</span>
+                            <button class="btn btn--primary btn--xs">Extra Small</button>
+                            <button class="btn btn--primary btn--sm">Small</button>
+                            <button class="btn btn--primary">Medium</button>
+                            <button class="btn btn--primary btn--lg">Large</button>
+                            <button class="btn btn--primary btn--xl">Extra Large</button>
+                        </div>
+                        
+                        <!-- Variant combinations -->
+                        <div class="button-row">
+                            <span class="button-row__label">Primary:</span>
+                            <button class="btn btn--primary">Solid</button>
+                            <button class="btn btn--primary-outline">Outline</button>
+                            <button class="btn btn--primary-ghost">Ghost</button>
+                            <button class="btn btn--primary-soft">Soft</button>
+                        </div>
+                        
+                        <div class="button-row">
+                            <span class="button-row__label">Secondary:</span>
+                            <button class="btn btn--secondary">Solid</button>
+                            <button class="btn btn--secondary-outline">Outline</button>
+                            <button class="btn btn--secondary-ghost">Ghost</button>
+                            <button class="btn btn--secondary-soft">Soft</button>
+                        </div>
+                        
+                        <!-- State variations -->
+                        <div class="button-row">
+                            <span class="button-row__label">States:</span>
+                            <button class="btn btn--success">Success</button>
+                            <button class="btn btn--warning">Warning</button>
+                            <button class="btn btn--danger">Danger</button>
+                            <button class="btn btn--info">Info</button>
+                        </div>
+                        
+                        <!-- Special variants -->
+                        <div class="button-row">
+                            <span class="button-row__label">Special:</span>
+                            <button class="btn btn--gradient">Gradient</button>
+                            <button class="btn btn--animated">Animated</button>
+                            <button class="btn btn--loading" disabled>
+                                <span class="btn__spinner"></span>
+                                Loading...
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="code-showcase">
+                        <h4 class="code-showcase__title">Advanced Button Mixin</h4>
+                        <pre class="code-block"><code>// Advanced button variant generator
+@mixin button-variant($variant, $style: 'solid') {
+  $color-map: map-get($button-colors, $variant);
+  $bg: map-get($color-map, 'bg');
+  $color: map-get($color-map, 'color');
+  $border: map-get($color-map, 'border');
+  
+  @if $style == 'solid' {
+    background-color: $bg;
+    color: $color;
+    border-color: $border;
+  } @else if $style == 'outline' {
+    background-color: transparent;
+    color: $bg;
+    border: 2px solid $bg;
+  } @else if $style == 'ghost' {
+    background-color: transparent;
+    color: $bg;
+    border: none;
+  }
+  
+  // Generate hover states
+  &:hover {
+    @include button-hover-state($variant, $style);
+  }
+}
+
+// Generate all button variants
+@each $variant, $colors in $button-colors {
+  @each $style in ('solid', 'outline', 'ghost', 'soft') {
+    .btn--#{$variant}#{if($style != 'solid', '-#{$style}', '')} {
+      @include button-variant($variant, $style);
+    }
+  }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Responsive Card Grid -->
+                <div class="component-showcase">
+                    <h3 class="component-showcase__title">Responsive Card System</h3>
+                    <p class="component-showcase__description">Sass-generated responsive grid with container queries</p>
+                    
+                    <div class="card-grid">
+                        <div class="card card--default">
+                            <div class="card__media">
+                                <div class="card__image" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24);"></div>
+                            </div>
+                            <div class="card__content">
+                                <h4 class="card__title">Default Card</h4>
+                                <p class="card__description">Basic card component with standard styling applied through Sass mixins.</p>
+                                <div class="card__meta">
+                                    <span class="badge badge--primary">Default</span>
+                                    <span class="card__date">March 15, 2024</span>
+                                </div>
+                            </div>
+                            <div class="card__actions">
+                                <button class="btn btn--primary btn--sm">Read More</button>
+                                <button class="btn btn--secondary-ghost btn--sm">Share</button>
+                            </div>
+                        </div>
+
+                        <div class="card card--elevated">
+                            <div class="card__media">
+                                <div class="card__image" style="background: linear-gradient(45deg, #4ecdc4, #44a08d);"></div>
+                            </div>
+                            <div class="card__content">
+                                <h4 class="card__title">Elevated Card</h4>
+                                <p class="card__description">Enhanced card with elevation and sophisticated shadow system.</p>
+                                <div class="card__meta">
+                                    <span class="badge badge--success">Featured</span>
+                                    <span class="card__date">March 12, 2024</span>
+                                </div>
+                            </div>
+                            <div class="card__actions">
+                                <button class="btn btn--success btn--sm">Explore</button>
+                                <button class="btn btn--success-ghost btn--sm">Bookmark</button>
+                            </div>
+                        </div>
+
+                        <div class="card card--outlined">
+                            <div class="card__media">
+                                <div class="card__image" style="background: linear-gradient(45deg, #a8edea, #fed6e3);"></div>
+                            </div>
+                            <div class="card__content">
+                                <h4 class="card__title">Outlined Card</h4>
+                                <p class="card__description">Subtle outlined variant with border emphasis and clean styling.</p>
+                                <div class="card__meta">
+                                    <span class="badge badge--info">Updated</span>
+                                    <span class="card__date">March 10, 2024</span>
+                                </div>
+                            </div>
+                            <div class="card__actions">
+                                <button class="btn btn--info btn--sm">Details</button>
+                                <button class="btn btn--info-ghost btn--sm">Edit</button>
+                            </div>
+                        </div>
+
+                        <div class="card card--interactive">
+                            <div class="card__media">
+                                <div class="card__image" style="background: linear-gradient(45deg, #667eea, #764ba2);"></div>
+                            </div>
+                            <div class="card__content">
+                                <h4 class="card__title">Interactive Card</h4>
+                                <p class="card__description">Advanced interactive card with hover effects and state management.</p>
+                                <div class="card__meta">
+                                    <span class="badge badge--warning">Interactive</span>
+                                    <span class="card__date">March 8, 2024</span>
+                                </div>
+                            </div>
+                            <div class="card__actions">
+                                <button class="btn btn--warning btn--sm">Interact</button>
+                                <button class="btn btn--warning-ghost btn--sm">Preview</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form System -->
+                <div class="component-showcase">
+                    <h3 class="component-showcase__title">Advanced Form System</h3>
+                    <p class="component-showcase__description">Form components with Sass-generated validation states</p>
+                    
+                    <form class="form form--advanced">
+                        <div class="form__section">
+                            <h4 class="form__section-title">Personal Information</h4>
+                            
+                            <div class="form__row">
+                                <div class="form-field">
+                                    <label class="form-field__label" for="firstName">First Name *</label>
+                                    <input class="form-field__input" type="text" id="firstName" required>
+                                    <div class="form-field__help">Enter your first name</div>
+                                </div>
+                                
+                                <div class="form-field">
+                                    <label class="form-field__label" for="lastName">Last Name *</label>
+                                    <input class="form-field__input" type="text" id="lastName" required>
+                                    <div class="form-field__help">Enter your last name</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-field form-field--error">
+                                <label class="form-field__label" for="email">Email Address *</label>
+                                <input class="form-field__input" type="email" id="email" value="invalid-email" required>
+                                <div class="form-field__error">Please enter a valid email address</div>
+                            </div>
+                            
+                            <div class="form-field form-field--success">
+                                <label class="form-field__label" for="username">Username *</label>
+                                <input class="form-field__input" type="text" id="username" value="available_username" required>
+                                <div class="form-field__success">Username is available</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form__section">
+                            <h4 class="form__section-title">Preferences</h4>
+                            
+                            <div class="form-field">
+                                <fieldset class="form-fieldset">
+                                    <legend class="form-fieldset__legend">Notification Preferences</legend>
+                                    <div class="form-checkbox-group">
+                                        <label class="form-checkbox">
+                                            <input class="form-checkbox__input" type="checkbox" checked>
+                                            <span class="form-checkbox__checkmark"></span>
+                                            <span class="form-checkbox__label">Email notifications</span>
+                                        </label>
+                                        <label class="form-checkbox">
+                                            <input class="form-checkbox__input" type="checkbox">
+                                            <span class="form-checkbox__checkmark"></span>
+                                            <span class="form-checkbox__label">SMS notifications</span>
+                                        </label>
+                                        <label class="form-checkbox">
+                                            <input class="form-checkbox__input" type="checkbox">
+                                            <span class="form-checkbox__checkmark"></span>
+                                            <span class="form-checkbox__label">Push notifications</span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+                            <div class="form-field">
+                                <fieldset class="form-fieldset">
+                                    <legend class="form-fieldset__legend">Account Type</legend>
+                                    <div class="form-radio-group">
+                                        <label class="form-radio">
+                                            <input class="form-radio__input" type="radio" name="accountType" value="personal" checked>
+                                            <span class="form-radio__checkmark"></span>
+                                            <span class="form-radio__label">Personal Account</span>
+                                        </label>
+                                        <label class="form-radio">
+                                            <input class="form-radio__input" type="radio" name="accountType" value="business">
+                                            <span class="form-radio__checkmark"></span>
+                                            <span class="form-radio__label">Business Account</span>
+                                        </label>
+                                        <label class="form-radio">
+                                            <input class="form-radio__input" type="radio" name="accountType" value="enterprise">
+                                            <span class="form-radio__checkmark"></span>
+                                            <span class="form-radio__label">Enterprise Account</span>
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        
+                        <div class="form__actions">
+                            <button class="btn btn--primary btn--lg" type="submit">Create Account</button>
+                            <button class="btn btn--secondary-outline btn--lg" type="reset">Reset Form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Utility Classes -->
+        <section class="utilities" id="utilities">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-header__title">Generated Utility Classes</h2>
+                    <p class="section-header__subtitle">Automated utility generation with Sass loops</p>
+                </div>
+                
+                <div class="utility-showcase">
+                    <!-- Spacing Utilities -->
+                    <div class="utility-category">
+                        <h3 class="utility-category__title">Spacing Utilities</h3>
+                        <p class="utility-category__description">Generated with @for loops and maps</p>
+                        
+                        <div class="utility-demo">
+                            <div class="utility-example">
+                                <div class="demo-box m-1">m-1</div>
+                                <div class="demo-box m-2">m-2</div>
+                                <div class="demo-box m-4">m-4</div>
+                                <div class="demo-box m-6">m-6</div>
+                                <div class="demo-box m-8">m-8</div>
+                            </div>
+                            
+                            <div class="utility-example">
+                                <div class="demo-box p-1">p-1</div>
+                                <div class="demo-box p-2">p-2</div>
+                                <div class="demo-box p-4">p-4</div>
+                                <div class="demo-box p-6">p-6</div>
+                                <div class="demo-box p-8">p-8</div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-showcase">
+                            <pre class="code-block"><code>// Generate spacing utilities
+$spacings: (0, 1, 2, 3, 4, 5, 6, 8, 10, 12);
+
+@each $space in $spacings {
+  .m-#{$space} { margin: #{$space * 0.25}rem; }
+  .p-#{$space} { padding: #{$space * 0.25}rem; }
+  
+  // Generate directional utilities
+  @each $direction in (t, r, b, l) {
+    .m#{$direction}-#{$space} { margin-#{direction-map($direction)}: #{$space * 0.25}rem; }
+    .p#{$direction}-#{$space} { padding-#{direction-map($direction)}: #{$space * 0.25}rem; }
+  }
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- Color Utilities -->
+                    <div class="utility-category">
+                        <h3 class="utility-category__title">Color Utilities</h3>
+                        <p class="utility-category__description">Generated from color maps and functions</p>
+                        
+                        <div class="utility-demo">
+                            <div class="utility-example">
+                                <div class="demo-text text-primary-400">text-primary-400</div>
+                                <div class="demo-text text-primary-500">text-primary-500</div>
+                                <div class="demo-text text-primary-600">text-primary-600</div>
+                            </div>
+                            
+                            <div class="utility-example">
+                                <div class="demo-box bg-secondary-100">bg-secondary-100</div>
+                                <div class="demo-box bg-secondary-300">bg-secondary-300</div>
+                                <div class="demo-box bg-secondary-500">bg-secondary-500</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Responsive Utilities -->
+                    <div class="utility-category">
+                        <h3 class="utility-category__title">Responsive Utilities</h3>
+                        <p class="utility-category__description">Breakpoint-aware utilities with mixins</p>
+                        
+                        <div class="utility-demo">
+                            <div class="responsive-demo">
+                                <div class="demo-box hidden sm:block md:hidden lg:block">
+                                    Responsive Visibility
+                                </div>
+                                <div class="demo-box text-sm md:text-lg lg:text-xl">
+                                    Responsive Typography
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Patterns -->
+        <section class="patterns" id="patterns">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-header__title">Sass Architecture Patterns</h2>
+                    <p class="section-header__subtitle">Scalable CSS organization with preprocessing</p>
+                </div>
+                
+                <div class="pattern-showcase">
+                    <!-- File Structure -->
+                    <div class="pattern-demo">
+                        <h3 class="pattern-demo__title">7-1 Architecture Pattern</h3>
+                        <div class="file-tree">
+                            <div class="file-tree__item file-tree__item--folder">
+                                <span class="file-tree__icon">📁</span>
+                                <span class="file-tree__name">sass/</span>
+                                <div class="file-tree__children">
+                                    <div class="file-tree__item file-tree__item--folder">
+                                        <span class="file-tree__icon">📁</span>
+                                        <span class="file-tree__name">abstracts/</span>
+                                        <div class="file-tree__children">
+                                            <div class="file-tree__item">
+                                                <span class="file-tree__icon">📄</span>
+                                                <span class="file-tree__name">_variables.scss</span>
+                                            </div>
+                                            <div class="file-tree__item">
+                                                <span class="file-tree__icon">📄</span>
+                                                <span class="file-tree__name">_functions.scss</span>
+                                            </div>
+                                            <div class="file-tree__item">
+                                                <span class="file-tree__icon">📄</span>
+                                                <span class="file-tree__name">_mixins.scss</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="file-tree__item file-tree__item--folder">
+                                        <span class="file-tree__icon">📁</span>
+                                        <span class="file-tree__name">base/</span>
+                                        <div class="file-tree__children">
+                                            <div class="file-tree__item">
+                                                <span class="file-tree__icon">📄</span>
+                                                <span class="file-tree__name">_reset.scss</span>
+                                            </div>
+                                            <div class="file-tree__item">
+                                                <span class="file-tree__icon">📄</span>
+                                                <span class="file-tree__name">_typography.scss</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="file-tree__item file-tree__item--folder">
+                                        <span class="file-tree__icon">📁</span>
+                                        <span class="file-tree__name">components/</span>
+                                        <div class="file-tree__children">
+                                            <div class="file-tree__item">
+                                                <span class="file-tree__icon">📄</span>
+                                                <span class="file-tree__name">_buttons.scss</span>
+                                            </div>
+                                            <div class="file-tree__item">
+                                                <span class="file-tree__icon">📄</span>
+                                                <span class="file-tree__name">_cards.scss</span>
+                                            </div>
+                                            <div class="file-tree__item">
+                                                <span class="file-tree__icon">📄</span>
+                                                <span class="file-tree__name">_forms.scss</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="file-tree__item">
+                                        <span class="file-tree__icon">📄</span>
+                                        <span class="file-tree__name">main.scss</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Build Process -->
+                    <div class="pattern-demo">
+                        <h3 class="pattern-demo__title">Build Process</h3>
+                        <div class="build-flow">
+                            <div class="build-step">
+                                <div class="build-step__icon">📝</div>
+                                <div class="build-step__content">
+                                    <h4 class="build-step__title">Write Sass</h4>
+                                    <p class="build-step__description">Author modular SCSS files</p>
+                                </div>
+                            </div>
+                            <div class="build-arrow">→</div>
+                            <div class="build-step">
+                                <div class="build-step__icon">⚙️</div>
+                                <div class="build-step__content">
+                                    <h4 class="build-step__title">Compile</h4>
+                                    <p class="build-step__description">Process with Sass compiler</p>
+                                </div>
+                            </div>
+                            <div class="build-arrow">→</div>
+                            <div class="build-step">
+                                <div class="build-step__icon">🔧</div>
+                                <div class="build-step__content">
+                                    <h4 class="build-step__title">Post-Process</h4>
+                                    <p class="build-step__description">Autoprefix & optimize</p>
+                                </div>
+                            </div>
+                            <div class="build-arrow">→</div>
+                            <div class="build-step">
+                                <div class="build-step__icon">📦</div>
+                                <div class="build-step__content">
+                                    <h4 class="build-step__title">Output CSS</h4>
+                                    <p class="build-step__description">Production-ready styles</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__content">
+                    <div class="footer__section">
+                        <h4 class="footer__title">Sass Design System</h4>
+                        <p class="footer__text">Advanced CSS preprocessing for scalable, maintainable stylesheets.</p>
+                    </div>
+                    <div class="footer__section">
+                        <h4 class="footer__title">Features</h4>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">Advanced Mixins</a></li>
+                            <li><a href="#" class="footer__link">Custom Functions</a></li>
+                            <li><a href="#" class="footer__link">Automated Generation</a></li>
+                            <li><a href="#" class="footer__link">Modular Architecture</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__section">
+                        <h4 class="footer__title">Resources</h4>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">Sass Documentation</a></li>
+                            <li><a href="#" class="footer__link">Architecture Guide</a></li>
+                            <li><a href="#" class="footer__link">Best Practices</a></li>
+                            <li><a href="#" class="footer__link">Build Tools</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p class="footer__copyright">&copy; 2024 Advanced CSS Preprocessing Tutorial</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript for interactive features -->
+    <script>
+        // Theme switcher functionality
+        const themeSwitcher = document.querySelector('.theme-switcher');
+        const app = document.querySelector('.app');
+        
+        themeSwitcher.addEventListener('click', (e) => {
+            if (e.target.matches('[data-theme]')) {
+                const theme = e.target.dataset.theme;
+                app.dataset.theme = theme;
+                
+                // Update active state
+                document.querySelectorAll('[data-theme]').forEach(btn => {
+                    btn.classList.remove('is-active');
+                });
+                e.target.classList.add('is-active');
+                
+                // Store preference
+                localStorage.setItem('preferred-theme', theme);
+            }
+        });
+        
+        // Initialize theme from localStorage
+        const savedTheme = localStorage.getItem('preferred-theme') || 'light';
+        app.dataset.theme = savedTheme;
+        document.querySelector(`[data-theme="${savedTheme}"]`).classList.add('is-active');
+        
+        // File tree toggle functionality
+        document.querySelectorAll('.file-tree__item--folder').forEach(folder => {
+            folder.addEventListener('click', (e) => {
+                e.stopPropagation();
+                folder.classList.toggle('is-expanded');
+            });
+        });
+        
+        // Code showcase toggle
+        document.querySelectorAll('.code-showcase__title').forEach(title => {
+            title.addEventListener('click', () => {
+                const showcase = title.closest('.code-showcase');
+                showcase.classList.toggle('is-expanded');
+            });
+        });
+        
+        // Demo interactions
+        document.querySelectorAll('.demo-box, .demo-text').forEach(demo => {
+            demo.addEventListener('mouseenter', () => {
+                demo.style.transform = 'scale(1.05)';
+            });
+            
+            demo.addEventListener('mouseleave', () => {
+                demo.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

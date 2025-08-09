@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    font-size: 16px; /* Root font size for rem calculations */
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.units-demo > div {
+    margin: 15px 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+/* Absolute Units */
+.px-example {
+    width: 300px;
+    background-color: #e3f2fd;
+}
+
+.pt-example {
+    font-size: 14pt;
+    background-color: #f3e5f5;
+}
+
+/* Relative Units */
+.percent-example {
+    width: 50%;
+    background-color: #e8f5e9;
+}
+
+.em-example {
+    font-size: 20px;
+    background-color: #fff3e0;
+}
+
+.em-child {
+    font-size: 1.5em; /* 30px (1.5 * 20px parent) */
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #ffe0b2;
+}
+
+.rem-example {
+    font-size: 1.25rem; /* 20px (1.25 * 16px root) */
+    padding: 1rem; /* 16px */
+    background-color: #fce4ec;
+}
+
+/* Viewport Units */
+.vw-example {
+    width: 80vw;
+    background-color: #e0f2f1;
+}
+
+.vh-example {
+    height: 20vh;
+    background-color: #f1f8e9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

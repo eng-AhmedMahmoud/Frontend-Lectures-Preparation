@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animations - Task</title>
+    <!-- Create your CSS file and link it here -->
+    <link rel="stylesheet" href="task_solution.css">
+</head>
+<body>
+    <!-- 
+    TASK: Create various CSS animations and transitions
+    
+    Requirements:
+    1. Animate the .hero-banner on page load:
+       - Title slides in from the left
+       - Subtitle fades in after a delay
+       - Button bounces in from the bottom
+    
+    2. Create hover effects for .feature-cards:
+       - Scale up slightly on hover
+       - Add a glowing box-shadow
+       - Transition should be smooth (0.3s)
+    
+    3. Build a loading spinner in .loading-demo:
+       - Create a rotating circular spinner
+       - Add pulsing dots animation
+       - Include a progress bar that fills up
+    
+    4. Animate the .gallery-items:
+       - Items should fade in on scroll (simulate with :hover)
+       - Stagger the animations with delays
+       - Add a flip effect on hover
+    
+    5. Create button animations in .interactive-buttons:
+       - Ripple effect on click
+       - Slide in background color
+       - 3D flip animation
+       - Morphing shape button
+    
+    6. Build a complex .floating-shapes animation:
+       - Multiple shapes floating at different speeds
+       - Use transforms for GPU acceleration
+       - Include rotation and scaling
+    
+    Bonus challenges:
+    - Create a typewriter text effect
+    - Build a parallax scrolling simulation
+    - Add a morphing SVG animation
+    - Implement a particle system with CSS
+    - Use CSS variables for dynamic animations
+    -->
+    
+    <!-- 1. Hero Banner -->
+    <section class="hero-banner">
+        <h1 class="hero-title">Welcome to Animation Land</h1>
+        <p class="hero-subtitle">Where CSS comes alive with motion</p>
+        <button class="hero-button">Get Started</button>
+    </section>
+
+    <!-- 2. Feature Cards -->
+    <section class="features-section">
+        <h2>Our Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Smooth Transitions</h3>
+                <p>Experience buttery smooth animations</p>
+            </div>
+            <div class="feature-card">
+                <h3>Performance Optimized</h3>
+                <p>GPU accelerated for smooth performance</p>
+            </div>
+            <div class="feature-card">
+                <h3>Cross Browser</h3>
+                <p>Works across all modern browsers</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Loading Demo -->
+    <section class="loading-section">
+        <h2>Loading Animations</h2>
+        <div class="loading-demo">
+            <div class="spinner-loader"></div>
+            <div class="dots-loader">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="progress-loader">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Gallery -->
+    <section class="gallery-section">
+        <h2>Animated Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" style="animation-delay: 0.1s;">Item 1</div>
+            <div class="gallery-item" style="animation-delay: 0.2s;">Item 2</div>
+            <div class="gallery-item" style="animation-delay: 0.3s;">Item 3</div>
+            <div class="gallery-item" style="animation-delay: 0.4s;">Item 4</div>
+            <div class="gallery-item" style="animation-delay: 0.5s;">Item 5</div>
+            <div class="gallery-item" style="animation-delay: 0.6s;">Item 6</div>
+        </div>
+    </section>
+
+    <!-- 5. Interactive Buttons -->
+    <section class="buttons-section">
+        <h2>Interactive Buttons</h2>
+        <div class="interactive-buttons">
+            <button class="btn-ripple">Ripple Effect</button>
+            <button class="btn-slide">Slide Background</button>
+            <button class="btn-flip">3D Flip</button>
+            <button class="btn-morph">Morphing Shape</button>
+        </div>
+    </section>
+
+    <!-- 6. Floating Shapes -->
+    <section class="shapes-section">
+        <h2>Floating Elements</h2>
+        <div class="floating-shapes">
+            <div class="shape shape-circle"></div>
+            <div class="shape shape-square"></div>
+            <div class="shape shape-triangle"></div>
+            <div class="shape shape-diamond"></div>
+        </div>
+    </section>
+
+    <!-- Bonus: Typewriter Effect -->
+    <section class="typewriter-section">
+        <h2 class="typewriter-text">This text appears character by character...</h2>
+    </section>
+
+    <!-- Bonus: Particle System -->
+    <section class="particles-section">
+        <h2>CSS Particle System</h2>
+        <div class="particle-container">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Design - Task</title>
+    <!-- Create your CSS file and link it here -->
+    <link rel="stylesheet" href="task_solution.css">
+</head>
+<body>
+    <!-- 
+    TASK: Build a complete responsive website using mobile-first methodology
+    
+    Requirements:
+    1. Implement mobile-first responsive design with progressive enhancement
+    2. Create responsive navigation that works across all device sizes
+    3. Build flexible grid layouts that adapt to different screen sizes
+    4. Implement responsive images with multiple techniques
+    5. Create adaptive typography that scales appropriately
+    6. Define strategic breakpoints based on content, not devices
+    7. Ensure touch-friendly interactions on mobile devices
+    8. Optimize content hierarchy for different screen contexts
+    9. Test responsive behavior thoroughly across breakpoints
+    10. Maintain accessibility across all responsive states
+    
+    Breakpoints to implement:
+    - Small mobile: 320px-479px
+    - Large mobile: 480px-767px  
+    - Tablet: 768px-1023px
+    - Desktop: 1024px+
+    
+    Bonus: Implement container queries for component-level responsiveness
+    -->
+    
+    <div class="site-wrapper">
+        <!-- Responsive Header -->
+        <header class="header">
+            <div class="header__container">
+                <div class="header__brand">
+                    <h1 class="header__logo">ResponsiveWeb</h1>
+                </div>
+                
+                <!-- Mobile menu toggle -->
+                <button class="header__menu-toggle" aria-label="Toggle menu">
+                    <span class="menu-toggle__line"></span>
+                    <span class="menu-toggle__line"></span>
+                    <span class="menu-toggle__line"></span>
+                </button>
+                
+                <!-- Navigation -->
+                <nav class="header__nav">
+                    <ul class="nav-list">
+                        <li class="nav-list__item">
+                            <a href="#" class="nav-list__link">Home</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a href="#" class="nav-list__link">Services</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a href="#" class="nav-list__link">Portfolio</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a href="#" class="nav-list__link">About</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a href="#" class="nav-list__link">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__container">
+                <div class="hero__content">
+                    <h2 class="hero__title">Responsive Web Design</h2>
+                    <p class="hero__subtitle">Creating optimal experiences across all devices and screen sizes</p>
+                    <div class="hero__actions">
+                        <a href="#" class="btn btn--primary">Get Started</a>
+                        <a href="#" class="btn btn--secondary">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero__media">
+                    <!-- Responsive image with multiple sources -->
+                    <picture class="hero__image">
+                        <source media="(max-width: 767px)" 
+                                srcset="https://via.placeholder.com/400x300/3498db/white?text=Mobile+Hero">
+                        <source media="(max-width: 1023px)" 
+                                srcset="https://via.placeholder.com/600x400/3498db/white?text=Tablet+Hero">
+                        <img src="https://via.placeholder.com/800x500/3498db/white?text=Desktop+Hero" 
+                             alt="Responsive design illustration">
+                    </picture>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="features">
+            <div class="features__container">
+                <h2 class="features__title">Why Responsive Design?</h2>
+                <div class="features__grid">
+                    <div class="feature-card">
+                        <div class="feature-card__icon">📱</div>
+                        <h3 class="feature-card__title">Mobile First</h3>
+                        <p class="feature-card__description">
+                            Start with mobile design and progressively enhance for larger screens.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-card__icon">⚡</div>
+                        <h3 class="feature-card__title">Fast Performance</h3>
+                        <p class="feature-card__description">
+                            Optimized loading and rendering across all device capabilities.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-card__icon">🎯</div>
+                        <h3 class="feature-card__title">Better UX</h3>
+                        <p class="feature-card__description">
+                            Tailored experiences that work perfectly on every device.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-card__icon">🔧</div>
+                        <h3 class="feature-card__title">Maintainable</h3>
+                        <p class="feature-card__description">
+                            One codebase that works everywhere, reducing development overhead.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-card__icon">♿</div>
+                        <h3 class="feature-card__title">Accessible</h3>
+                        <p class="feature-card__description">
+                            Inclusive design that works for users with diverse needs and abilities.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-card__icon">📊</div>
+                        <h3 class="feature-card__title">SEO Friendly</h3>
+                        <p class="feature-card__description">
+                            Mobile-friendly sites rank better in search results.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Grid -->
+        <section class="portfolio">
+            <div class="portfolio__container">
+                <h2 class="portfolio__title">Responsive Portfolio</h2>
+                <div class="portfolio__grid">
+                    <article class="portfolio-item">
+                        <div class="portfolio-item__image">
+                            <img src="https://via.placeholder.com/400x300/e74c3c/white?text=Project+1" 
+                                 alt="Project 1" loading="lazy">
+                        </div>
+                        <div class="portfolio-item__content">
+                            <h3 class="portfolio-item__title">E-commerce Platform</h3>
+                            <p class="portfolio-item__description">
+                                Responsive online store with mobile-optimized checkout flow.
+                            </p>
+                            <a href="#" class="portfolio-item__link">View Project</a>
+                        </div>
+                    </article>
+                    
+                    <article class="portfolio-item portfolio-item--featured">
+                        <div class="portfolio-item__image">
+                            <img src="https://via.placeholder.com/400x300/2ecc71/white?text=Featured" 
+                                 alt="Featured Project" loading="lazy">
+                        </div>
+                        <div class="portfolio-item__content">
+                            <h3 class="portfolio-item__title">Mobile Banking App</h3>
+                            <p class="portfolio-item__description">
+                                Progressive web app with native-like mobile experience.
+                            </p>
+                            <a href="#" class="portfolio-item__link">View Project</a>
+                        </div>
+                    </article>
+                    
+                    <article class="portfolio-item">
+                        <div class="portfolio-item__image">
+                            <img src="https://via.placeholder.com/400x300/9b59b6/white?text=Project+3" 
+                                 alt="Project 3" loading="lazy">
+                        </div>
+                        <div class="portfolio-item__content">
+                            <h3 class="portfolio-item__title">News Website</h3>
+                            <p class="portfolio-item__description">
+                                Content-heavy site optimized for reading across devices.
+                            </p>
+                            <a href="#" class="portfolio-item__link">View Project</a>
+                        </div>
+                    </article>
+                    
+                    <article class="portfolio-item">
+                        <div class="portfolio-item__image">
+                            <img src="https://via.placeholder.com/400x300/f39c12/white?text=Project+4" 
+                                 alt="Project 4" loading="lazy">
+                        </div>
+                        <div class="portfolio-item__content">
+                            <h3 class="portfolio-item__title">Restaurant Website</h3>
+                            <p class="portfolio-item__description">
+                                Location-based site with mobile ordering capabilities.
+                            </p>
+                            <a href="#" class="portfolio-item__link">View Project</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="stats">
+            <div class="stats__container">
+                <div class="stats__grid">
+                    <div class="stat-item">
+                        <div class="stat-item__number">54%</div>
+                        <div class="stat-item__label">Mobile Traffic</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-item__number">3.2s</div>
+                        <div class="stat-item__label">Load Time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-item__number">98%</div>
+                        <div class="stat-item__label">Lighthouse Score</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-item__number">5+</div>
+                        <div class="stat-item__label">Device Support</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="contact">
+            <div class="contact__container">
+                <div class="contact__content">
+                    <div class="contact__info">
+                        <h2 class="contact__title">Get In Touch</h2>
+                        <p class="contact__description">
+                            Ready to make your website responsive? Let's discuss your project.
+                        </p>
+                        <div class="contact__details">
+                            <div class="contact__item">
+                                <strong>Email:</strong> hello@responsive.com
+                            </div>
+                            <div class="contact__item">
+                                <strong>Phone:</strong> (555) 123-4567
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="contact__form">
+                        <div class="form-group">
+                            <label for="name" class="form-group__label">Name</label>
+                            <input type="text" id="name" class="form-group__input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-group__label">Email</label>
+                            <input type="email" id="email" class="form-group__input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-group__label">Message</label>
+                            <textarea id="message" class="form-group__textarea" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn--primary btn--full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer__container">
+                <div class="footer__content">
+                    <div class="footer__section">
+                        <h3 class="footer__title">ResponsiveWeb</h3>
+                        <p class="footer__description">
+                            Creating beautiful, responsive websites that work everywhere.
+                        </p>
+                    </div>
+                    
+                    <div class="footer__section">
+                        <h4 class="footer__heading">Services</h4>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">Web Design</a></li>
+                            <li><a href="#" class="footer__link">Development</a></li>
+                            <li><a href="#" class="footer__link">Consulting</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer__section">
+                        <h4 class="footer__heading">Company</h4>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">About</a></li>
+                            <li><a href="#" class="footer__link">Team</a></li>
+                            <li><a href="#" class="footer__link">Careers</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer__section">
+                        <h4 class="footer__heading">Connect</h4>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">Twitter</a></li>
+                            <li><a href="#" class="footer__link">LinkedIn</a></li>
+                            <li><a href="#" class="footer__link">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer__bottom">
+                    <p class="footer__copyright">
+                        &copy; 2024 ResponsiveWeb. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Simple mobile menu toggle
+        document.querySelector('.header__menu-toggle').addEventListener('click', function() {
+            document.querySelector('.header__nav').classList.toggle('is-open');
+        });
+    </script>
+</body>
+</html>

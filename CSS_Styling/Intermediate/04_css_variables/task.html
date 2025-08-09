@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Variables - Task</title>
+    <link rel="stylesheet" href="task_solution.css">
+</head>
+<body>
+    <!-- 
+    TASK: Build a dynamic theming system using CSS Custom Properties (Variables)
+    
+    Requirements:
+    1. Create a comprehensive design system using CSS custom properties
+    2. Implement multiple theme variations (light, dark, high contrast)
+    3. Build dynamic theme switching functionality
+    4. Use CSS variables for responsive design adaptations
+    5. Create component-level variable scoping
+    6. Implement variable fallbacks and inheritance
+    7. Build a color system with CSS variables
+    8. Create fluid typography using custom properties
+    9. Implement CSS variables for animations and transitions
+    10. Build a real-time theme customization interface
+    -->
+    
+    <div class="app" data-theme="light">
+        <!-- Theme Controls Header -->
+        <header class="theme-controls">
+            <div class="container">
+                <div class="theme-controls__content">
+                    <div class="theme-controls__brand">
+                        <h1 class="brand-title">CSS Variables Demo</h1>
+                        <span class="brand-subtitle">Dynamic Theming System</span>
+                    </div>
+                    
+                    <!-- Theme Switcher -->
+                    <div class="theme-switcher">
+                        <button class="theme-btn theme-btn--light" data-theme="light" aria-label="Light theme">
+                            <span class="theme-btn__icon">☀️</span>
+                            <span class="theme-btn__label">Light</span>
+                        </button>
+                        <button class="theme-btn theme-btn--dark" data-theme="dark" aria-label="Dark theme">
+                            <span class="theme-btn__icon">🌙</span>
+                            <span class="theme-btn__label">Dark</span>
+                        </button>
+                        <button class="theme-btn theme-btn--contrast" data-theme="high-contrast" aria-label="High contrast theme">
+                            <span class="theme-btn__icon">⚫</span>
+                            <span class="theme-btn__label">High Contrast</span>
+                        </button>
+                        <button class="theme-btn theme-btn--custom" data-theme="custom" aria-label="Custom theme">
+                            <span class="theme-btn__icon">🎨</span>
+                            <span class="theme-btn__label">Custom</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Custom Theme Controls -->
+        <section class="custom-controls" id="customControls">
+            <div class="container">
+                <h2 class="custom-controls__title">Live Theme Customization</h2>
+                <div class="custom-controls__grid">
+                    <!-- Primary Color Control -->
+                    <div class="control-group">
+                        <label class="control-label" for="primaryHue">Primary Hue</label>
+                        <input class="control-slider" type="range" id="primaryHue" min="0" max="360" value="220">
+                        <div class="control-preview control-preview--primary"></div>
+                    </div>
+                    
+                    <!-- Secondary Color Control -->
+                    <div class="control-group">
+                        <label class="control-label" for="secondaryHue">Secondary Hue</label>
+                        <input class="control-slider" type="range" id="secondaryHue" min="0" max="360" value="120">
+                        <div class="control-preview control-preview--secondary"></div>
+                    </div>
+                    
+                    <!-- Accent Color Control -->
+                    <div class="control-group">
+                        <label class="control-label" for="accentHue">Accent Hue</label>
+                        <input class="control-slider" type="range" id="accentHue" min="0" max="360" value="0">
+                        <div class="control-preview control-preview--accent"></div>
+                    </div>
+                    
+                    <!-- Border Radius Control -->
+                    <div class="control-group">
+                        <label class="control-label" for="borderRadius">Border Radius</label>
+                        <input class="control-slider" type="range" id="borderRadius" min="0" max="24" value="8">
+                        <div class="control-value" id="borderRadiusValue">8px</div>
+                    </div>
+                    
+                    <!-- Font Size Control -->
+                    <div class="control-group">
+                        <label class="control-label" for="fontSize">Base Font Size</label>
+                        <input class="control-slider" type="range" id="fontSize" min="14" max="20" value="16">
+                        <div class="control-value" id="fontSizeValue">16px</div>
+                    </div>
+                    
+                    <!-- Spacing Control -->
+                    <div class="control-group">
+                        <label class="control-label" for="spacing">Spacing Scale</label>
+                        <input class="control-slider" type="range" id="spacing" min="0.5" max="2.0" step="0.1" value="1.0">
+                        <div class="control-value" id="spacingValue">1.0x</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Design System Showcase -->
+            <section class="design-system">
+                <div class="container">
+                    <h2 class="section-title">Design System Components</h2>
+                    
+                    <!-- Color Palette Display -->
+                    <div class="color-system">
+                        <h3 class="subsection-title">Dynamic Color System</h3>
+                        <div class="color-palette">
+                            <div class="color-group">
+                                <h4 class="color-group__title">Primary Colors</h4>
+                                <div class="color-swatches">
+                                    <div class="color-swatch color-swatch--primary-light">
+                                        <div class="color-swatch__sample"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">Primary Light</span>
+                                            <span class="color-swatch__var">--color-primary-light</span>
+                                        </div>
+                                    </div>
+                                    <div class="color-swatch color-swatch--primary">
+                                        <div class="color-swatch__sample"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">Primary</span>
+                                            <span class="color-swatch__var">--color-primary</span>
+                                        </div>
+                                    </div>
+                                    <div class="color-swatch color-swatch--primary-dark">
+                                        <div class="color-swatch__sample"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">Primary Dark</span>
+                                            <span class="color-swatch__var">--color-primary-dark</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="color-group">
+                                <h4 class="color-group__title">Secondary Colors</h4>
+                                <div class="color-swatches">
+                                    <div class="color-swatch color-swatch--secondary-light">
+                                        <div class="color-swatch__sample"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">Secondary Light</span>
+                                            <span class="color-swatch__var">--color-secondary-light</span>
+                                        </div>
+                                    </div>
+                                    <div class="color-swatch color-swatch--secondary">
+                                        <div class="color-swatch__sample"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">Secondary</span>
+                                            <span class="color-swatch__var">--color-secondary</span>
+                                        </div>
+                                    </div>
+                                    <div class="color-swatch color-swatch--secondary-dark">
+                                        <div class="color-swatch__sample"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">Secondary Dark</span>
+                                            <span class="color-swatch__var">--color-secondary-dark</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="color-group">
+                                <h4 class="color-group__title">Neutral Colors</h4>
+                                <div class="color-swatches">
+                                    <div class="color-swatch color-swatch--bg">
+                                        <div class="color-swatch__sample"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">Background</span>
+                                            <span class="color-swatch__var">--color-bg</span>
+                                        </div>
+                                    </div>
+                                    <div class="color-swatch color-swatch--surface">
+                                        <div class="color-swatch__sample"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">Surface</span>
+                                            <span class="color-swatch__var">--color-surface</span>
+                                        </div>
+                                    </div>
+                                    <div class="color-swatch color-swatch--text">
+                                        <div class="color-swatch__sample"></div>
+                                        <div class="color-swatch__info">
+                                            <span class="color-swatch__name">Text</span>
+                                            <span class="color-swatch__var">--color-text</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Component Showcase -->
+                    <div class="component-showcase">
+                        <h3 class="subsection-title">Theme-Aware Components</h3>
+                        
+                        <!-- Button System -->
+                        <div class="component-group">
+                            <h4 class="component-group__title">Button System</h4>
+                            <div class="button-showcase">
+                                <button class="btn btn--primary">Primary Button</button>
+                                <button class="btn btn--secondary">Secondary Button</button>
+                                <button class="btn btn--accent">Accent Button</button>
+                                <button class="btn btn--outline">Outline Button</button>
+                                <button class="btn btn--ghost">Ghost Button</button>
+                            </div>
+                            
+                            <div class="button-sizes">
+                                <button class="btn btn--primary btn--small">Small</button>
+                                <button class="btn btn--primary">Medium</button>
+                                <button class="btn btn--primary btn--large">Large</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Card System -->
+                        <div class="component-group">
+                            <h4 class="component-group__title">Card System</h4>
+                            <div class="card-grid">
+                                <div class="card">
+                                    <div class="card__header">
+                                        <h5 class="card__title">Standard Card</h5>
+                                        <span class="badge badge--primary">Primary</span>
+                                    </div>
+                                    <div class="card__body">
+                                        <p class="card__text">This card demonstrates the standard styling using CSS custom properties for theming.</p>
+                                    </div>
+                                    <div class="card__footer">
+                                        <button class="btn btn--primary btn--small">Action</button>
+                                        <button class="btn btn--ghost btn--small">Cancel</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="card card--elevated">
+                                    <div class="card__header">
+                                        <h5 class="card__title">Elevated Card</h5>
+                                        <span class="badge badge--secondary">Secondary</span>
+                                    </div>
+                                    <div class="card__body">
+                                        <p class="card__text">This card variant uses CSS variables for dynamic shadow and elevation effects.</p>
+                                    </div>
+                                    <div class="card__footer">
+                                        <button class="btn btn--secondary btn--small">Action</button>
+                                        <button class="btn btn--ghost btn--small">Cancel</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="card card--accent">
+                                    <div class="card__header">
+                                        <h5 class="card__title">Accent Card</h5>
+                                        <span class="badge badge--accent">Accent</span>
+                                    </div>
+                                    <div class="card__body">
+                                        <p class="card__text">This accent card showcases how CSS variables enable consistent theming across components.</p>
+                                    </div>
+                                    <div class="card__footer">
+                                        <button class="btn btn--accent btn--small">Action</button>
+                                        <button class="btn btn--ghost btn--small">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Form System -->
+                        <div class="component-group">
+                            <h4 class="component-group__title">Form System</h4>
+                            <form class="form-demo">
+                                <div class="form-group">
+                                    <label class="form-label" for="name">Full Name</label>
+                                    <input class="form-input" type="text" id="name" placeholder="Enter your name">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="email">Email Address</label>
+                                    <input class="form-input" type="email" id="email" placeholder="Enter your email">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="message">Message</label>
+                                    <textarea class="form-textarea" id="message" rows="4" placeholder="Enter your message"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input class="checkbox-input" type="checkbox">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="checkbox-text">Subscribe to newsletter</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button class="btn btn--primary" type="submit">Submit Form</button>
+                                    <button class="btn btn--secondary" type="reset">Reset</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Variable Inheritance Demo -->
+            <section class="inheritance-demo">
+                <div class="container">
+                    <h2 class="section-title">CSS Variable Inheritance & Scoping</h2>
+                    
+                    <div class="inheritance-showcase">
+                        <!-- Global Variables -->
+                        <div class="scope-demo scope-demo--global">
+                            <h3 class="scope-demo__title">Global Scope</h3>
+                            <p class="scope-demo__description">These variables are defined at :root level</p>
+                            <div class="scope-demo__content">
+                                <div class="demo-box demo-box--global">Global Variables</div>
+                                <code class="code-snippet">color: var(--color-primary)</code>
+                            </div>
+                        </div>
+                        
+                        <!-- Component Scoped Variables -->
+                        <div class="scope-demo scope-demo--component">
+                            <h3 class="scope-demo__title">Component Scope</h3>
+                            <p class="scope-demo__description">Variables scoped to specific components</p>
+                            <div class="scope-demo__content">
+                                <div class="demo-box demo-box--component">Component Variables</div>
+                                <code class="code-snippet">--component-padding: 2rem</code>
+                            </div>
+                        </div>
+                        
+                        <!-- Context-aware Variables -->
+                        <div class="scope-demo scope-demo--context">
+                            <h3 class="scope-demo__title">Context-Aware</h3>
+                            <p class="scope-demo__description">Variables that change based on context</p>
+                            <div class="scope-demo__content">
+                                <div class="demo-box demo-box--context">Context Variables</div>
+                                <code class="code-snippet">--text-color: var(--color-on-surface)</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Responsive Variables Demo -->
+            <section class="responsive-variables">
+                <div class="container">
+                    <h2 class="section-title">Responsive CSS Variables</h2>
+                    
+                    <div class="responsive-showcase">
+                        <div class="responsive-card">
+                            <h3 class="responsive-card__title">Fluid Typography</h3>
+                            <p class="responsive-card__text">This text uses CSS variables for fluid scaling across screen sizes. The font size, line height, and spacing all adapt automatically.</p>
+                            <div class="responsive-values">
+                                <div class="value-display">
+                                    <span class="value-label">Font Size:</span>
+                                    <span class="value-current" id="currentFontSize">--</span>
+                                </div>
+                                <div class="value-display">
+                                    <span class="value-label">Line Height:</span>
+                                    <span class="value-current" id="currentLineHeight">--</span>
+                                </div>
+                                <div class="value-display">
+                                    <span class="value-label">Spacing:</span>
+                                    <span class="value-current" id="currentSpacing">--</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid-demo">
+                            <h3 class="grid-demo__title">Responsive Grid</h3>
+                            <div class="responsive-grid">
+                                <div class="grid-item">Item 1</div>
+                                <div class="grid-item">Item 2</div>
+                                <div class="grid-item">Item 3</div>
+                                <div class="grid-item">Item 4</div>
+                                <div class="grid-item">Item 5</div>
+                                <div class="grid-item">Item 6</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Animation Variables -->
+            <section class="animation-variables">
+                <div class="container">
+                    <h2 class="section-title">Dynamic Animation Variables</h2>
+                    
+                    <div class="animation-controls">
+                        <div class="control-group">
+                            <label class="control-label" for="animationSpeed">Animation Speed</label>
+                            <input class="control-slider" type="range" id="animationSpeed" min="0.1" max="3.0" step="0.1" value="1.0">
+                            <div class="control-value" id="animationSpeedValue">1.0s</div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label" for="animationEasing">Animation Easing</label>
+                            <select class="control-select" id="animationEasing">
+                                <option value="ease">Ease</option>
+                                <option value="ease-in">Ease In</option>
+                                <option value="ease-out">Ease Out</option>
+                                <option value="ease-in-out">Ease In Out</option>
+                                <option value="cubic-bezier(0.68, -0.55, 0.265, 1.55)">Bounce</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="animation-showcase">
+                        <div class="animated-box animated-box--bounce">
+                            <span class="animated-box__label">Bounce</span>
+                        </div>
+                        <div class="animated-box animated-box--slide">
+                            <span class="animated-box__label">Slide</span>
+                        </div>
+                        <div class="animated-box animated-box--rotate">
+                            <span class="animated-box__label">Rotate</span>
+                        </div>
+                        <div class="animated-box animated-box--scale">
+                            <span class="animated-box__label">Scale</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__content">
+                    <div class="footer__section">
+                        <h4 class="footer__title">CSS Variables Demo</h4>
+                        <p class="footer__text">Showcasing the power of CSS Custom Properties for dynamic theming and responsive design.</p>
+                    </div>
+                    <div class="footer__section">
+                        <h4 class="footer__title">Features</h4>
+                        <ul class="footer__links">
+                            <li><a href="#" class="footer__link">Dynamic Theming</a></li>
+                            <li><a href="#" class="footer__link">Real-time Customization</a></li>
+                            <li><a href="#" class="footer__link">Responsive Variables</a></li>
+                            <li><a href="#" class="footer__link">Component Scoping</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p class="footer__copyright">&copy; 2024 CSS Variables Tutorial</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript for theme switching and controls -->
+    <script>
+        // Theme switching functionality
+        const app = document.querySelector('.app');
+        const themeButtons = document.querySelectorAll('.theme-btn');
+        const customControls = document.getElementById('customControls');
+        
+        // Theme switching
+        themeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const theme = button.dataset.theme;
+                app.dataset.theme = theme;
+                
+                // Update active state
+                themeButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Show/hide custom controls
+                customControls.style.display = theme === 'custom' ? 'block' : 'none';
+                
+                // Store theme preference
+                localStorage.setItem('preferred-theme', theme);
+            });
+        });
+        
+        // Initialize theme from localStorage
+        const savedTheme = localStorage.getItem('preferred-theme') || 'light';
+        app.dataset.theme = savedTheme;
+        document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+        customControls.style.display = savedTheme === 'custom' ? 'block' : 'none';
+        
+        // Custom theme controls
+        const controls = {
+            primaryHue: document.getElementById('primaryHue'),
+            secondaryHue: document.getElementById('secondaryHue'),
+            accentHue: document.getElementById('accentHue'),
+            borderRadius: document.getElementById('borderRadius'),
+            fontSize: document.getElementById('fontSize'),
+            spacing: document.getElementById('spacing'),
+            animationSpeed: document.getElementById('animationSpeed'),
+            animationEasing: document.getElementById('animationEasing')
+        };
+        
+        // Update CSS variables based on controls
+        function updateCustomVariables() {
+            const root = document.documentElement;
+            
+            // Color variables
+            if (controls.primaryHue) {
+                const primaryHue = controls.primaryHue.value;
+                root.style.setProperty('--primary-hue', primaryHue);
+                root.style.setProperty('--color-primary', `hsl(${primaryHue}, 60%, 50%)`);
+                root.style.setProperty('--color-primary-light', `hsl(${primaryHue}, 60%, 70%)`);
+                root.style.setProperty('--color-primary-dark', `hsl(${primaryHue}, 60%, 30%)`);
+            }
+            
+            if (controls.secondaryHue) {
+                const secondaryHue = controls.secondaryHue.value;
+                root.style.setProperty('--secondary-hue', secondaryHue);
+                root.style.setProperty('--color-secondary', `hsl(${secondaryHue}, 50%, 45%)`);
+                root.style.setProperty('--color-secondary-light', `hsl(${secondaryHue}, 50%, 65%)`);
+                root.style.setProperty('--color-secondary-dark', `hsl(${secondaryHue}, 50%, 25%)`);
+            }
+            
+            if (controls.accentHue) {
+                const accentHue = controls.accentHue.value;
+                root.style.setProperty('--accent-hue', accentHue);
+                root.style.setProperty('--color-accent', `hsl(${accentHue}, 70%, 55%)`);
+                root.style.setProperty('--color-accent-light', `hsl(${accentHue}, 70%, 75%)`);
+                root.style.setProperty('--color-accent-dark', `hsl(${accentHue}, 70%, 35%)`);
+            }
+            
+            // Layout variables
+            if (controls.borderRadius) {
+                const borderRadius = controls.borderRadius.value;
+                root.style.setProperty('--border-radius', `${borderRadius}px`);
+                document.getElementById('borderRadiusValue').textContent = `${borderRadius}px`;
+            }
+            
+            if (controls.fontSize) {
+                const fontSize = controls.fontSize.value;
+                root.style.setProperty('--font-size-base', `${fontSize}px`);
+                document.getElementById('fontSizeValue').textContent = `${fontSize}px`;
+            }
+            
+            if (controls.spacing) {
+                const spacing = controls.spacing.value;
+                root.style.setProperty('--spacing-scale', spacing);
+                document.getElementById('spacingValue').textContent = `${spacing}x`;
+            }
+            
+            // Animation variables
+            if (controls.animationSpeed) {
+                const speed = controls.animationSpeed.value;
+                root.style.setProperty('--animation-duration', `${speed}s`);
+                document.getElementById('animationSpeedValue').textContent = `${speed}s`;
+            }
+            
+            if (controls.animationEasing) {
+                const easing = controls.animationEasing.value;
+                root.style.setProperty('--animation-easing', easing);
+            }
+        }
+        
+        // Add event listeners to all controls
+        Object.values(controls).forEach(control => {
+            if (control) {
+                control.addEventListener('input', updateCustomVariables);
+            }
+        });
+        
+        // Initialize custom variables
+        updateCustomVariables();
+        
+        // Update responsive values display
+        function updateResponsiveValues() {
+            const root = document.documentElement;
+            const computedStyle = getComputedStyle(root);
+            
+            const currentFontSize = computedStyle.getPropertyValue('--font-size-responsive');
+            const currentLineHeight = computedStyle.getPropertyValue('--line-height-responsive');
+            const currentSpacing = computedStyle.getPropertyValue('--spacing-responsive');
+            
+            document.getElementById('currentFontSize').textContent = currentFontSize || 'var(--font-size-responsive)';
+            document.getElementById('currentLineHeight').textContent = currentLineHeight || 'var(--line-height-responsive)';
+            document.getElementById('currentSpacing').textContent = currentSpacing || 'var(--spacing-responsive)';
+        }
+        
+        // Update responsive values on resize
+        window.addEventListener('resize', updateResponsiveValues);
+        updateResponsiveValues();
+        
+        // Animation trigger
+        const animatedBoxes = document.querySelectorAll('.animated-box');
+        setInterval(() => {
+            animatedBoxes.forEach(box => {
+                box.style.animationPlayState = 'running';
+                setTimeout(() => {
+                    box.style.animationPlayState = 'paused';
+                }, 2000);
+            });
+        }, 3000);
+    </script>
+</body>
+</html>
