@@ -29,3 +29,11 @@ button:hover {
   color: #ffffff; /* White text */
   cursor: pointer;
 } 
+
+::after{
+  content: "";
+  display: block;
+  height: 4px;
+  background-color: #0d6efd;
+  margin-top: 0.5rem;
+}
